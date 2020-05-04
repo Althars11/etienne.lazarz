@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="author" content="David Bouchet">
+        <title>Programming Basics</title>
+        <link rel="stylesheet" href="Programming%20Basics_fichiers/style.css">
+        <link rel="stylesheet" href="Programming%20Basics_fichiers/prism.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header style="top: 0em;">
+            <div>
+                <span><a href="#table_of_contents">≡</a></span>
+                <span><a href="http://www.debug-pro.com/epita/prog/s3/index.html">Practical Programming</a></span>
+                <span><a href="mailto:david.bouchet.epita@gmail.com">David Bouchet</a></span>
+            </div>
+        </header>
+        <div class="title">
+            <div class="practical_number">Practical Work #2</div>
+            <h1>Programming Basics</h1>
+        </div>
+        <nav id="table_of_contents"><h2><a href="#head_1000">Submission</a></h2><h3><a href="#head_1001">Due Date</a></h3><h3><a href="#head_1002">Directory Hierarchy</a></h3><h2><a href="#head_1003">Exercises</a></h2><h3><a href="#head_1004">1. Factorial</a></h3><h3><a href="#head_1005">2. Fibonacci Sequence</a></h3><h3><a href="#head_1006">3. Integer Square Root</a></h3><h3><a href="#head_1007">4. Powers of Two</a></h3><h3><a href="#head_1008">5. Digit Count</a></h3><h3><a href="#head_1009">6. Sum of Divisors</a></h3><h3><a href="#head_1010">7. Perfect Numbers</a></h3></nav>
+        <main>
+            <h2 id="head_1000">Submission</h2>
+            <h3 id="head_1001">Due Date</h3>
+            <p>By Friday 11 October 2019 23:42</p>
+            <h3 id="head_1002">Directory Hierarchy</h3>
+            <p>
+                Create your git repository (replace <i>john.smith</i> by your own login).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">git</span> clone git@git.cri.epita.net:p/2023-s3-tp/tp02-john.smith</code></pre>
+            <p>
+                It must contain the following files and directories:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">pw_02_basics/</code>
+                    <ul>
+                        <li><b>AUTHORS</b></li>
+                        <li><code class="s">facto/</code></li>
+                        <li><code class="s">fibo/</code></li>
+                        <li><code class="s">isqrt/</code></li>
+                        <li><code class="s">power_of_two/</code></li>
+                        <li><code class="s">digit_count/</code></li>
+                        <li><code class="s">divisor_sum/</code></li>
+                        <li><code class="s">perfect_numbers/</code></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                Use only one directory per exercise and write all the files of an
+                exercise in its associated directory.
+                For instance, write all the files of the factorial exercise in the
+                <code class="s">facto</code> directory.
+            </p>
+            <p>
+                The <code class="s">AUTHORS</code> file
+                must contain the following information.
+            </p>
+            <div class="filename">AUTHORS</div>
+            <pre class="line-numbers language-bash"><code class=" language-bash">First Name
+Family Name
+Login
+Email Address<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>
+                The last character of your <code class="s">AUTHORS</code> file must be a newline character.
+            </p>
+            <p>For instance:</p>
+            <div class="filename">AUTHORS</div>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+John
+Smith
+john.smith
+john.smith@epita.fr
+$ <span class="token comment"># Command prompt ready for the next command...</span></code></pre>
+            <p>
+                <mark>
+                    Be careful, if you do not follow all the given instructions,
+                    no point will be given to your answers.
+                </mark>
+            </p>
+            <h2 class="exercise" id="head_1003">Exercises</h2>
+            <p>
+                Unless otherwise stipulated, you will use the <code class="s">gcc</code> compiler
+                with the following options and parameters for all the exercises:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O1 -o main *.c</code></pre>
+            <p>
+                Check the documentation of <code class="s">gcc</code> for more details.
+            </p>
+            <p>
+                Unless otherwise stipulated, the prototype of the <code class="s">main()</code>
+                function will be:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                The <code class="s">main()</code> function will return zero if no error occurs.
+                Otherwise, it will return one.
+            </p>
+            <p>
+                You have to bear in mind that header files
+                have to be included only once even
+                if several <code class="s">#include</code>
+                are encountered for the same header file.
+                So never forget to start header files with
+                the <code class="s">#ifndef</code>
+                and <code class="s">#define</code> pair of pseudo-instructions
+                and to end it with the <code class="s">#endif</code> pseudo-instruction.
+                All header files should look like the following template:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">ifndef</span> NAME_OF_THE_HEADER_FILE</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> NAME_OF_THE_HEADER_FILE</span>
+
+<span class="token comment">// FUNCTION PROTOTYPES</span>
+
+<span class="token macro property">#<span class="token directive keyword">endif</span></span></code></pre>
+            <h3 class="question" id="head_1004">Factorial</h3>
+            <p>
+                You are going to write a program that works out the factorial of a number.
+            </p>
+            <p>
+                Your program will be made up of three files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">facto.c</code> that contains the
+                    <code class="s">facto()</code> function.
+                </li>
+                <li>
+                    <code class="s">facto.h</code> that is the header of the
+                    <code class="s">facto.c</code> file.
+                </li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">facto()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">facto</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> the factorial of <var>n</var>.
+                </li>
+                <li><b>Note:</b> this function should not print anything on the terminal.</li>
+            </ul>
+            <p>
+                For this first exercise, the <code class="s">facto.h</code> file is given:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">ifndef</span> FACTO_H</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> FACTO_H</span>
+
+<span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">facto</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">endif</span></span></code></pre>
+            <p>
+                Write the <code class="s">facto.c</code> file.
+            </p>
+            <p>
+                Finally, write the <code class="s">main.c</code> file.
+                Your <code class="s">main()</code> function should invoke
+                your <code class="s">facto()</code> function
+                and should print <b>exactly</b> the following output on the terminal:
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main
+facto(0) = 1
+facto(1) = 1
+facto(2) = 2
+facto(3) = 6
+facto(4) = 24
+facto(5) = 120
+facto(6) = 720
+facto(7) = 5040
+facto(8) = 40320
+facto(9) = 362880
+facto(10) = 3628800
+facto(11) = 39916800
+facto(12) = 479001600
+facto(13) = 6227020800
+facto(14) = 87178291200
+facto(15) = 1307674368000
+facto(16) = 20922789888000
+facto(17) = 355687428096000
+facto(18) = 6402373705728000
+facto(19) = 121645100408832000
+facto(20) = 2432902008176640000</code></pre>
+            <h3 class="question" id="head_1005">Fibonacci Sequence</h3>
+            <p>
+                The <var>F<sub>n</sub></var> <strong>Fibonacci sequence</strong>
+                is defined by the following recurrence relation:
+            </p>
+            <ul>
+                <li>
+                    <var>F<sub>0</sub> = 0</var>
+                </li>
+                <li>
+                    <var>F<sub>1</sub> = 1</var>
+                </li>
+                <li>
+                    <var>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub></var>
+                </li>
+            </ul>
+            <p>
+                You are going to write a program that works out the Fibonacci numbers.
+            </p>
+            <p>
+                Your program will be made up of three files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">fibo.c</code> that contains the
+                    <code class="s">fibo()</code> function.
+                </li>
+                <li>
+                    <code class="s">fibo.h</code> that is the header of the
+                    <code class="s">fibo.c</code> file.
+                </li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">fibo()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">fibo</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> the <var>nth</var> number of the Fibonacci sequence.
+                </li>
+                <li><b>Note:</b> this function should not print anything on the terminal.</li>
+            </ul>
+            <p>
+                Write the <code class="s">fibo.h</code> and <code class="s">fibo.c</code> files.
+            </p>
+            <p>
+                Finally, write the <code class="s">main.c</code> file.
+                Your <code class="s">main()</code> function should print <b>exactly</b>
+                the following output on the terminal (the three dots included):
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main
+fibo(0) = 0
+fibo(1) = 1
+fibo(2) = 1
+fibo(3) = 2
+fibo(4) = 3
+fibo(5) = 5
+fibo(6) = 8
+fibo(7) = 13
+fibo(8) = 21
+fibo(9) = 34
+fibo(10) = 55
+...
+fibo(81) = 37889062373143906
+fibo(82) = 61305790721611591
+fibo(83) = 99194853094755497
+fibo(84) = 160500643816367088
+fibo(85) = 259695496911122585
+fibo(86) = 420196140727489673
+fibo(87) = 679891637638612258
+fibo(88) = 1100087778366101931
+fibo(89) = 1779979416004714189
+fibo(90) = 2880067194370816120</code></pre>
+            <h3 class="question" id="head_1006">Integer Square Root</h3>
+            <p>
+                The <strong>integer square root</strong>
+                of a non-negative integer <var>n</var>
+                is the largest integer that is smaller than
+                or equal to the square root of <var>n</var>.
+            </p>
+            <p>
+                To determine the integer square root (<var>r</var>)
+                of a non-negative integer (<var>n</var>)
+                you can use the Babylonian method:
+            </p>
+            <ul>
+                <li>
+                    <var>r = n</var>
+                </li>
+                <li>
+                    While <var>r<sup>2</sup> &gt; n</var>:
+                    <ul>
+                        <li>
+                            <var>r = r + n/r</var>
+                        </li>
+                        <li>
+                            <var>r = r / 2</var>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                You are going to write a program that works out
+                the integer square root of a non-negative integer.
+            </p>
+            <p>
+                Your program will be made up of three files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">isqrt.c</code> that contains the
+                    <code class="s">isqrt()</code> function.
+                </li>
+                <li>
+                    <code class="s">isqrt.h</code> that is the header of the
+                    <code class="s">isqrt.c</code> file.
+                </li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">isqrt()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">isqrt</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> the integer square root of <var>n</var>.
+                </li>
+                <li>
+                    <b>Note:</b> this function should not print anything on the terminal.
+                </li>
+            </ul>
+            <p>
+                Write the <code class="s">isqrt.h</code>
+                and <code class="s">isqrt.c</code> files.
+            </p>
+            <p>
+                Finally, write the <code class="s">main.c</code> file.
+                Your <code class="s">main()</code> function should print <b>exactly</b>
+                the following output on the terminal:
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main
+isqrt(0) = 0
+isqrt(8) = 2
+isqrt(16) = 4
+isqrt(24) = 4
+isqrt(32) = 5
+isqrt(40) = 6
+isqrt(48) = 6
+isqrt(56) = 7
+isqrt(64) = 8
+isqrt(72) = 8
+isqrt(80) = 8
+isqrt(88) = 9
+isqrt(96) = 9
+isqrt(104) = 10
+isqrt(112) = 10
+isqrt(120) = 10
+isqrt(128) = 11
+isqrt(136) = 11
+isqrt(144) = 12
+isqrt(152) = 12
+isqrt(160) = 12
+isqrt(168) = 12
+isqrt(176) = 13
+isqrt(184) = 13
+isqrt(192) = 13
+isqrt(200) = 14</code></pre>
+            <h3 class="question" id="head_1007">Powers of Two</h3>
+            <p>
+                You are going to write a program that works out
+                a power of two as fast as possible
+                (no iteration, no recursion).
+            </p>
+            <p>
+                Your program will be made up of three files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">power_of_two.c</code> that contains the
+                    <code class="s">power_of_two()</code> function.
+                </li>
+                <li>
+                    <code class="s">power_of_two.h</code> that is the header of the
+                    <code class="s">power_of_two.c</code> file.
+                </li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">power_of_two()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">power_of_two</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 8-bit unsigned integer.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> two to the power of <var>n</var>.
+                </li>
+                <li><b>Note:</b> this function should not print anything on the terminal.</li>
+            </ul>
+            <p>
+                Write the <code class="s">power_of_two.h</code>
+                and <code class="s">power_of_two.c</code> files.
+            </p>
+            <p>
+                Finally, write the <code class="s">main.c</code> file.
+                Your <code class="s">main()</code> function should print <b>exactly</b>
+                the following output on the terminal:
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main
+power_of_two(0) = 1
+power_of_two(1) = 2
+power_of_two(2) = 4
+power_of_two(3) = 8
+power_of_two(4) = 16
+power_of_two(5) = 32
+power_of_two(6) = 64
+power_of_two(7) = 128
+power_of_two(8) = 256
+power_of_two(9) = 512
+power_of_two(10) = 1024
+power_of_two(11) = 2048
+power_of_two(12) = 4096
+power_of_two(13) = 8192
+power_of_two(14) = 16384
+power_of_two(15) = 32768
+power_of_two(16) = 65536
+power_of_two(17) = 131072
+power_of_two(18) = 262144
+power_of_two(19) = 524288
+power_of_two(20) = 1048576
+power_of_two(21) = 2097152
+power_of_two(22) = 4194304
+power_of_two(23) = 8388608
+power_of_two(24) = 16777216
+power_of_two(25) = 33554432
+power_of_two(26) = 67108864
+power_of_two(27) = 134217728
+power_of_two(28) = 268435456
+power_of_two(29) = 536870912
+power_of_two(30) = 1073741824
+power_of_two(31) = 2147483648
+power_of_two(32) = 4294967296
+power_of_two(33) = 8589934592
+power_of_two(34) = 17179869184
+power_of_two(35) = 34359738368
+power_of_two(36) = 68719476736
+power_of_two(37) = 137438953472
+power_of_two(38) = 274877906944
+power_of_two(39) = 549755813888
+power_of_two(40) = 1099511627776
+power_of_two(41) = 2199023255552
+power_of_two(42) = 4398046511104
+power_of_two(43) = 8796093022208
+power_of_two(44) = 17592186044416
+power_of_two(45) = 35184372088832
+power_of_two(46) = 70368744177664
+power_of_two(47) = 140737488355328
+power_of_two(48) = 281474976710656
+power_of_two(49) = 562949953421312
+power_of_two(50) = 1125899906842624
+power_of_two(51) = 2251799813685248
+power_of_two(52) = 4503599627370496
+power_of_two(53) = 9007199254740992
+power_of_two(54) = 18014398509481984
+power_of_two(55) = 36028797018963968
+power_of_two(56) = 72057594037927936
+power_of_two(57) = 144115188075855872
+power_of_two(58) = 288230376151711744
+power_of_two(59) = 576460752303423488
+power_of_two(60) = 1152921504606846976
+power_of_two(61) = 2305843009213693952
+power_of_two(62) = 4611686018427387904
+power_of_two(63) = 9223372036854775808</code></pre>
+            <h3 class="question" id="head_1008">Digit Count</h3>
+            <p>
+                You are going to write a program that counts
+                the number of digits in a base-10 non-negative integer.
+            </p>
+            <p>
+                Your program will be made up of three files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">digit_count.c</code> that contains the
+                    <code class="s">digit_count()</code> function.
+                </li>
+                <li>
+                    <code class="s">digit_count.h</code> that is the header of the
+                    <code class="s">digit_count.c</code> file.
+                </li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">digit_count()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token function">digit_count</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> the number of digits of <var>n</var> in base 10.
+                </li>
+                <li><b>Note:</b> this function should not print anything on the terminal.</li>
+            </ul>
+            <p>
+                Write the <code class="s">digit_count.h</code>
+                and <code class="s">digit_count.c</code> files.
+            </p>
+            <p>
+                Finally, write the <code class="s">main.c</code> file.
+                Your <code class="s">main()</code> function should print <b>exactly</b>
+                the following output on the terminal, that is,
+                the number of digits for 0 and for all the powers of two
+                from 2<sup>0</sup> to 2<sup>63</sup>:
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main
+digit_count(0) = 1
+digit_count(1) = 1
+digit_count(2) = 1
+digit_count(4) = 1
+digit_count(8) = 1
+digit_count(16) = 2
+digit_count(32) = 2
+digit_count(64) = 2
+digit_count(128) = 3
+digit_count(256) = 3
+digit_count(512) = 3
+digit_count(1024) = 4
+digit_count(2048) = 4
+digit_count(4096) = 4
+digit_count(8192) = 4
+digit_count(16384) = 5
+digit_count(32768) = 5
+digit_count(65536) = 5
+digit_count(131072) = 6
+digit_count(262144) = 6
+digit_count(524288) = 6
+digit_count(1048576) = 7
+digit_count(2097152) = 7
+digit_count(4194304) = 7
+digit_count(8388608) = 7
+digit_count(16777216) = 8
+digit_count(33554432) = 8
+digit_count(67108864) = 8
+digit_count(134217728) = 9
+digit_count(268435456) = 9
+digit_count(536870912) = 9
+digit_count(1073741824) = 10
+digit_count(2147483648) = 10
+digit_count(4294967296) = 10
+digit_count(8589934592) = 10
+digit_count(17179869184) = 11
+digit_count(34359738368) = 11
+digit_count(68719476736) = 11
+digit_count(137438953472) = 12
+digit_count(274877906944) = 12
+digit_count(549755813888) = 12
+digit_count(1099511627776) = 13
+digit_count(2199023255552) = 13
+digit_count(4398046511104) = 13
+digit_count(8796093022208) = 13
+digit_count(17592186044416) = 14
+digit_count(35184372088832) = 14
+digit_count(70368744177664) = 14
+digit_count(140737488355328) = 15
+digit_count(281474976710656) = 15
+digit_count(562949953421312) = 15
+digit_count(1125899906842624) = 16
+digit_count(2251799813685248) = 16
+digit_count(4503599627370496) = 16
+digit_count(9007199254740992) = 16
+digit_count(18014398509481984) = 17
+digit_count(36028797018963968) = 17
+digit_count(72057594037927936) = 17
+digit_count(144115188075855872) = 18
+digit_count(288230376151711744) = 18
+digit_count(576460752303423488) = 18
+digit_count(1152921504606846976) = 19
+digit_count(2305843009213693952) = 19
+digit_count(4611686018427387904) = 19
+digit_count(9223372036854775808) = 19</code></pre>
+            <h3 class="question" id="head_1009">Sum of Divisors</h3>
+            <p>
+                You are going to write a program that adds up
+                all the divisors of a positive integer
+                (excluding the integer itself).
+            </p>
+            <p>
+                Your program will be made up of three files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">divisor_sum.c</code>
+                    that contains the <code class="s">divisor_sum()</code> function.
+                </li>
+                <li>
+                    <code class="s">divisor_sum.h</code>
+                    that is the header of the <code class="s">divisor_sum.c</code> file.
+                </li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">divisor_sum()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">divisor_sum</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer (0 excluded).</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> the sum of the divisors of <var>n</var>
+                    (excluding <var>n</var>).
+                </li>
+                <li>
+                    <b>Note:</b> this function should not print anything on the terminal.
+                </li>
+            </ul>
+            <p>
+                Write the <code class="s">divisor_sum.h</code> and
+                <code class="s">divisor_sum.c</code> files.
+            </p>
+            <p>
+                For this program, you are going to pass the positive integer to your program
+                by using <strong>the command-line arguments</strong>.
+            </p>
+            <p>
+                First, the prototype of your <code class="s">main()</code> function becomes:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li>
+                            <var>argc</var>:
+                            number of the command-line arguments (program name included).
+                        </li>
+                        <li>
+                            <var>argv</var>:
+                            pointer to an array of strings that contains
+                            the command-line arguments.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> Status code: 0 if no error occurs, otherwise 1.
+                </li>
+            </ul>
+            <p>
+                Then, to get the first parameter that was passed to your program
+                in a <code class="s">param</code> variable,
+                you can use this instruction.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> param <span class="token operator">=</span> <span class="token function">strtoul</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Do not worry if you do not know what a pointer is
+                and if you do not understand the above instruction.
+                We will see the pointers and the command-line arguments in more detail later on.
+                For the time being, just use this instruction to get the first parameter as
+                an unsigned long variable.
+            </p>
+            <p>
+                Now that we use a user input
+                (i.e. the argument passed to the program by a user),
+                we have to handle any potential errors.
+                As it is your first time, let us do this in a simple way.
+            </p>
+            <p>
+                You will have to exit the program:
+            </p>
+            <ul>
+                <li>
+                    If <code class="s">argc</code>
+                    is different from two (the number of arguments is not valid).
+                </li>
+                <li>
+                    If <code class="s">param</code>
+                    is equal to zero (the parameter is not valid).
+                </li>
+            </ul>
+            <p>
+                In these two cases, you should exit the program
+                with the status code 1 and print an error message.
+                To do so, you can use the <code class="s">errx()</code> function.
+                For instance:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                The above instruction exits your program with the status code 1
+                and sends the <code>"Error"</code> message to the standard error.
+            </p>
+            <p>
+                To sum up:
+            </p>
+            <ul>
+                <li>You have to use a new prototype for the main function.</li>
+                <li>
+                    You have to use two new functions of the standard library:
+                    <ul>
+                        <li>The <code class="s">strtoul()</code> function.</li>
+                        <li>The <code class="s">errx()</code> function.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                To use these two new functions, you have to include the right headers
+                at the beginning of your <code class="s">main.c</code> file.
+                So, have a look at the man pages of the <code class="s">strtoul()</code>
+                and <code class="s">errx()</code> functions in order to
+                figure out which headers you need.
+            </p>
+            <p>
+                Finally, write the <code class="s">main()</code> function so that it prints
+                the sum of the divisors for the number you pass as parameter.
+                Test it with different values.
+                Here are some examples.
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main 0
+main: Error
+$ ./main abcd
+main: Error
+$ ./main 1 2
+main: Error
+$ ./main 1
+divisor_sum(1) = 0
+$ ./main 3
+divisor_sum(3) = 1
+$ ./main 6
+divisor_sum(6) = 6
+$ ./main 9
+divisor_sum(9) = 4
+$ ./main 11
+divisor_sum(11) = 1
+$ ./main 28
+divisor_sum(28) = 28
+$ ./main 30
+divisor_sum(30) = 42
+$ ./main 496
+divisor_sum(496) = 496
+$ ./main 8589869056
+divisor_sum(8589869056) = 8589869056
+$ ./main 137438691328
+divisor_sum(137438691328) = 137438691328</code></pre>
+            <p>
+                Obviously, the result for a prime number is always one.
+                We can also notice that for some numbers their sums are equal to themselves.
+                Such numbers are called
+                <a href="https://en.wikipedia.org/wiki/Perfect_number">perfect numbers</a>.
+            </p>
+            <p>
+                If your algorithm is not efficient,
+                the computation for the last two numbers can take
+                a lot of time (from one to twenty minutes).
+            </p>
+            <p>
+                Otherwise, if your algorithm is efficient, the computation can take only
+                a few milliseconds; even for the last number (i.e. 137,438,691,328).
+            </p>
+            <p>
+                You can use the <code class="s">time</code> command to obtain an approximation
+                of the elapsed time between invocation and termination of your program
+                (the real time).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">time</span> ./main 8589869056
+divisor_sum<span class="token punctuation">(</span>8589869056<span class="token punctuation">)</span> <span class="token operator">=</span> 8589869056
+
+real    0m0.001s
+user    0m0.000s
+sys     0m0.000s
+$ <span class="token function">time</span> ./main 137438691328
+divisor_sum<span class="token punctuation">(</span>137438691328<span class="token punctuation">)</span> <span class="token operator">=</span> 137438691328
+
+real    0m0.005s
+user    0m0.004s
+sys     0m0.000s</code></pre>
+            <p>
+                You are not required to write the fastest algorithm,
+                but at least, try to make it in under five seconds for the last number.
+            </p>
+            <h3 class="question" id="head_1010">Perfect Numbers</h3>
+            <p>
+                For this last exercise, you are going to write a program that lists all the
+                <a href="https://en.wikipedia.org/wiki/Perfect_number">perfect numbers</a>
+                from 1 to 100,000.
+            </p>
+            <p>
+                To do so, you need to use the <code class="s">divisor_sum()</code>
+                function you wrote in the previous exercise.
+                Several methods are possible.
+                For this exercise, you will use this function
+                as if you were using a library without any source files.
+            </p>
+            <p>
+                So, let us assume that the developer and the user
+                of the library are different people.
+                The developer wants to deploy his or her library without its source code.
+                The user wants to use the library but is not allowed to access the source code.
+                How is that possible?
+                Presumably, you are only one person sitting in front of this computer,
+                so you are going to play the two parts:
+            </p>
+            <ul>
+                <li>First, the developer.</li>
+                <li>Then, the user.</li>
+            </ul>
+            <p>
+                <b>
+                    First let us assume that you are the developer of the library.
+                </b>
+            </p>
+            <p>
+                Go back to the directory of the previous exercise
+                (i.e. <code class="s">divisor_sum</code>).
+                You want to deploy the <code class="s">divisor_sum()</code> function
+                defined in the <code class="s">divisor_sum.c</code> file.
+            </p>
+            <p>
+                You will not be able to generate an executable file
+                by compiling this source file,
+                because the <code class="s">main()</code> function is missing.
+                For example: 
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> divisor_sum.c
+/usr/lib/gcc/x86_64-linux-gnu/5/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/x86_64-linux-gnu/crt1.o:
+In func</code><code class=" language-bash">tion <span class="token variable"><span class="token variable">`</span>_start':
+<span class="token punctuation">(</span>.text+0x20<span class="token punctuation">)</span>: undefined reference to <span class="token variable">`</span></span>main'
+collect2: error: ld returned 1 e</code><code class=" language-bash">xit status</code></pre>
+            <p>
+                Actually, you can compile this code,
+                but you have to generate an object file and not an executable file.
+                To do so, you can use the <code class="s">-c</code> option of the compiler.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span>
+divisor_sum.c  divisor_sum.h  main  main.c
+$ <span class="token function">gcc</span> -c divisor_sum.c
+$ <span class="token function">ls</span>
+divisor_sum.c  divisor_sum.h  divisor_sum.o  main  main.c</code></pre>
+            <p>
+                As you see, a new file has been created: <code class="s">divisor_sum.o</code>.
+                It is an object file and contains the machine code of the
+                <code class="s">divisor_sum()</code> function.
+            </p>
+            <p>
+                You could stop here, but as you are concerned about doing things well,
+                you should recompile this file by using the options you are supposed to use.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token function">gcc</span> -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O1 -c divisor_sum.c</code></pre>
+            <p>
+                Ok, now you are done.
+                To deploy the library, you can provide the two following files only:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">divisor_sum.h</code>:
+                    the header file of your library (the function prototype).
+                </li>
+                <li>
+                    <code class="s">divisor_sum.o</code>:
+                    the object file of your library (the machine code).
+                </li>
+            </ul>
+            <p>
+                You are not required to provide the definition of the function,
+                that is, the <code class="s">divisor_sum.c</code> file.
+            </p>
+            <p>
+                <b>
+                    Now, let us assume that you are the user of the library.
+                </b>
+            </p>
+            <p>
+                Exit the directory of the previous exercise,
+                create the <code class="s">perfect_numbers</code> directory
+                and set it as the current directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> <span class="token punctuation">..</span>
+$ <span class="token function">mkdir</span> perfect_numbers
+$ <span class="token function">cd</span> perfect_numbers</code></pre>
+            <p>
+                As a user of the library, you have to get the files provided by the developer.
+                You can simulate that by copying the files from the previous exercise
+                into the current directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cp</span> <span class="token punctuation">..</span>/divisor_sum/divisor_sum.<span class="token punctuation">[</span>ho<span class="token punctuation">]</span> <span class="token keyword">.</span>
+$ <span class="token function">ls</span>
+divisor_sum.h  divisor_sum.o</code></pre>
+            <p>
+                Now you are able to write the program
+                that lists all the perfect numbers from 1 to 100,000.
+            </p>
+            <p>
+                Your program will be made up of five files:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">main.c</code> that contains the
+                    <code class="s">main()</code> function.
+                </li>
+                <li>
+                    <code class="s">is_perfect_number.c</code> that contains
+                    the <code class="s">is_perfect_number()</code> function.
+                </li>
+                <li>
+                    <code class="s">is_perfect_number.h</code> that is
+                    the header of the <code class="s">is_perfect_number.c</code> file.
+                </li>
+                <li>
+                    <code class="s">divisor_sum.h</code> from the previous exercise.
+                </li>
+                <li>
+                    <code class="s">divisor_sum.o</code> from the previous exercise.
+                </li>
+            </ul>
+            <p>
+                You are supposed to invoke the <code class="s">divisor_sum()</code> function
+                in your <code class="s">is_perfect_number()</code> function.
+                So the <code class="s">is_perfect_number.c</code>
+                file should include the header of the library.
+                Actually, it should look like this:
+            </p>
+            <div class="filename">is_perfect_number.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"is_perfect_number.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"divisor_sum.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">is_perfect_number</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                You will replace the TODO comment by your own code.
+            </p>
+            <p>
+                As you can see, the prototype of the
+                <code class="s">is_perfect_number()</code> function is as follows:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> <span class="token function">is_perfect_number</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer (0 excluded).</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b>
+                    <ul>
+                        <li>
+                            If <var>n</var> is not a perfect number, return 0.
+                        </li>
+                        <li>
+                            If <var>n</var> is a perfect number,
+                            return an integer different from 0.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Note:</b> this function should not print anything on the terminal.</li>
+            </ul>
+            <p>
+                Write the <code class="s">is_perfect_number.h</code>
+                and <code class="s">is_perfect_number.c</code> files.
+            </p>
+            <p>
+                Finally, write the <code class="s">main.c</code> file.
+                To compile your program,
+                you have to specify the object file to the linker
+                (through the compiler command).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token function">gcc</span> -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O1 -o main *.c *.o</code></pre>
+            <p>The expected result is as follows:</p>
+            <pre class=" language-bash"><code class=" language-bash">$ ./main
+6
+28
+496
+8128</code></pre>
+            <p>
+                About performance:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">time</span> ./main
+6
+28
+496
+8128
+
+real    0m0.152s
+user    0m0.152s
+sys     0m0.000s</code></pre>
+        </main>
+        <footer>
+            <span>
+                <a href="http://validator.w3.org/check?uri=referer">
+                    HTML 5
+                </a>
+            </span>
+            <span>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3svg">
+                    CSS 3
+                </a>
+            </span>
+        </footer>
+        <script src="Programming%20Basics_fichiers/prism.js"></script>
+        <script src="Programming%20Basics_fichiers/script.js"></script>
+    
+
+</body></html>

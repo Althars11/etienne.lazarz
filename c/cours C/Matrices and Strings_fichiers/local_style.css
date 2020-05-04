@@ -1,0 +1,41 @@
+table.matrix
+{
+    margin: auto;
+    border: solid 2px;
+    border-collapse: collapse;
+}
+
+table.matrix td
+{
+    border: solid 1px;
+    padding: 0.7em;
+}
+
+p.two_indices_to_one
+{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+p.img img
+{
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+p.img
+{
+    text-align: center;
+}
+
+
+@media (max-width: 900px)
+{
+    p.img img
+    {
+	   max-width: 90%;
+       margin-left: auto;
+	   margin-right: auto;
+    }
+}

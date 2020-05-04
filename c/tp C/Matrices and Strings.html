@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="author" content="David Bouchet">
+        <title>Matrices and Strings</title>
+        <link rel="stylesheet" href="Matrices%20and%20Strings_fichiers/style.css">
+        <link rel="stylesheet" href="Matrices%20and%20Strings_fichiers/local_style.css">
+        <link rel="stylesheet" href="Matrices%20and%20Strings_fichiers/prism.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <div>
+                <span><a href="#table_of_contents">≡</a></span>
+                <span><a href="http://www.debug-pro.com/epita/prog/s3/index.html">Practical Programming</a></span>
+                <span><a href="mailto:david.bouchet.epita@gmail.com">David Bouchet</a></span>
+            </div>
+        </header>
+        <div class="title">
+            <div class="practical_number">Practical Work #4</div>
+            <h1>Matrices and Strings</h1>
+        </div>
+        <nav id="table_of_contents"><h2><a href="#head_1000">Submission</a></h2><h3><a href="#head_1001">Due Date</a></h3><h3><a href="#head_1002">Directory Hierarchy</a></h3><h2><a href="#head_1003">Basic Matrix Manipulations</a></h2><h3><a href="#head_1004">Introduction</a></h3><h3><a href="#head_1005">Provided Code</a></h3><h3><a href="#head_1006">Printing Matrices</a></h3><h3><a href="#head_1007">Transposing Matrices</a></h3><h3><a href="#head_1008">Adding Matrices</a></h3><h3><a href="#head_1009">Multiplying Matrices</a></h3><h2><a href="#head_1010">Strings</a></h2><h3><a href="#head_1011">Substrings</a></h3><h3><a href="#head_1012">Jumbled Text</a></h3></nav>
+        <main>
+            <h2 id="head_1000">Submission</h2>
+            <h3 id="head_1001">Due Date</h3>
+            <p>By Friday 25 October 2019 23:42</p>
+            <h3 id="head_1002">Directory Hierarchy</h3>
+            <p>
+                Create your git repository (replace <i>john.smith</i> by your own login).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">git</span> clone git@git.cri.epita.net:p/2023-s3-tp/tp04-john.smith</code></pre>
+            <p>
+                It must contain the following files and directories:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">pw_04_matrices_strings/</code>
+                    <ul>
+                        <li><b>AUTHORS</b></li>
+                        <li>
+                            <code class="s">matrices/</code>
+                            <ul>
+                                <li>main.c</li>
+                                <li>Makefile</li>
+                                <li>matrix.c</li>
+                                <li>matrix.h</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <code class="s">strings/</code>
+                            <ul>
+                                <li>
+                                    <code class="s">jumbled_text/</code>
+                                    <ul>
+                                        <li>main.c</li>
+                                        <li>Makefile</li>
+                                        <li>mix.c</li>
+                                        <li>mix.h</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <code class="s">substrings/</code>
+                                    <ul>
+                                        <li>main.c</li>
+                                        <li>Makefile</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                The <code class="s">AUTHORS</code> file
+                must contain the following information.
+            </p>
+            <div class="filename">AUTHORS</div>
+            <pre class="line-numbers language-bash"><code class=" language-bash">First Name
+Family Name
+Login
+Email Address<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>
+                The last character of your <code class="s">AUTHORS</code> file must be a newline character.
+            </p>
+            <p>For instance:</p>
+            <div class="filename">AUTHORS</div>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+John
+Smith
+john.smith
+john.smith@epita.fr
+$ <span class="token comment"># Command prompt ready for the next command...</span></code></pre>
+            <p>
+                <mark>
+                    Be careful, if you do not follow all the given instructions,
+                    no point will be given to your answers.
+                </mark>
+            </p>
+            <h2 id="head_1003">Basic Matrix Manipulations</h2>
+            <mark>
+                Do not use pointers in this section.
+            </mark>
+            <h3 id="head_1004">Introduction</h3>
+            <p>
+                The purpose of this part is to introduce good practices on matrix manipulations.
+            </p>
+            <p>
+                There are many ways to represent matrices in the C language.
+                Experience has shown that in most cases,
+                it is preferable to consider matrices as single-dimensional arrays.
+                This way, matrices are stored in contiguous memory space, thus improving performances.
+            </p>
+            <p>
+                To explain how it works, let us consider a 3x3 matrix:
+            </p>
+            <p class="img">
+                <img src="Matrices%20and%20Strings_fichiers/multi-dim_matrix.png" alt="Multi-Dimensional Matrix">
+            </p>
+            <p>
+                This matrix can be stored in a single-dimensional array as follows:
+            </p>
+            <p class="img">
+                <img src="Matrices%20and%20Strings_fichiers/single-dim_matrix.png" alt="Single-Dimensional Matrix">
+            </p>
+            <p>
+                Accessing a cell can be done by converting the two indices of the two-dimensional array into only one index.
+            </p>
+            <p class="two_indices_to_one">
+                <b><code>array[i][j] = array[i * cols + j]</code></b>
+            </p> 
+            <p>
+                </p><ul>
+                    <li><code class="s"><var>i</var></code> is the row number of the cell we want to access.</li>
+                    <li><code class="s"><var>j</var></code> is the column number of the cell we want to access.</li>
+                    <li><code class="s"><var>cols</var></code> is the total number of columns.</li>
+                </ul>
+            <p></p>
+            <p>
+                This method is known as
+				<a href="https://en.wikipedia.org/wiki/Row-_and_column-major_order">row-major order</a>.
+            </p><h3 id="head_1005">Provided Code</h3>
+            <p>
+                Four files are provided:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">Makefile</code>:
+                    it can be used to compile your code.
+                </li>
+                <li>
+                    <code class="s">matrix.c</code>:
+                    it contains the functions you will write.
+                    <mark>You are supposed to complete this file.</mark>
+                </li>
+                <li>
+                    <code class="s">matrix.h</code>:
+                    the header of <code class="s">matrix.c</code>.
+                </li>
+                <li>
+                    <code class="s">main.c</code>:
+                    it contains the main function used to test
+                    your functions.
+                    <mark>You are supposed to complete this file.</mark>
+                </li>
+            </ul>
+            <p>So first, the <i>Makefile</i>:</p>
+            <div class="filename">Makefile</div>
+            <pre class=" language-makefile"><code class=" language-makefile"><span class="token comment"># Makefile</span>
+
+CC <span class="token operator">=</span> gcc -fsanitize<span class="token operator">=</span>address
+CPPFLAGS <span class="token operator">=</span> -MMD
+CFLAGS <span class="token operator">=</span> -Wall -Wextra -std<span class="token operator">=</span>c99 -O0 -g
+LDFLAGS <span class="token operator">=</span>
+LDLIBS <span class="token operator">=</span>
+
+OBJ <span class="token operator">=</span> matrix.o main.o
+DEP <span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">:</span>.o<span class="token operator">=</span>.d<span class="token punctuation">}</span>
+
+<span class="token symbol">all</span><span class="token punctuation">:</span> main
+
+<span class="token symbol">main</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">}</span>
+
+<span class="token symbol">clean</span><span class="token punctuation">:</span>
+	<span class="token variable">$</span><span class="token punctuation">{</span>RM<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>DEP<span class="token punctuation">}</span> main
+
+<span class="token keyword">-include</span> <span class="token variable">$</span><span class="token punctuation">{</span>DEP<span class="token punctuation">}</span>
+
+<span class="token comment"># END</span></code></pre>
+            <p>
+                Then, the <code class="s">matrix.c</code> file.
+            </p>
+            <div class="filename">matrix.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">void</span> <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">transpose</span><span class="token punctuation">(</span><span class="token keyword">double</span> m<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> r1<span class="token punctuation">,</span> <span class="token keyword">size_t</span> c1<span class="token punctuation">,</span> <span class="token keyword">size_t</span> c2<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span></code></pre>
+
+            <p>
+                Next, the <code class="s">matrix.h</code> header file.
+            </p>
+            <div class="filename">matrix.h</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">ifndef</span> MATRIX_H</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> MATRIX_H</span>
+
+<span class="token keyword">void</span> <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">transpose</span><span class="token punctuation">(</span><span class="token keyword">double</span> m<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> r1<span class="token punctuation">,</span> <span class="token keyword">size_t</span> c1<span class="token punctuation">,</span> <span class="token keyword">size_t</span> c2<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">endif</span></span></code></pre>
+            <p>
+                Finally, the <code class="s">main.c</code> file.
+            </p>
+            <div class="filename">main.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"matrix.h"</span></span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> ROWS1 1</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> COLS1 2</span>
+<span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span>
+<span class="token punctuation">{</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> ROWS2 2</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> COLS2 2</span>
+<span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span>
+<span class="token punctuation">{</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> ROWS3 3</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> COLS3 2</span>
+<span class="token keyword">double</span> m3<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span>
+<span class="token punctuation">{</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> ROWS4 4</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> COLS4 3</span>
+<span class="token keyword">double</span> m4<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span>
+<span class="token punctuation">{</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> ROWS5 3</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> COLS5 4</span>
+<span class="token keyword">double</span> m5<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span>
+<span class="token punctuation">{</span>
+    <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Results for the transpositions.</span>
+<span class="token keyword">double</span> m1_tr<span class="token punctuation">[</span>ROWS1 <span class="token operator">*</span> COLS1<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m2_tr<span class="token punctuation">[</span>ROWS2 <span class="token operator">*</span> COLS2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m3_tr<span class="token punctuation">[</span>ROWS3 <span class="token operator">*</span> COLS3<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m4_tr<span class="token punctuation">[</span>ROWS4 <span class="token operator">*</span> COLS4<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m5_tr<span class="token punctuation">[</span>ROWS5 <span class="token operator">*</span> COLS5<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Results for the additions.</span>
+<span class="token keyword">double</span> m3_plus_m3<span class="token punctuation">[</span>ROWS3 <span class="token operator">*</span> COLS3<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m4_plus_m5tr<span class="token punctuation">[</span>ROWS4 <span class="token operator">*</span> COLS4<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m5_plus_m4tr<span class="token punctuation">[</span>ROWS5 <span class="token operator">*</span> COLS5<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Results for the multiplications.</span>
+<span class="token keyword">double</span> m2_times_m2<span class="token punctuation">[</span>ROWS2 <span class="token operator">*</span> COLS2<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m4_times_m5<span class="token punctuation">[</span>ROWS4 <span class="token operator">*</span> COLS5<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> m5_times_m4<span class="token punctuation">[</span>ROWS5 <span class="token operator">*</span> COLS4<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token string">"m1"</span><span class="token punctuation">,</span> m1<span class="token punctuation">,</span> ROWS1<span class="token punctuation">,</span> COLS1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token string">"m2"</span><span class="token punctuation">,</span> m2<span class="token punctuation">,</span> ROWS2<span class="token punctuation">,</span> COLS2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token string">"m3"</span><span class="token punctuation">,</span> m3<span class="token punctuation">,</span> ROWS3<span class="token punctuation">,</span> COLS3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token string">"m4"</span><span class="token punctuation">,</span> m4<span class="token punctuation">,</span> ROWS4<span class="token punctuation">,</span> COLS4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token string">"m5"</span><span class="token punctuation">,</span> m5<span class="token punctuation">,</span> ROWS5<span class="token punctuation">,</span> COLS5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// TODO</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// Add some code to test your</span>
+    <span class="token comment">// transpose(), add() and mul() functions.</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <h3 id="head_1006">Printing Matrices</h3>
+            <p>
+                In this part, you will write the <code class="s">print_matrix()</code> function
+                that prints the contents of a matrix.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">print_matrix</span><span class="token punctuation">(</span><span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">s</code> = the name of the matrix to be printed.
+                </li>
+                <li>
+                    <code class="s">m</code> = the matrix to be printed.
+                </li>
+                <li>
+                    <code class="s">rows</code> = the number of rows
+                    in the matrix.
+                </li>
+                <li>
+                    <code class="s">cols</code> = the number of columns
+                    in the matrix.
+                </li>
+            </ul>
+            <p>
+                The printing will be done in a straightforward way (i.e. row by row).
+                You should use the <code class="s">printf()</code> function
+                with the <code class="s">%4g</code> format.
+                For instance:
+            </p>
+            <pre class=" language-none"><code class=" language-none">m1 =
+    1   2   3   4
+    5   6   7   8
+    9  10  11  12</code></pre>
+            <p>
+                Write the <code class="s">print_matrix()</code> function
+                in the <code class="s">matrix.c</code> file
+                and test it by using the <code class="s">main.c</code> file.
+                Some code is already provided in the
+                <code class="s">main.c</code> file.
+                For this first function you do not have to modify it.
+            </p>
+            <p>
+                The expected results are as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ ./main
+m1 <span class="token operator">=</span>
+   1   2
+m2 <span class="token operator">=</span>
+   1   2
+   3   4
+m3 <span class="token operator">=</span>
+   1   2
+   3   4
+   5   6
+m4 <span class="token operator">=</span>
+   1   0   3
+   1   2   0
+   0   2   3
+   1   0   3
+m5 <span class="token operator">=</span>
+   1   2   3   4
+   5   6   7   8
+   9  10  11  12</code></pre>
+            <h3 id="head_1007">Transposing Matrices</h3>
+            <p>
+                In this part, you will write the <code class="s">transpose()</code>
+                function that switches the rows and columns in a matrix
+                (see <a href="https://en.wikipedia.org/wiki/Transpose">Transpose</a>).
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">transpose</span><span class="token punctuation">(</span><span class="token keyword">double</span> m<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">m</code> = the matrix to be transposed.
+                </li>
+                <li>
+                    <code class="s">rows</code> = the number of rows
+                    in the matrix.
+                </li>
+                <li>
+                    <code class="s">cols</code> = the number of columns
+                    in the matrix.
+                </li>
+                <li>
+                    <code class="s">r</code> = the output matrix that
+                    will store the result.
+                </li>
+            </ul>
+            <p>
+                Write the <code class="s">transpose()</code> function
+                in the <code class="s">matrix.c</code> file
+                and add some code in the 
+                <code class="s">main.c</code> file in order to test it.
+                The matrices used for testing
+                are already defined as global variables.
+                So, just write some instructions to transpose the matrices
+                and print the results.
+            </p>
+            <p>
+                The expected results are as follows (the first part has been snipped):
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ ./main
+m1 <span class="token operator">=</span>
+   1   2
+<span class="token comment"># ... snip ...</span>
+m1_tr <span class="token operator">=</span>
+   1
+   2
+m2_tr <span class="token operator">=</span>
+   1   3
+   2   4
+m3_tr <span class="token operator">=</span>
+   1   3   5
+   2   4   6
+m4_tr <span class="token operator">=</span>
+   1   1   0   1
+   0   2   2   0
+   3   0   3   3
+m5_tr <span class="token operator">=</span>
+   1   5   9
+   2   6  10
+   3   7  11
+   4   8  12</code></pre>
+            <h3 id="head_1008">Adding Matrices</h3>
+            <p>
+                In this part, you will write the <code class="s">add()</code>
+                function that adds two matrices that have the same dimensions
+                (see <a href="https://en.wikipedia.org/wiki/Matrix_addition">Matrix addition</a>).
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> rows<span class="token punctuation">,</span> <span class="token keyword">size_t</span> cols<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">m1</code> = the first matrix to be added.
+                </li>
+                <li>
+                    <code class="s">m2</code> = the second matrix to be added.
+                </li>
+                <li>
+                    <code class="s">rows</code> = the number of rows
+                    of the two matrices.
+                </li>
+                <li>
+                    <code class="s">cols</code> = the number of columns
+                    of the two matrices.
+                </li>
+                <li>
+                    <code class="s">r</code> = the output matrix that
+                    will store the result.
+                </li>
+            </ul>
+            <p>
+                Write the <code class="s">add()</code> function
+                in the <code class="s">matrix.c</code> file
+                and add some code in the 
+                <code class="s">main.c</code> file in order to test it.
+                The matrices used for testing
+                are already defined as global variables.
+                So, just write some instructions to add the matrices
+                and print the results.
+            </p>
+            <p>
+                The expected results are as follows (the first part has been snipped):
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ ./main
+m1 <span class="token operator">=</span>
+   1   2
+<span class="token comment"># ... snip ...</span>
+m3_plus_m3 <span class="token operator">=</span>
+   2   4
+   6   8
+  10  12
+m4_plus_m5tr <span class="token operator">=</span>
+   2   5  12
+   3   8  10
+   3   9  14
+   5   8  15
+m5_plus_m4tr <span class="token operator">=</span>
+   2   3   3   5
+   5   8   9   8
+  12  10  14  15</code></pre>
+            <h3 id="head_1009">Multiplying Matrices</h3>
+            <p>
+                In this part, you will write the <code class="s">mul()</code>
+                function that multiplies two matrices.
+                The number of columns in the first matrix
+                must be equal to the number of rows in the second matrix
+                (see <a href="https://en.wikipedia.org/wiki/Matrix_multiplication">Matrix multiplication</a>).
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token keyword">double</span> m1<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">double</span> m2<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> r1<span class="token punctuation">,</span> <span class="token keyword">size_t</span> c1<span class="token punctuation">,</span> <span class="token keyword">size_t</span> c2<span class="token punctuation">,</span> <span class="token keyword">double</span> r<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">m1</code> = the first matrix to be multiplied.
+                </li>
+                <li>
+                    <code class="s">m2</code> = the second matrix to be multiplied.
+                </li>
+                <li>
+                    <code class="s">r1</code> = the number of rows in the first matrix.
+                </li>
+                <li>
+                    <code class="s">c1</code> = the number of columns in the first matrix
+                    that is also the number of rows of the second matrix.
+                </li>
+                <li>
+                    <code class="s">r1</code> = the number of columns in the second matrix.
+                </li>
+                <li>
+                    <code class="s">r</code> = the output matrix that
+                    will store the result.
+                </li>
+            </ul>
+            <p>
+                Write the <code class="s">mul()</code> function
+                in the <code class="s">matrix.c</code> file
+                and add some code in the 
+                <code class="s">main.c</code> file in order to test it.
+                The matrices used for testing
+                are already defined as global variables.
+                So, just write some instructions to multiply the matrices
+                and print the results.
+            </p>
+            <p>
+                The full expected results are as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ ./main
+m1 <span class="token operator">=</span>
+   1   2
+m2 <span class="token operator">=</span>
+   1   2
+   3   4
+m3 <span class="token operator">=</span>
+   1   2
+   3   4
+   5   6
+m4 <span class="token operator">=</span>
+   1   0   3
+   1   2   0
+   0   2   3
+   1   0   3
+m5 <span class="token operator">=</span>
+   1   2   3   4
+   5   6   7   8
+   9  10  11  12
+m1_tr <span class="token operator">=</span>
+   1
+   2
+m2_tr <span class="token operator">=</span>
+   1   3
+   2   4
+m3_tr <span class="token operator">=</span>
+   1   3   5
+   2   4   6
+m4_tr <span class="token operator">=</span>
+   1   1   0   1
+   0   2   2   0
+   3   0   3   3
+m5_tr <span class="token operator">=</span>
+   1   5   9
+   2   6  10
+   3   7  11
+   4   8  12
+m3_plus_m3 <span class="token operator">=</span>
+   2   4
+   6   8
+  10  12
+m4_plus_m5tr <span class="token operator">=</span>
+   2   5  12
+   3   8  10
+   3   9  14
+   5   8  15
+m5_plus_m4tr <span class="token operator">=</span>
+   2   3   3   5
+   5   8   9   8
+  12  10  14  15
+m2_times_m2 <span class="token operator">=</span>
+   7  10
+  15  22
+m4_times_m5 <span class="token operator">=</span>
+  28  32  36  40
+  11  14  17  20
+  37  42  47  52
+  28  32  36  40
+m5_times_m4 <span class="token operator">=</span>
+   7  10  24
+  19  26  60
+  31  42  96</code></pre>
+            <h2 id="head_1010">Strings</h2>
+            <mark>
+                Do not use pointers in this section.
+            </mark>
+            <h3 id="head_1011">Substrings</h3>
+            <p>
+                Let us start with basic string manipulations.
+                In this section, you will write a program that has
+                the following behavior.
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main "Hello World!" World
+Hello World!
+      ^
+$ ./main "Hello World!" Warld
+Not Found!
+$ ./main "Hello World!" "o W"
+Hello World!
+    ^
+$ ./main "Hello World!" "ld"
+Hello World!
+         ^
+$ ./main "Hello World!" o
+Hello World!
+    ^
+$ ./main "Sweet Child O' Mine" child
+Not Found!
+$ ./main "Sweet Child O' Mine" Child
+Sweet Child O' Mine
+      ^
+$ ./main
+main: Usage: str1 str2
+$ echo $?
+1</code></pre>
+            <p>
+                Additional information:
+            </p>
+            <ul>
+                <li>
+                    We can pass two parameters to you program.
+                    They are both strings of characters.
+                </li>
+                <li>
+                    The two strings must not contain accented letters.
+                </li>
+                <li>
+                    Your program must find if the second string
+                    is contained in the first one.
+                </li>
+                <li>
+                    If the second string is not found,
+                    your program must print <code>"Not found!"</code>.
+                </li>
+                <li>
+                    If the second string is found,
+                    your program must print the first string
+                    and the <code class="s">^</code> symbol
+                    just under the first occurrence of the second string.
+                </li>
+                <li>
+                    Your program must be case-sensitive.
+                </li>
+                <li>
+                    When the number of strings passed as parameters
+                    is different from two,
+                    your program must print an error message
+                    and exit with the error code 1.
+                    To do so, you can use the <code class="s">errx()</code>
+                    function of the standard library.
+                    To check the return code of your program you can
+                    use the following command:
+                    <code class="s">echo $?</code>
+                </li>
+                <li>
+                    Your program will be made up of two files:
+                    <ul>
+                        <li>
+                            <code class="s">main.c</code>
+                            that contains all the functions of your program.
+                            You are free to write all the functions you need.
+                        </li>
+                        <li>
+                            <code class="s">Makefile</code>
+                            that compiles your <code class="s"></code>
+                            file and generates the executable file.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="head_1012">Jumbled Text</h3>
+            <p>
+                Can you read this?
+            </p>
+            <blockquote>
+                Accroidng to a rseaecrehr at Cmarbdige Uinevsrtiy,
+                it deosn't mtaetr in waht odrer the lteetrs in a wrod are,
+                the olny ipmroatnt tihng is taht the frist and
+                lsat lteetrs be at the rgiht palce.
+                The rset can be a ttoal mses and you can sitll raed it wtiohut porlbem.
+                Tihs is bceuase the hmuan mnid deos not raed eevry
+                lteetr by istlef but the wrod as a wohle.
+            </blockquote>
+            <p>
+                You were certainly able to read it.
+                If not, here is the correct version:
+            </p>
+            <blockquote id="jumble">
+                According to a researcher at Cambridge University,
+                it doesn't matter in what order the letters in a word are,
+                the only important thing is that the first and
+                last letters be at the right place.
+                The rest can be a total mess and you can still read it without problem.
+                This is because the human mind does not read every
+                letter by itself but the word as a whole.
+            </blockquote>
+            <p>
+                In this section, you will write a program that generates jumbled text.
+                That is to say, it will keep only the first and last letters
+                of each word in the right place and jumble the other letters up.
+            </p>
+            <p>
+                Your program will be made up of four files:
+                <code class="s">main.c</code>,
+                <code class="s">mix.c</code>,
+                <code class="s">mix.h</code>,
+                <code class="s">Makefile</code>.
+            </p>
+            <p>
+                About the <code class="s">main.c</code> file.
+            </p>
+            <ul>
+                <li>
+                    It will contain your main function.
+                </li>
+                <li>
+                    It must not contain any other functions than the main function.
+                </li>
+                <li>
+                    It can contain some include directives.
+                </li>
+            </ul>
+            <p>
+                About the <code class="s">mix.c</code> file.
+            </p>
+            <ul>
+                <li>
+                    It will contain all your functions (but for the main function).
+                </li>
+                <li>
+                    You are free to write all the functions you need.
+                </li>
+                <li>
+                    It must contain a <code class="s">mix()</code> function
+                    that will be called from the main function
+                    (see below for its prototype).
+                </li>
+            </ul>
+            <p>
+                About the <code class="s">mix.h</code> file.
+            </p>
+            <ul>
+                <li>
+                    It is the header of the <code class="s">mix.c</code> file.
+                </li>
+                <li>
+                    It is used to export the <code class="s">mix()</code> function only.
+                </li>
+            </ul>
+            <p>
+                About the <i>Makefile</i>.
+            </p>
+            <ul>
+                <li>Make it simple.</li>
+                <li>It must compile your source files and generate the executable file.</li>
+            </ul>
+            <p>
+                Prototype of the <code class="s">mix()</code> function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                The <code class="s">mix()</code> function converts a string of characters
+                into jumble text.
+            </p>
+            <ul>
+                <li>
+                    <code class="s">s</code>:
+                    Holds a string of characters to be converted into jumbled text.
+                </li>
+            </ul>
+            <p>
+                This function must modify the string passed as parameter
+                (the original string will be lost).
+                This original string can contain:
+            </p>
+            <ul>
+                <li>small letters <b>without accents</b>,</li>
+                <li>capital letters <b>without accents</b>,</li>
+                <li>digits,</li>
+                <li>spaces,</li>
+                <li>punctuation marks.</li>
+            </ul>
+            <p>
+                Characters that are not letters will be called separators.
+                Two words are separated by at least one separator.
+                Only the following separators are allowed:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">char</span> separator<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">" ,;:!?./%*$=+)@_-('&amp;1234567890\"\r\n"</span></code></pre>
+            <p>
+                When mixing the letters of a word, you have to follow the
+                instructions below:
+            </p>
+            <ul>
+                <li>
+                    The first letter of a word does not change.
+                </li>
+                <li>
+                    The last letter of a word does not change.
+                </li>
+                <li>
+                    If the length of a word is lower than or equal to three,
+                    the word does not change.
+                </li>
+                <li>
+                    Two letters of a word are swapped by pair successively
+                    from the second letter to the last but one
+                    (for odd numbers, the last but one letter does not change).
+                    For instance:
+                    <ul>
+                        <li>
+                            <code>"abcd"</code> becomes <code>"acbd"</code>.
+                        </li>
+                        <li>
+                            <code>"abcde"</code> becomes <code>"acbde"</code>.
+                        </li>
+                        <li>
+                            <code>"abcdefg"</code> becomes <code>"acbedfg"</code>.
+                        </li>
+                        <li>
+                            <code>"abcdefghij"</code> becomes <code>"acbedgfihj"</code>.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                The user can pass the string to be converted as a parameter.
+                The original and converted strings are both printed.
+                For instance:
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main "Hello World!"
+Hello World!
+Hlelo Wrold!
+$ ./main "I am not a number! I'm a free man!"
+I am not a number! I'm a free man!
+I am not a nmuebr! I'm a fere man!
+$ ./main "I was born ready!"
+I was born ready!
+I was bron raedy!</code></pre>
+            <p>
+                If the number of parameters that are passed in is different from one,
+                your program must use a default text.
+                You are free to use the text you want.
+                For instance:
+            </p>
+            <pre class=" language-none"><code class=" language-none">$ ./main
+This is the default text.
+Tihs is the dfeualt txet.
+$ ./main Hello World
+This is the default text.
+Tihs is the dfeualt txet.</code></pre>
+        </main>
+        <footer>
+            <span>
+                <a href="http://validator.w3.org/check?uri=referer">
+                    HTML 5
+                </a>
+            </span>
+            <span>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3svg">
+                    CSS 3
+                </a>
+            </span>
+        </footer>
+        <script src="Matrices%20and%20Strings_fichiers/prism.js"></script>
+        <script src="Matrices%20and%20Strings_fichiers/script.js"></script>
+    
+
+</body></html>

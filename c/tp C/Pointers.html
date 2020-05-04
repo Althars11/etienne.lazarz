@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="author" content="David Bouchet">
+        <title>Pointers</title>
+        <link rel="stylesheet" href="Pointers_fichiers/style.css">
+        <link rel="stylesheet" href="Pointers_fichiers/prism.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header>
+            <div>
+                <span><a href="#table_of_contents">≡</a></span>
+                <span><a href="http://www.debug-pro.com/epita/prog/s3/index.html">Practical Programming</a></span>
+                <span><a href="mailto:david.bouchet.epita@gmail.com">David Bouchet</a></span>
+            </div>
+        </header>
+        <div class="title">
+            <div class="practical_number">Practical Work #5</div>
+            <h1>Pointers</h1>
+        </div>
+        <nav id="table_of_contents"><h2><a href="#head_1000">Submission</a></h2><h3><a href="#head_1001">Due Date</a></h3><h3><a href="#head_1002">Directory Hierarchy</a></h3><h2><a href="#head_1003">Warm-up Exercices</a></h2><h3><a href="#head_1004">Introduction</a></h3><h3><a href="#head_1005">Basic Pointers</a></h3><h4><a href="#head_1006">Swapping Variables</a></h4><h4><a href="#head_1007">Sum of Divisors</a></h4><h3><a href="#head_1008">Pointer Arithmetic</a></h3><h2><a href="#head_1009">Arrays</a></h2><h3><a href="#head_1010">Provided Files</a></h3><h4><a href="#head_1011">The Makefile</a></h4><h4><a href="#head_1012">The helper.h File</a></h4><h4><a href="#head_1013">The insert_sort.h File</a></h4><h4><a href="#main_file">The Main File</a></h4><h3><a href="#head_1014">Helper Functions</a></h3><h3><a href="#head_1015">Insertion Sort</a></h3><h2><a href="#head_1016">Strings</a></h2><h3><a href="#head_1017">Introduction</a></h3><h3><a href="#head_1018">Lengths of Strings</a></h3><h3><a href="#head_1019">Copying Strings</a></h3></nav>
+        <main>
+            <h2 id="head_1000">Submission</h2>
+            <h3 id="head_1001">Due Date</h3>
+            <p>By Friday 22 November 2019 23:42</p>
+            <h3 id="head_1002">Directory Hierarchy</h3>
+            <p>
+                Create your git repository (replace <i>john.smith</i> by your own login).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">git</span> clone git@git.cri.epita.net:p/2023-s3-tp/tp05-john.smith</code></pre>
+            <p>
+                It must contain the following files and directories:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">pw_05_pointers/</code>
+                    <ul>
+                        <li><b>AUTHORS</b></li>
+                        <li>
+                            <code class="s">warmup/</code>
+                            <ul>
+                                <li>swap.c</li>
+                                <li>sum_of_divisors.c</li>
+                                <li>arithmetic.c</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <code class="s">arrays/</code>
+                            <ul>
+                                <li>helper.c</li>
+                                <li>helper.h</li>
+                                <li>insert_sort.c</li>
+                                <li>insert_sort.h</li>
+                                <li>main.c</li>
+                                <li>Makefile</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <code class="s">strings/</code>
+                            <ul>
+                                <li>mystrncpy.c</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                The <code class="s">AUTHORS</code> file
+                must contain the following information.
+            </p>
+            <div class="filename">AUTHORS</div>
+            <pre class="line-numbers language-bash"><code class=" language-bash">First Name
+Family Name
+Login
+Email Address<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>
+                The last character of your <code class="s">AUTHORS</code> file must be a newline character.
+            </p>
+            <p>For instance:</p>
+            <div class="filename">AUTHORS</div>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+John
+Smith
+john.smith
+john.smith@epita.fr
+$ <span class="token comment"># Command prompt ready for the next command...</span></code></pre>
+            <p>
+                <mark>
+                    Be careful, if you do not follow all the given instructions,
+                    no point will be given to your answers.
+                </mark>
+            </p>
+            <h2 id="head_1003">Warm-up Exercices</h2>
+            <h3 id="head_1004">Introduction</h3>
+            <p>
+                In this part, you will complete some source files
+                (with the <code class="s">.c</code> extension).
+                Each of them must be compiled with the instruction below
+                (replace <code class="s">source.c</code> by the name of your source file).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> -Wall -Wextra source.c</code></pre>
+            <p>
+                No <i>makefile</i> is required.
+            </p>
+            <h3 id="head_1005">Basic Pointers</h3>
+            <h4 id="head_1006">Swapping Variables</h4>
+            <p>
+                Write a function that swaps the contents of two variables.
+                To do so, complete the following file.
+            </p>
+            <div class="filename">swap.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"b = %d\n"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"b = %d\n"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Then, compile it and run it. The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> -Wall -Wextra swap.c
+$ ./a.out
+a <span class="token operator">=</span> 1
+b <span class="token operator">=</span> 2
+a <span class="token operator">=</span> 2
+b <span class="token operator">=</span> 1</code></pre>
+            <h4 id="head_1007">Sum of Divisors</h4>
+            <p>
+                Write the following function:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">sum_of_divisors</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span> <span class="token keyword">size_t</span> <span class="token operator">*</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <b>Arguments:</b>
+                    <ul>
+                        <li><var>n</var>: 64-bit unsigned integer (0 excluded).</li>
+                    </ul>
+                    <ul>
+                        <li><var>count</var>: Return the number of divisors of <var>n</var>.</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Return Value:</b> the sum of the divisors of <var>n</var>
+                    (excluding <var>n</var>).
+                </li>
+            </ul>
+            <p>
+                To do so, complete the following file.
+            </p>
+            <div class="filename">sum_of_divisors.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">sum_of_divisors</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> n<span class="token punctuation">,</span> <span class="token keyword">size_t</span> <span class="token operator">*</span>count<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> sum<span class="token punctuation">;</span>
+    <span class="token keyword">size_t</span> count<span class="token punctuation">;</span>
+
+    x <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">;</span>
+    sum <span class="token operator">=</span> <span class="token function">sum_of_divisors</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">&amp;</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"x = %lu\n"</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"sum   = %lu\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"count = %zu\n\n"</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    x <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    sum <span class="token operator">=</span> <span class="token function">sum_of_divisors</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">&amp;</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"x = %lu\n"</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"sum   = %lu\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"count = %zu\n"</span><span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Then, compile it and run it. The expected result is as follows:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> -Wall -Wextra sum_of_divisors.c
+$ ./a.out
+x <span class="token operator">=</span> 28
+s</code><code class=" language-bash">um   <span class="token operator">=</span> 28
+count <span class="token operator">=</span> 5
+
+x <span class="token operator">=</span> 100
+s</code><code class=" language-bash">um   <span class="token operator">=</span> 117
+count <span class="token operator">=</span> 8</code></pre>
+            <h3 id="head_1008">Pointer Arithmetic</h3>
+            <p>
+                For all the functions in this section, the <var>begin</var> variable points
+                to the beginning of an array and the <var>end</var> variable
+                points <b>just after</b> the array.
+            </p>
+            <p>
+                Some hints:
+            </p>
+            <ul>
+                <li>
+                    The size of an array: <code>end - begin</code>
+                </li>
+                <li>
+                    The i-index element: <code>*(begin + i)</code>
+                </li>
+                <li>
+                    The first element: <code>*begin</code>
+                </li>
+                <li>
+                    The last element: <code>*(end - 1)</code>
+                </li>
+            </ul>
+            <p>
+                <mark>
+                    Of course, when iterating over arrays, do not use index variables.
+                    Use pointers only. For instance:
+                </mark>
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span>p <span class="token operator">=</span> begin<span class="token punctuation">;</span> p <span class="token operator">&lt;</span> end<span class="token punctuation">;</span> p<span class="token operator">++</span><span class="token punctuation">)</span>
+  <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Complete the following file.
+            </p>
+            <div class="filename">arithmetic.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>begin <span class="token operator">=</span> arr<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>end <span class="token operator">=</span> arr <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> copy<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> PRINT(a) \
+for (size_t i = 0; i &lt; size; i++)\
+    if (i != size - 1)\
+        printf("%2i, ", *(a + i));\
+    else\
+        printf("%2i]\n", *(a + i))\
+</span>
+<span class="token comment">// Swap the contents of two variables.</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">*</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+    <span class="token comment">// (Just copy your code from the previous section.)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Return the sum of the array from 'begin' to 'end'.</span>
+<span class="token keyword">int</span> <span class="token function">array_sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Reverse the array from 'begin' to 'end'.</span>
+<span class="token keyword">void</span> <span class="token function">array_reverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Copy the array from 'begin' to 'end' into 'dst'.</span>
+<span class="token comment">// The dst array must be large enough.</span>
+<span class="token comment">// The two arrays do not overlap.</span>
+<span class="token keyword">void</span> <span class="token function">array_copy</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>dst<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Shift the array from 'begin' to 'end' by one position to the right.</span>
+<span class="token comment">// The leftmost value will not change.</span>
+<span class="token comment">// The rightmost value will be lost.</span>
+<span class="token comment">// For instance:</span>
+<span class="token comment">// - Before: 1 2 3 4 5</span>
+<span class="token comment">// - After:  1 1 2 3 4</span>
+<span class="token keyword">void</span> <span class="token function">array_rshift</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">size_t</span> size <span class="token operator">=</span> end <span class="token operator">-</span> begin<span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Initial arr  = ["</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PRINT</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token function">array_sum</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"sum          = %2i\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">array_reverse</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Reversed arr = ["</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PRINT</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">array_copy</span><span class="token punctuation">(</span>copy<span class="token punctuation">,</span> begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Copy         = ["</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PRINT</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">array_rshift</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_rshift</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_rshift</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Shifted arr  = ["</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">PRINT</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Then, compile it and run it. The expected result is as follows:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> -Wall -Wextra arithmetic.c
+$ ./a.out
+Initial arr  <span class="token operator">=</span> <span class="token punctuation">[</span> 1,  2,  3,  4,  5,  6,  7,  8,  9, 10<span class="token punctuation">]</span>
+s</code><code class=" language-bash">um          <span class="token operator">=</span> 55
+Reversed arr <span class="token operator">=</span> <span class="token punctuation">[</span>10,  9,  8,  7,  6,  5,  4,  3,  2,  1<span class="token punctuation">]</span>
+Copy         <span class="token operator">=</span> <span class="token punctuation">[</span>10,  9,  8,  7,  6,  5,  4,  3,  2,  1<span class="token punctuation">]</span>
+Shifted arr  <span class="token operator">=</span> <span class="token punctuation">[</span>10, 10, 10, 10,  9,  8,  7,  6,  5,  4<span class="token punctuation">]</span></code></pre>
+            <h2 id="head_1009">Arrays</h2>
+            <h3 id="head_1010">Provided Files</h3>
+            <h4 id="head_1011">The Makefile</h4>
+            <p>
+                Be careful, some source files must exist even if empty.
+            </p>
+            <div class="filename">Makefile</div>
+            <pre class=" language-makefile"><code class=" language-makefile"><span class="token comment"># Makefile</span>
+
+CC<span class="token operator">=</span>gcc -fsanitize<span class="token operator">=</span>address
+CPPFLAGS<span class="token operator">=</span> -MMD -D_XOPEN_SOURCE<span class="token operator">=</span>500
+CFLAGS<span class="token operator">=</span> -Wall -Wextra -std<span class="token operator">=</span>c99 -O2
+LDFLAGS<span class="token operator">=</span>
+LDLIBS<span class="token operator">=</span>
+
+<span class="token comment"># You should at least create the "insert_sort.c"</span>
+<span class="token comment"># and "insert_sort.h" files in order to compile.</span>
+<span class="token comment"># (These files can be empty.)</span>
+
+SRC<span class="token operator">=</span> insert_sort.c helper.c main.c
+OBJ<span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">{</span>SRC<span class="token punctuation">:</span>.c<span class="token operator">=</span>.o<span class="token punctuation">}</span>
+DEP<span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">{</span>SRC<span class="token punctuation">:</span>.c<span class="token operator">=</span>.d<span class="token punctuation">}</span>
+
+<span class="token symbol">all</span><span class="token punctuation">:</span> main
+
+<span class="token keyword">-include</span> <span class="token variable">$</span><span class="token punctuation">{</span>DEP<span class="token punctuation">}</span>
+
+<span class="token symbol">main</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">}</span>
+
+<span class="token symbol">clean</span><span class="token punctuation">:</span>
+	rm -f <span class="token variable">$</span><span class="token punctuation">{</span>OBJ<span class="token punctuation">}</span> <span class="token variable">$</span><span class="token punctuation">{</span>DEP<span class="token punctuation">}</span> main
+
+<span class="token comment"># END</span></code></pre>
+            <h4 id="head_1012">The <code>helper.h</code> File</h4>
+            <div class="filename">helper.h</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">ifndef</span> _HELPER_H</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> _HELPER_H</span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;time.h&gt;</span></span>
+
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">array_print</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">array_is_sorted</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">array_random_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">double</span> <span class="token function">time_gdiff</span><span class="token punctuation">(</span><span class="token keyword">struct</span> timespec t0<span class="token punctuation">,</span> <span class="token keyword">struct</span> timespec t1<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">double</span> s <span class="token operator">=</span> t1<span class="token punctuation">.</span>tv_sec <span class="token operator">-</span> t0<span class="token punctuation">.</span>tv_sec<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> s <span class="token operator">+</span> <span class="token punctuation">(</span>t1<span class="token punctuation">.</span>tv_nsec <span class="token operator">-</span> t0<span class="token punctuation">.</span>tv_nsec<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1e-9</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>sort_fun<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">bench_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">,</span> sort_fun sort<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property"># <span class="token directive keyword">endif</span></span></code></pre>
+            <h4 id="head_1013">The <code>insert_sort.h</code> File</h4>
+            <div class="filename">insert_sort.h</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">ifndef</span> _INSERT_SORT_H_</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> _INSERT_SORT_H_</span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">"helper.h"</span></span>
+
+<span class="token keyword">void</span> <span class="token function">array_insert_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">array_insert_sort_bin</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property"># <span class="token directive keyword">endif</span></span></code></pre>
+            <h4 id="main_file">The Main File</h4>
+            <p>
+                You can use the following main file (you do not have to) in order to test your code.
+                You can pass the size of the array as a parameter (the default size is 16).
+                Also, try larger sizes (e.g. 32,768 or 65,536) and observe the differences in performance.
+            </p>
+            <p>
+                Uncomment some lines of this file according to the functions you want to test.
+                (Do not print an array if it is too large.)
+            </p>
+            <div class="filename">main.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;assert.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;err.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;time.h&gt;</span></span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"helper.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"insert_sort.h"</span></span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> DEFAULT_SIZE 16</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">size_t</span> len <span class="token operator">=</span> DEFAULT_SIZE<span class="token punctuation">;</span>
+
+    <span class="token function">srandom</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        len <span class="token operator">=</span> <span class="token function">strtoul</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token function">calloc</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>copy <span class="token operator">=</span> <span class="token function">calloc</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>begin <span class="token operator">=</span> array<span class="token punctuation">,</span> <span class="token operator">*</span>end <span class="token operator">=</span> array <span class="token operator">+</span> len<span class="token punctuation">;</span>
+
+    <span class="token comment">// Fill the array with sorted values.</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Test the algorithms on a presorted array.</span>
+    <span class="token comment">// -----------------------------------------------------------------------</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">bench_sort</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">,</span> array_insert_sort<span class="token punctuation">,</span> <span class="token string">"insert_sort (sorted)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">bench_sort</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">,</span> array_insert_sort_bin<span class="token punctuation">,</span> <span class="token string">"insert_sort_bin (sorted)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Fill the array with random values</span>
+    <span class="token comment">// and copy it in order to test the algorithms on the same array.</span>
+    <span class="token comment">// -----------------------------------------------------------------------</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">memcpy</span><span class="token punctuation">(</span>copy<span class="token punctuation">,</span> begin<span class="token punctuation">,</span> len <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Test the algorithms on a random array.</span>
+    <span class="token comment">// -----------------------------------------------------------------------</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">bench_sort</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">,</span> array_insert_sort<span class="token punctuation">,</span> <span class="token string">"insert_sort (random)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">memcpy</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> copy<span class="token punctuation">,</span> len <span class="token operator">*</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">bench_sort</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">,</span> array_insert_sort_bin<span class="token punctuation">,</span> <span class="token string">"insert_sort_bin (random)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// free memory</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <h3 id="head_1014">Helper Functions</h3>
+            <p>
+                Complete the <code class="s">helper.c</code> file.
+            </p>
+            <div class="filename">helper.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;assert.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;time.h&gt;</span></span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"helper.h"</span></span>
+
+<span class="token comment">// Swap the contents of two variables.</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+    <span class="token comment">// (Just copy your code from the previous section.)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Print an array.</span>
+<span class="token keyword">void</span> <span class="token function">array_print</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> line <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> begin <span class="token operator">!=</span> end<span class="token punctuation">;</span> <span class="token operator">++</span>begin<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>line <span class="token operator">&gt;</span> <span class="token number">72</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"|`|\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            line <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        line <span class="token operator">+</span><span class="token operator">=</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"| %4d "</span><span class="token punctuation">,</span> <span class="token operator">*</span>begin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"|\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Test if an array is sorted.</span>
+<span class="token comment">// If the array is sorted, return true (1).</span>
+<span class="token comment">// Otherwise, return false (0).</span>
+<span class="token keyword">int</span> <span class="token function">array_is_sorted</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Fill an array with sorted values.</span>
+<span class="token keyword">void</span> <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> begin <span class="token operator">!=</span> end<span class="token punctuation">;</span> <span class="token operator">++</span>begin<span class="token punctuation">,</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token operator">*</span>begin <span class="token operator">=</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Fill an array with random values.</span>
+<span class="token keyword">void</span> <span class="token function">array_random_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> begin <span class="token operator">!=</span> end<span class="token punctuation">;</span> <span class="token operator">++</span>begin<span class="token punctuation">)</span>
+        <span class="token operator">*</span>begin <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Benchmark an algorithm.</span>
+<span class="token keyword">void</span> <span class="token function">bench_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">,</span> sort_fun sort<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>msg<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> timespec t0<span class="token punctuation">,</span> t1<span class="token punctuation">;</span>
+
+    <span class="token function">clock_gettime</span><span class="token punctuation">(</span>CLOCK_MONOTONIC<span class="token punctuation">,</span> <span class="token operator">&amp;</span>t0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sort</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">clock_gettime</span><span class="token punctuation">(</span>CLOCK_MONOTONIC<span class="token punctuation">,</span> <span class="token operator">&amp;</span>t1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s:    \t%g\n"</span><span class="token punctuation">,</span> msg<span class="token punctuation">,</span> <span class="token function">time_gdiff</span><span class="token punctuation">(</span>t0<span class="token punctuation">,</span> t1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">assert</span><span class="token punctuation">(</span><span class="token function">array_is_sorted</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <h3 id="head_1015">Insertion Sort</h3>
+            <p>
+                You will write an <a href="https://en.wikipedia.org/wiki/Insertion_sort">insertion sort</a>.
+                The algorithm is pretty simple.
+                First, you write an <code class="s">insert()</code> function
+                that inserts an element at its right place in a sorted array.
+                Then, you take each element one by one and insert it in the first part of the array.
+            </p>
+            <pre class=" language-none"><code class=" language-none">insert_sort(array):
+    for i in range(len(array)):
+        insert(array[:i], array[i])</code></pre>
+            <p>
+                Inserting is also a pretty straightforward algorithm.
+                Find where to insert the value, shift the right side
+                of the array by one cell to the right and write the value.
+                Here is a plain version of the algorithm
+                (note that your array must have an extra cell).
+            </p>
+            <pre class=" language-none"><code class=" language-none">insert(array, x):
+    i = len(array)
+    array.append(None)
+    while i &gt; 0 &amp;&amp; x &lt; array[i - 1]:
+        array[i] = array[i - 1]
+        i = i - 1
+  array[i] = x</code></pre>
+            <p>
+                You can also use a faster algorithm by using the binary search.
+            </p>
+            <pre class=" language-none"><code class=" language-none">insert_bin(x, array):
+    i = binary_search(x, array)
+    j = len(array)
+    array.append(None)
+    while j &gt; i:
+        array[j] = array[j - 1]
+        j = j - 1
+    array[i] = x</code></pre>
+            <p>
+                Remember, we always return the position where the element should be located.
+                For shifting we can also use the
+                <a href="https://manpages.debian.org/stretch/manpages-dev/memmove.3.en.html">memmove()</a>
+                function.
+            </p>
+            <p>
+                Create an <code class="s">insert_sort.c</code> file with the required headers
+                and write the two following functions:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">// Insertion using the plain algorithm.</span>
+<span class="token keyword">void</span> <span class="token function">array_insert</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Insertion using the binary-search algorithm.</span>
+<span class="token keyword">void</span> <span class="token function">array_insert_bin</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Try and test these two functions on your own.
+                When this is done, you can implement the insertion sort (two versions again).
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">// Insertion sort using plain method.</span>
+<span class="token keyword">void</span> <span class="token function">array_insert_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Insertion sort using binary search.</span>
+<span class="token keyword">void</span> <span class="token function">array_insert_sort_bin</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>begin<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Finally, you can either test the functions on your own
+                or use the provided main file
+                (see <a href="#main_file">above</a>).
+            </p>
+            <h2 id="head_1016">Strings</h2>
+            <h3 id="head_1017">Introduction</h3>
+            <p>
+                In this section, you will manipulate strings <b>by using pointers only</b>.
+                To do so, you will write some commonly used functions.
+            </p>
+            <p>
+                <mark>
+                    Obviously, you will not use the array notation with
+                    index variables when iterating over arrays.
+                    <b>You must use the pointer notation only.</b>
+                </mark>
+            </p>
+            <p>
+                In the C language, a string is no more than an array of characters.
+                The end of a string is denoted by a special character,
+                which is called the <strong>NULL character</strong>.
+                The ASCII code of the NULL character is zero.
+            </p>
+            <p>
+                The following code prints the numerical values
+                (e.g. the ASCII codes) of some characters.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"abcdefghijklmnopqrstuvwxyz"</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"s[%2zu] = 0x%02x - '%c'\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Its output is as follows:
+            </p>
+            <pre class=" language-none"><code class=" language-none">s[ 0] = 0x61 - 'a'
+s[ 1] = 0x62 - 'b'
+s[ 2] = 0x63 - 'c'
+s[ 3] = 0x64 - 'd'
+s[ 4] = 0x65 - 'e'
+s[ 5] = 0x66 - 'f'
+s[ 6] = 0x67 - 'g'
+s[ 7] = 0x68 - 'h'
+s[ 8] = 0x69 - 'i'
+s[ 9] = 0x6a - 'j'
+s[10] = 0x6b - 'k'
+s[11] = 0x6c - 'l'
+s[12] = 0x6d - 'm'
+s[13] = 0x6e - 'n'
+s[14] = 0x6f - 'o'
+s[15] = 0x70 - 'p'
+s[16] = 0x71 - 'q'
+s[17] = 0x72 - 'r'
+s[18] = 0x73 - 's'
+s[19] = 0x74 - 't'
+s[20] = 0x75 - 'u'
+s[21] = 0x76 - 'v'
+s[22] = 0x77 - 'w'
+s[23] = 0x78 - 'x'
+s[24] = 0x79 - 'y'
+s[25] = 0x7a - 'z'
+s[26] = 0x00 - ''</code></pre>
+            <h3 id="head_1018">Lengths of Strings</h3>
+            <p>
+                In the above example, we get the length of the array by using <code class="s">sizeof()</code>
+                because the array was <code class="s">static</code>.
+            </p>
+            <p>
+                Let us execute this other example.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> s1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"abcdefghijklmnopqrstuvwxyz"</span><span class="token punctuation">;</span>   <span class="token comment">// Array notation.</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>s2  <span class="token operator">=</span> <span class="token string">"abcdefghijklmnopqrstuvwxyz"</span><span class="token punctuation">;</span>   <span class="token comment">// Pointer notation.</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"sizeof(s1) = %zu\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"sizeof(s2) = %zu\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Its output is as follows:
+            </p>
+            <pre class=" language-none"><code class=" language-none">sizeof(s1) = 27
+sizeof(s2) = 8</code></pre>
+            <p>
+                When we use a pointer, the <code class="s">sizeof()</code> operator
+                returns the size of the pointer (not the size of the array).
+                So, if we want to know the size of a string, we have to count
+                each character up to the NULL character.
+                That is the purpose of the <code class="s">strlen()</code>
+                function of the standard library.
+                <b>Note that the length of a string does not include the NULL character.</b>
+            </p>
+            <p>
+                This function is easy to write.
+                Write the following function that has the same behavior
+                as the one of the standard library (have a look at its
+                <a href="https://manpages.debian.org/buster/manpages-dev/strlen.3.en.html">man page</a>).
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">size_t</span> <span class="token function">mystrlen</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                You will test your function in the next section.
+            </p>
+            <h3 id="head_1019">Copying Strings</h3>
+            <p>
+                Copying strings is another very common operation on strings.
+                The standard library provides two functions for this purpose:
+                <code class="s">strcpy()</code> and <code class="s">strncpy()</code>.
+                We will focus on the second one.
+                Read its <a href="https://manpages.debian.org/stretch/manpages-dev/strncpy.3.en.html">man page</a>
+                and write the following function that has exactly the same behavior.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">mystrncpy</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>dst<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>src<span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Complete the following code and execute it to test your functions.
+            </p>
+            <div class="filename">mystrncpy.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword">size_t</span> <span class="token function">mystrlen</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">mystrncpy</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>dst<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>src<span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">print_str_as_array</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0x%02x "</span><span class="token punctuation">,</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> src<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"abc"</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>dst <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Fill dst with 0x7f.</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>cur <span class="token operator">=</span> dst<span class="token punctuation">;</span> cur <span class="token operator">&lt;</span> dst <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span> cur<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token operator">*</span>cur <span class="token operator">=</span> <span class="token number">0x7f</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Print dst and src.</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"src = "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_str_as_array</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"dst = "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_str_as_array</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Copy exactly the length of src.</span>
+    <span class="token function">mystrncpy</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> src<span class="token punctuation">,</span> <span class="token function">mystrlen</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\ndst = "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_str_as_array</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Fill dst with 0x7f.</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>cur <span class="token operator">=</span> dst<span class="token punctuation">;</span> cur <span class="token operator">&lt;</span> dst <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span> cur<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token operator">*</span>cur <span class="token operator">=</span> <span class="token number">0x7f</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Copy the length of src + 1.</span>
+    <span class="token function">mystrncpy</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> src<span class="token punctuation">,</span> <span class="token function">mystrlen</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\ndst = "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_str_as_array</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Fill dst with 0x7f.</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>cur <span class="token operator">=</span> dst<span class="token punctuation">;</span> cur <span class="token operator">&lt;</span> dst <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span> cur<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token operator">*</span>cur <span class="token operator">=</span> <span class="token number">0x7f</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Copy the size of dst.</span>
+    <span class="token function">mystrncpy</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> src<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\ndst = "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print_str_as_array</span><span class="token punctuation">(</span>dst<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Fill dst with 0x7f.</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>cur <span class="token operator">=</span> dst<span class="token punctuation">;</span> cur <span class="token operator">&lt;</span> dst <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span> cur<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token operator">*</span>cur <span class="token operator">=</span> <span class="token number">0x7f</span><span class="token punctuation">;</span>
+
+    <span class="token function">free</span><span class="token punctuation">(</span>dst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">gcc</span> -Wall -Wextra mystrncpy.c
+$ ./a.out
+src <span class="token operator">=</span> 0x61 0x62 0x63 0x00
+dst <span class="token operator">=</span> 0x7f 0x7f 0x7f 0x7f 0x7f 0x7f 0x7f 0x7f
+
+dst <span class="token operator">=</span> 0x61 0x62 0x63 0x7f 0x7f 0x7f 0x7f 0x7f
+
+dst <span class="token operator">=</span> 0x61 0x62 0x63 0x00 0x7f 0x7f 0x7f 0x7f
+
+dst <span class="token operator">=</span> 0x61 0x62 0x63 0x00 0x00 0x00 0x00 0x00</code></pre>
+        </main>
+        <footer>
+            <span>
+                <a href="http://validator.w3.org/check?uri=referer">
+                    HTML 5
+                </a>
+            </span>
+            <span>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3svg">
+                    CSS 3
+                </a>
+            </span>
+        </footer>
+        <script src="Pointers_fichiers/prism.js"></script>
+        <script src="Pointers_fichiers/script.js"></script>
+    
+
+</body></html>

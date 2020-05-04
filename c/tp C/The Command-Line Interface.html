@@ -1,0 +1,3291 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="author" content="David Bouchet">
+        <title>The Command-Line Interface</title>
+        <link rel="stylesheet" href="The%20Command-Line%20Interface_fichiers/style.css">
+        <link rel="stylesheet" href="The%20Command-Line%20Interface_fichiers/prism.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header style="top: 0em;">
+            <div>
+                <span><a href="#table_of_contents">≡</a></span>
+                <span><a href="http://www.debug-pro.com/epita/prog/s3/index.html">Practical Programming</a></span>
+                <span><a href="mailto:david.bouchet.epita@gmail.com">David Bouchet</a></span>
+            </div>
+        </header>
+        <div class="title">
+            <div class="practical_number">Practical Work #1</div>
+            <h1>The Command-Line Interface (CLI)</h1>
+        </div>
+        <nav id="table_of_contents"><h2><a href="#head_1000">What Is a Command-Line Interface?</a></h2><h2><a href="#head_1001">The Commands</a></h2><h3><a href="#global_syntax">The Global Syntax</a></h3><h3><a href="#head_1002">Your First Commands</a></h3><h4><a href="#head_1003">The pwd Command</a></h4><h4><a href="#head_1004">The cd Command</a></h4><h4><a href="#head_1005">The ls Command</a></h4><h4><a href="#head_1006">The tree Command</a></h4><h3><a href="#head_1007">Autocompletion</a></h3><h3><a href="#head_1008">History</a></h3><h2><a href="#head_1009">Command Types</a></h2><h3><a href="#head_1010">The Executable Files</a></h3><h3><a href="#head_1011">The Aliases</a></h3><h3><a href="#head_1012">The Built-in Commands</a></h3><h3><a href="#head_1013">Determining a Command Type</a></h3><h2><a href="#head_1014">Documentation</a></h2><h3><a href="#head_1015">The Executable Files</a></h3><h4><a href="#head_1016">The --help Option</a></h4><h4><a href="#head_1017">The Man Pages</a></h4><h4><a href="#head_1018">The Info Pages</a></h4><h3><a href="#head_1019">The Built-in Commands</a></h3><h3><a href="#head_1020">How to Find Specific Commands</a></h3><h2><a href="#head_1021">Other Useful Commands</a></h2><h3><a href="#head_1022">Creating Empty Files and Directories</a></h3><h4><a href="#head_1023">The touch Command</a></h4><h4><a href="#head_1024">The mkdir Command</a></h4><h3><a href="#head_1025">Removing Files and Directories</a></h3><h4><a href="#head_1026">The rm Command (Removing Files)</a></h4><h4><a href="#head_1027">The rmdir Command (Removing Empty Directories)</a></h4><h4><a href="#head_1028">The rm -rf Command (Removing Non-Empty Directories)</a></h4><h3><a href="#head_1029">Downloading Files</a></h3><h4><a href="#head_1030">The wget Command</a></h4><h3><a href="#head_1031">Decompressing and Compressing Files</a></h3><h4><a href="#head_1032">The tar Command</a></h4><h4><a href="#head_1033">Decompressing bzip2 Files</a></h4><h4><a href="#head_1034">Compressing Directories with bzip2</a></h4><h4><a href="#head_1035">Listing Archive Contents</a></h4><h3><a href="#head_1036">Printing on the Terminal</a></h3><h4><a href="#head_1037">The echo Command</a></h4><h4><a href="#head_1038">The cat Command</a></h4><h4><a href="#head_1039">The more and less Commands</a></h4><h4><a href="#head_1040">The head and tail Commands</a></h4><h3><a href="#head_1041">Copying, Moving and Renaming</a></h3><h4><a href="#head_1042">The cp Command</a></h4><h4><a href="#head_1043">The mv Command</a></h4><h2><a href="#head_1044">Wildcard Characters</a></h2><h3><a href="#head_1045">The Star Wildcard</a></h3><h3><a href="#head_1046">The Question Mark Wildcard</a></h3><h3><a href="#head_1047">The Square Brackets Wildcard</a></h3><h3><a href="#head_1048">Combining Wildcards</a></h3><h2><a href="#head_1049">Finding Files and Directories</a></h2><h3><a href="#head_1050">The find Command</a></h3><h3><a href="#grep_command">The grep Command</a></h3><h2><a href="#head_1051">Redirecting Outputs</a></h2><h3><a href="#head_1052">The Stantdard Output Streams</a></h3><h3><a href="#head_1053">The &gt; and 2&gt; Operators</a></h3><h3><a href="#head_1054">The &gt;&gt; and 2&gt;&gt; Operators</a></h3><h3><a href="#head_1055">The | Operator</a></h3><h2><a href="#head_1056">Exercise</a></h2><h2><a href="#head_1057">Submission</a></h2><h3><a href="#head_1058">Due Date</a></h3><h3><a href="#head_1059">Directory Hierarchy</a></h3></nav>
+        <main>
+            <h2 id="head_1000">What Is a Command-Line Interface?</h2>
+            <p>
+                A <strong>command-line interface</strong> (CLI) is used to execute
+                a program or a command, as you can do in a
+                <strong>graphical-user interface</strong> (GUI) when you double-click
+                on a file icon or when you use toolbars, buttons and menus.
+            </p>
+            <p>
+                <mark>
+                    However, a command-line interface is much more powerful than
+                    any graphical-user interface.
+                </mark>
+            </p>
+            <p>
+                To use a command-line interface, you first need a <strong>shell</strong>,
+                which is a <strong>command-line interpreter</strong>.
+                It is the text-based interface between the user and the operating system.
+            </p>
+            <p>
+                On Linux, several shells are available.
+                In this practical, we will use <strong>bash (Bourne Again Shell)</strong>,
+                which is the most commonly used shell on Linux.
+            </p>
+            <p>
+                You can access the shell through a
+                <a href="https://en.wikipedia.org/wiki/Computer_terminal">computer terminal</a>
+                , a
+                <a href="https://en.wikipedia.org/wiki/Virtual_console">virtual console</a>
+                or a
+                <a href="https://en.wikipedia.org/wiki/Terminal_emulator">terminal emulator</a>.
+                To make it simpler, these three terms will be called either
+                <b>terminal</b> or <b>console</b>.
+            </p>
+            <p>
+                A terminal provides a <strong>command prompt</strong>,
+                which is a short line of text at the start of the command line.
+            </p>
+            <p>
+                Here is an example of a command prompt:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">david@laptop:~$</code></pre>
+            <p>
+                Another example:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">david@laptop:~/document/picture$</code></pre>
+            <p>
+                On Linux, a command prompt can be configured in different ways.
+                It can be made up of the user login, the computer name,
+                the current directory, the date, etc.
+                It usually ends with the <code class="s">$</code>
+                character for a regular user.
+                So you have to enter your command after the <code class="s">$</code>.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">david@laptop:~/document/picture$ <span class="token function">ls</span> -lh</code></pre>
+            <p>
+                In the above example, <code class="s">ls -lh</code> is a command.
+                In order to simplify the examples, we are going to limit
+                the command prompt to the sole <code class="s">$</code> character.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -lh</code></pre>
+            <p>
+                Finally, the result of the command will be printed at the
+                start of the line without the <code class="s">$</code> character.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -lh
+-rw-rw-r--  1 david david 114K dec.   1  2016 doc.7z
+drwx------  3 david david 4,0K dec.   1  2016 document
+-rwxr-xr-x  1 david david  239 nov.  28  2016 findall
+-rw-rw-r--  1 david david   39 may   10  2017 key.txt
+-rw-rw-r--  1 david david  119 mar.  30 16:45 list.txt
+-rw-rw-r--  1 david david   79 may   10  2017 main.c
+-rw-rw-r--  1 david david 7,8K oct.  19  2017 planning.xlsx
+drwxrwxr-x  6 david david 4,0K nov.   8  2017 projects
+-rw-r--r--  1 david david  12K mar.  31  2017 soft.icon
+-rw-rw-r--  1 david david  40K may   17  2017 to_do.txt
+-rw-rw-r--  1 david david  185 feb.   3  2017 version.txt</code></pre>
+            <p>
+                Do not worry if you do not understand the output of this command.
+                We will cover the commands in the next section.
+            </p>
+            <h2 id="head_1001">The Commands</h2>
+            <h3 id="global_syntax">The Global Syntax</h3>
+            <p>
+                A plain command is made up of three parts (some of them are optional).
+            </p>
+            <ul>
+                <li>The name of the command (required).</li>
+                <li>A list of options (optional).</li>
+                <li>A list of parameters (optional).</li>
+            </ul>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">..</span>.<span class="token punctuation">]</span> <span class="token punctuation">[</span>PARAMATERS<span class="token punctuation">..</span>.<span class="token punctuation">]</span></code></pre>
+            <p>
+                The parameters must be separated by the space character.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name param1 param2 param3</code></pre>
+            <p>
+                To include a space character into a parameter,
+                you have to use the double quote.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name <span class="token string">"param 1"</span> param2 <span class="token string">"and param 3"</span></code></pre>
+            <p>
+                A short option is made up of a single character prefixed with
+                the <code class="s">-</code> character.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name -a -b param1 param2</code></pre>
+            <p>
+                In the above example, the instruction has two options:
+                <code class="s">-a</code> and
+                <code class="s">-b</code>.
+            </p>
+            <p>
+                Several options can be merged.
+                For instance, the example below is equivalent to the above.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name -ab param1 param2</code></pre>
+            <p>
+                A long option is made up of several characters prefixed with
+                the <code class="s">--</code> characters.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name --option --second-option param1 param2</code></pre>
+            <p>The long options cannot be merged.</p>
+            <p>Finally, let us have a look at the following command:</p>
+            <pre class=" language-bash"><code class=" language-bash">$ command_name -a -bcd --option --second-option param1 param2 <span class="token string">"last param"</span></code></pre>
+            <p>This command has:</p>
+            <ul>
+                <li>
+                    Six options:
+                    <code class="s">-a</code>,
+                    <code class="s">-b</code>,
+                    <code class="s">-c</code>,
+                    <code class="s">-d</code>,
+                    <code class="s">--option</code>,
+                    <code class="s">--second-option</code>.
+                </li>
+                <li>
+                    Three parameters:
+                    <code class="s">param1</code>,
+                    <code class="s">param2</code>,
+                    <code class="s">last&nbsp;param</code>.
+                </li>
+            </ul>
+            <p>
+                You should know that there are hundreds of commands and each command
+                can have dozens or even hundreds of different options.
+                <b>Therefore, it is not possible to explain every command in detail.</b>
+            </p>
+            <p>
+                <mark>
+                    However, beyond the understanding of commands,
+                    you also need to grasp some of the principles in the philosophy of Linux
+                    if you want to be able to find by yourself the commands you need
+                    that will meet your requirements.
+                </mark>
+            </p>
+            <p>
+                That is the purpose of this practical.
+            </p>
+            <p>
+                So now, open a terminal and try the commands below.
+            </p>
+            <h3 id="head_1002">Your First Commands</h3>
+            <p>
+                Obviously, as the directory hierarchy of your computer is different from
+                the one used in this section, you must adapt the commands to your own computer.
+            </p>
+            <h4 id="head_1003">The <code>pwd</code> Command</h4>
+            <p>
+                The <code class="s">pwd</code> command prints
+                the name of the current directory
+                (<i>pwd</i> stands for <i><b>p</b>rint <b>w</b>orking <b>d</b>irectory</i>).
+                Try this command and see what your current directory is.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david</code></pre>
+            <h4 id="head_1004">The <code>cd</code> Command</h4>
+            <p>
+                The <code class="s">cd</code> command changes the current directory
+                (<i>cd</i> stands for <i><b>c</b>hange <b>d</b>irectory</i>).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david
+$ <span class="token function">cd</span> document
+$ <span class="token function">pwd</span>
+/home/david/document
+$ <span class="token function">cd</span> project/c
+$ <span class="token function">pwd</span>
+/home/david/document/project/c</code></pre>
+            <p>
+                You can use the <code class="s">..</code>
+                pair of characters to move back into a parent directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david/document/project/c
+$ <span class="token function">cd</span> <span class="token punctuation">..</span>
+$ <span class="token function">pwd</span>
+/home/david/document/project
+$ <span class="token function">cd</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>
+$ <span class="token function">pwd</span>
+/home</code></pre>
+            <p>
+                Type <code class="s">cd</code> without parameters
+                to move into your home directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david/document/project/c
+$ <span class="token function">cd</span>
+$ <span class="token function">pwd</span>
+/home/david</code></pre>
+            <p>
+                Start the path with the <code class="s">/</code>
+                character to specify an absolute path.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david/document/project/c
+$ <span class="token function">cd</span> /home/david
+$ <span class="token function">pwd</span>
+/home/david
+$ <span class="token function">cd</span> /
+$ <span class="token function">pwd</span>
+/</code></pre>
+            <p>
+                The last current directory in the above example is the
+                <strong>root directory</strong> (<code class="s">/</code>).
+                It is the topmost directory (it has no parent).
+            </p>
+            <p>
+                Use the <code class="s">~</code>
+                character to specify your home directory.
+                The <code class="s">cd&nbsp;~</code>
+                instruction is then equivalent to the
+                <code class="s">cd</code>
+                instruction without parameters.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david/document/project/c
+$ <span class="token function">cd</span> ~/document
+$ <span class="token function">pwd</span>
+/home/david/document
+$ <span class="token function">cd</span> ~
+$ <span class="token function">pwd</span>
+/home/david</code></pre>
+            <p>
+                <mark>
+                    A path can be absolute or relative.
+                    A path starting with the <code class="s">/</code> character
+                    or the <code class="s">~</code> character is absolute.
+                    Otherwise, it is relative to the current working directory.
+                </mark>
+            </p>
+            <p>
+                You can go back to the previous working directory by using the
+                <code class="s">-</code> character.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david/document/project/c
+$ <span class="token function">cd</span> ~/picture
+$ <span class="token function">pwd</span>
+/home/david/picture
+$ <span class="token function">cd</span> -
+$ <span class="token function">pwd</span>
+/home/david/document/project/c</code></pre>
+            <h4 id="head_1005">The <code>ls</code> Command</h4>
+            <p>
+                The <code class="s">ls</code> command lists the directory contents
+                (<i>ls</i> is shorthand for <i><b>l</b>i<b>s</b>t</i>).
+                Without parameters, it lists the contents of the current directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pwd</span>
+/home/david/document/project/c
+$ <span class="token function">ls</span>
+a.out  facto.c  facto.h  facto.o  lib  main.c  main.h  main.o</code></pre>
+            <p>
+                Some terminals color-code items according to their types,
+                which makes them more easily identifiable.
+            </p>
+            <p>
+                You can also use the <code class="s">-F</code> option,
+                which appends indicators to entries.
+                Be careful, respecting the case is indispensable: <code class="s">-F</code>
+                is not the same as <code class="s">-f</code>.
+            </p>
+            <table class="ls_f">
+                <tbody><tr>
+                    <th>Indicator</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td>None</td>
+                    <td>Non-executable regular file</td>
+                </tr>
+                <tr>
+                    <td><code class="s">*</code></td>
+                    <td>Executable regular file</td>
+                </tr>
+                <tr>
+                    <td><code class="s">/</code></td>
+                    <td>Directory</td>
+                </tr>
+                <tr>
+                    <td>Others</td>
+                    <td>Special file</td>
+                </tr>
+            </tbody></table>
+            <p>
+                There are several kinds of special files,
+                but the purpose of this practical is not to explain them all.
+                So just ignore them for the time being. 
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -F
+a.out*  facto.c  facto.h  facto.o  lib/  main.c  main.h  main.o</code></pre>
+            <p>
+                Therefore, we can see that <code class="s">a.out</code>
+                is an executable file and <code class="s">lib</code>
+                is a directory.
+            </p>
+            <p>
+                To obtain extra information about files,
+                you can also try the <code class="s">-l</code> option,
+                which uses a long listing format.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -l
+total 96
+-rwxrwxr-x 1 david david 8664 may   17 23:23 a.out
+-rw-rw-r-- 1 david david  101 may   17 23:23 facto.c
+-rw-rw-r-- 1 david david   18 may   17 23:15 facto.h
+-rw-rw-r-- 1 david david 1264 may   17 23:21 facto.o
+drwxrwxr-x 2 david david 4096 may   17 23:10 lib
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+-rw-rw-r-- 1 david david   38 may   17 23:18 main.h
+-rw-rw-r-- 1 david david 1592 may   17 23:20 main.o</code></pre>
+            <p>
+                This output requires some explanations.
+                To begin with, ignore the first line: <code class="s">total 96</code>.
+                It indicates the total number of blocks allocated by the directory,
+                and, at your level, this piece of information is not yet useful.
+            </p>
+            <p>
+                Then, from right to left, you find:
+            </p>
+            <ul>
+                <li>
+                    The filename (e.g. <code class="s">a.out</code>).
+                </li>
+                <li>
+                    The last-modification date of the file
+                    (e.g. <code class="s">may 17 23:23</code>).
+                </li>
+                <li>
+                    The file size in bytes (e.g. <code class="s">8664</code>).
+                </li>
+                <li>
+                    The group of the file (e.g. <code class="s">david</code>).
+                </li>
+                <li>
+                    The owner of the file (e.g. <code class="s">david</code>).
+                </li>
+                <li>
+                    A number (e.g. <code class="s">1</code>).
+                    Ignore it for the time being.
+                </li>
+                <li>
+                    The file type and the access rights
+                    (e.g. <code class="s">-rwxrwxr-x</code>).
+                </li>
+            </ul>
+            <p>
+                Usually, the owner of the file is the one who has created the file.
+            </p>
+            <p>
+                For the time being, you do not have to know much about <strong>groups</strong>.
+                Just remember that on Linux, users can be grouped together
+                so that they can have the same access rights to specific files and directories.
+            </p>
+            <p>
+                Now, let us have a look at the file type and the access rights.
+                For instance, the <code class="s">-rwxrwxr-x</code>
+                can be split into four groups:
+            </p>
+            <ul>
+                <li>The leftmost character: <code class="s">-</code></li>
+                <li>
+                    Three groups of three characters:
+                    <code class="s">rwx</code>
+                    <code class="s">rwx</code>
+                    <code class="s">r-x</code>
+                </li>
+            </ul>
+            <p>
+                The leftmost character is an indicator that gives the type of the file.
+                A file can be a <strong>regular file</strong>, a <strong>directory</strong>
+                or a <strong>special file</strong>.
+                On Linux,
+                <a href="https://en.wikipedia.org/wiki/Everything_is_a_file">everything is a file</a>,
+                even a directory.
+                As said previously, you can ignore the special files for the time being.
+            </p>
+            <table class="ls_f">
+                <tbody><tr>
+                    <th>Indicator</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td><code class="s">-</code></td>
+                    <td>Regular file (executable or not)</td>
+                </tr>
+                <tr>
+                    <td><code class="s">d</code></td>
+                    <td>Directory</td>
+                </tr>
+                <tr>
+                    <td>Others</td>
+                    <td>Special file</td>
+                </tr>
+<!--
+                <tr>
+                    <td><code class="s">c</code></td>
+                    <td>Character special file</td>
+                </tr>
+                <tr>
+                    <td><code class="s">C</code></td>
+                    <td>High performance (“contiguous data”) file</td>
+                </tr>
+                <tr>
+                    <td><code class="s">D</code></td>
+                    <td>door (solaris 2.5 and up)</td>
+                </tr>
+                <tr>
+                    <td><code class="s">l</code></td>
+                    <td>Symbolic link</td>
+                </tr>
+                <tr>
+                    <td><code class="s">M</code></td>
+                    <td>Off-line (“migrated”) file (Cray DMF)</td>
+                </tr>
+                <tr>
+                    <td><code class="s">n</code></td>
+                    <td>Network special file (HP-UX)</td>
+                </tr>
+                <tr>
+                    <td><code class="s">p</code></td>
+                    <td>FIFO (named pipe)</td>
+                </tr>
+                <tr>
+                    <td><code class="s">P</code></td>
+                    <td>Port (solaris 10 and up)</td>
+                </tr>
+                <tr>
+                    <td><code class="s">s</code></td>
+                    <td>Socket</td>
+                </tr>
+                <tr>
+                    <td><code class="s">?</code></td>
+                    <td>Some other file type</td>
+                </tr>
+-->
+            </tbody></table>
+            <p>
+                We can then see that this directory has:
+            </p>
+            <ul>
+                <li>
+                    Seven regular files:
+                    <code class="s">a.out</code>,
+                    <code class="s">facto.c</code>,
+                    <code class="s">facto.h</code>,
+                    <code class="s">facto.o</code>,
+                    <code class="s">main.c</code>,
+                    <code class="s">main.h</code>,
+                    <code class="s">main.o</code>.
+                </li>
+                <li>
+                    One directory: <code class="s">lib</code>.
+                </li>
+            </ul>
+        
+            <p>
+                Then, the nine remaining characters (three groups of three characters)
+                give the access permissions of the file:
+            </p>
+            <ul>
+                <li>
+                    The first group of three characters represents
+                    the permissions of the owner.
+                </li>
+                <li>
+                    The second group of three characters represents
+                    the permissions of the group.
+                </li>
+                <li>
+                    The third group of three characters represents
+                    the permissions of the others.
+                </li>
+            </ul>
+            <p>
+                For example, the <code class="s">a.out</code> file
+                (<code class="s">rwxrwxr-x</code>)
+                has the following access rights:
+            </p>
+            <table class="ls_owner_group_other">
+                <tbody><tr>
+                    <th>Owner</th>
+                    <th>Group</th>
+                    <th>Others</th>
+                </tr>
+                <tr>
+                    <td><code class="s">rwx</code></td>
+                    <td><code class="s">rwx</code></td>
+                    <td><code class="s">r-x</code></td>
+                </tr>
+            </tbody></table>
+            <p>Three types of access rights are possible:</p>
+            <table class="ls_f">
+                <tbody><tr>
+                    <th>Indicator</th>
+                    <th>Access Right</th>
+                </tr>
+                <tr>
+                    <td><code class="s">r</code></td>
+                    <td>Read</td>
+                </tr>
+                <tr>
+                    <td><code class="s">w</code></td>
+                    <td>Write</td>
+                </tr>
+                <tr>
+                    <td><code class="s">x</code></td>
+                    <td>Execute</td>
+                </tr>
+            </tbody></table>
+            <p>
+                For instance, the <code class="s">a.out</code> file
+                (<code class="s">rwxrwxr-x</code>)
+                can be read, written and executed by the owner and the members of the group.
+                The other users can only read and execute it.
+            </p>
+            <p>
+                The <code class="s">facto.c</code> file
+                (<code class="s">rw-rw-r--</code>)
+                cannot be executed at all.
+                It can be read and written by the owner and the members of the group,
+                but can be read only by the other users.
+            </p>
+            <p>
+                You can also add parameters to the <code class="s">ls</code> command.
+                They can be filenames or directories.
+            </p>
+            <ul>
+                <li>
+                    If the parameters are filenames, the command lists only these files.
+                </li>
+                <li>
+                    If the parameters are directories,
+                    the command lists the contents of these directories.
+                </li>
+            </ul>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span>
+a.out  facto.c  facto.h  facto.o  lib  main.c  main.h  main.o
+$ <span class="token function">ls</span> -l a.out
+-rwxrwxr-x 1 david david 8664 may   17 23:23 a.out
+$ <span class="token function">ls</span> -l a.out main.c
+-rwxrwxr-x 1 david david 8664 may   17 23:23 a.out
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+$ <span class="token function">ls</span> -l lib
+total 1848
+-rw-r--r-- 1 david david 296936 may   12  2014 libqeglfs.so
+-rw-r--r-- 1 david david 268168 may   12  2014 libqkms.so
+-rw-r--r-- 1 david david 189384 may   12  2014 libqlinuxfb.so
+-rw-r--r-- 1 david david 164424 may   12  2014 libqminimalegl.so
+-rw-r--r-- 1 david david  39656 may   12  2014 libqminimal.so
+-rw-r--r-- 1 david david 147848 may   12  2014 libqoffscreen.so
+-rw-r--r-- 1 david david 708920 may   12  2014 libqxcb.so
+$ <span class="token function">ls</span> -l a.out main.c lib
+-rwxrwxr-x 1 david david 8664 may   17 23:23 a.out
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+
+lib:
+total 1848
+-rw-r--r-- 1 david david 296936 may   12  2014 libqeglfs.so
+-rw-r--r-- 1 david david 268168 may   12  2014 libqkms.so
+-rw-r--r-- 1 david david 189384 may   12  2014 libqlinuxfb.so
+-rw-r--r-- 1 david david 164424 may   12  2014 libqminimalegl.so
+-rw-r--r-- 1 david david  39656 may   12  2014 libqminimal.so
+-rw-r--r-- 1 david david 147848 may   12  2014 libqoffscreen.so
+-rw-r--r-- 1 david david 708920 may   12  2014 libqxcb.so</code></pre>
+            <p>
+                Let us see another useful option of the <code class="s">ls</code>
+                command: <code class="s">-h</code>.
+                It prints human-readable sizes (e.g. 105K 352M 1G).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -lh lib
+total 1,9M
+-rw-r--r-- 1 david david 290K may   12  2014 libqeglfs.so
+-rw-r--r-- 1 david david 262K may   12  2014 libqkms.so
+-rw-r--r-- 1 david david 185K may   12  2014 libqlinuxfb.so
+-rw-r--r-- 1 david david 161K may   12  2014 libqminimalegl.so
+-rw-r--r-- 1 david david  39K may   12  2014 libqminimal.so
+-rw-r--r-- 1 david david 145K may   12  2014 libqoffscreen.so
+-rw-r--r-- 1 david david 693K may   12  2014 libqxcb.so</code></pre>
+            <p>
+                The <code class="s">-h</code> and <code class="s">-F</code>
+                short options have their long equivalents.
+            </p>
+            <table class="ls_owner_group_other">
+                <tbody><tr>
+                    <th>Short</th>
+                    <th>Long</th>
+                </tr>
+                <tr>
+                    <td><code class="s">-h</code></td>
+                    <td><code class="s">--human-readable</code></td>
+                </tr>
+                <tr>
+                    <td><code class="s">-F</code></td>
+                    <td><code class="s">--classify</code></td>
+                </tr>
+            </tbody></table>
+            <p>For example, the two commands below are equivalent.</p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -l --classify --human-readable
+total 96K
+-rwxrwxr-x 1 david david 8,5K may   17 23:23 a.out*
+-rw-rw-r-- 1 david david  101 may   17 23:23 facto.c
+-rw-rw-r-- 1 david david   18 may   17 23:15 facto.h
+-rw-rw-r-- 1 david david 1,3K may   17 23:21 facto.o
+drwxrwxr-x 2 david david 4,0K may   21 18:10 lib/
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+-rw-rw-r-- 1 david david   38 may   17 23:18 main.h
+-rw-rw-r-- 1 david david 1,6K may   17 23:20 main.o
+$ <span class="token function">ls</span> -lFh
+total 96K
+-rwxrwxr-x 1 david david 8,5K may   17 23:23 a.out*
+-rw-rw-r-- 1 david david  101 may   17 23:23 facto.c
+-rw-rw-r-- 1 david david   18 may   17 23:15 facto.h
+-rw-rw-r-- 1 david david 1,3K may   17 23:21 facto.o
+drwxrwxr-x 2 david david 4,0K may   21 18:10 lib/
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+-rw-rw-r-- 1 david david   38 may   17 23:18 main.h
+-rw-rw-r-- 1 david david 1,6K may   17 23:20 main.o</code></pre>
+            <p>
+                The <code class="s">-a</code> or
+                <code class="s">--all</code>
+                option is also very useful.
+                It lists the hidden files.
+                On Linux, the files starting with the
+                <code class="s">.</code> character are hidden.
+                In other words, this option does not ignore entries starting with the
+                <code class="s">.</code> character.
+            </p>
+            <p>For instance:</p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -la
+total 116
+drwxrwxr-x 4 david david 4096 may   24 12:42 <span class="token keyword">.</span>
+drwxrwxr-x 7 david david 4096 may   17 23:07 <span class="token punctuation">..</span>
+-rwxrwxr-x 1 david david 8664 may   17 23:23 a.out
+-rw-rw-r-- 1 david david  101 may   17 23:23 facto.c
+-rw-rw-r-- 1 david david   18 may   17 23:15 facto.h
+-rw-rw-r-- 1 david david 1264 may   17 23:21 facto.o
+drwxrwxr-x 7 david david 4096 may   24 12:42 .git
+-rw-rw-r-- 1 david david    0 may   24 12:42 .gitignore
+drwxrwxr-x 2 david david 4096 may   21 18:10 lib
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+-rw-rw-r-- 1 david david   38 may   17 23:18 main.h
+-rw-rw-r-- 1 david david 1592 may   17 23:20 main.o</code></pre>
+            <p>Four new lines have appeared:</p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -la
+total 116
+drwxrwxr-x 4 david david 4096 may   24 12:42 <span class="token keyword">.</span>
+drwxrwxr-x 7 david david 4096 may   17 23:07 <span class="token punctuation">..</span>
+<span class="token comment"># ...snip...</span>
+drwxrwxr-x 7 david david 4096 may   24 12:42 .git
+-rw-rw-r-- 1 david david    0 may   24 12:42 .gitignore
+<span class="token comment"># ...snip...</span></code></pre>
+            <ul>
+                <li>
+                    The <code class="s">.</code> entry represents
+                    the current directory.
+                </li>
+                <li>
+                    The <code class="s">..</code> entry represents
+                    the parent directory (as seen previously).
+                </li>
+                <li>
+                    The <code class="s">.git</code> entry is a hidden directory.
+                </li>
+                <li>
+                    The <code class="s">.gitignore</code> entry is a hidden file.
+                </li>
+            </ul>
+            <p>To sum up:</p>
+            <table class="ls_owner_group_other">
+                <tbody><tr>
+                    <th colspan="3">ls</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><b>List Directory Contents</b></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Option</th>
+                    <th class="description" rowspan="2">Description</th>
+                </tr>
+                <tr>
+                    <th>Short</th>
+                    <th>Long</th>
+                </tr>
+                <tr>
+                    <td><code class="s">-F</code></td>
+                    <td><code class="s">--classify</code></td>
+                    <td class="description">
+                        Append indicator to entries.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code class="s">-l</code></td>
+                    <td></td>
+                    <td class="description">
+                        Use a long listing format.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code class="s">-h</code></td>
+                    <td><code class="s">--human-readable</code></td>
+                    <td class="description">
+                        With <code class="s">-l</code>, print human-readable sizes.
+                    </td>
+                </tr>
+                <tr>
+                    <td><code class="s">-a</code></td>
+                    <td><code class="s">--all</code></td>
+                    <td class="description">
+                        Do not ignore entries starting with the
+                        <code class="s">.</code> character.
+                    </td>
+                </tr>
+            </tbody></table>
+            <p>
+                So far, we have seen only four options of the
+                <code class="s">ls</code> command,
+                but actually this command has many more options (around sixty).
+            </p>
+            <h4 id="head_1006">The <code>tree</code> Command</h4>
+            <p>
+                The <code class="s">ls</code> command is not the only one
+                that allows you to list directory contents, but it is the most commonly used.
+                Another really useful command is the <code class="s">tree</code> command.
+                Let us see it briefly.
+            </p>
+            <p>
+                The <code class="s">tree</code> command allows you
+                to list directory contents in a tree-like format.
+                Without parameters, it lists the contents of the current directory.
+            </p>
+            <p>
+                For example:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -F
+dir1/  dir2/  README
+$ <span class="token function">tree</span>
+<span class="token keyword">.</span>
+├── dir1
+│   ├── file1.pdf
+│   ├── file2.pdf
+│   ├── file3.pdf
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   ├── image3.jpg
+│   └── README
+├── dir2
+│   ├── file1.txt
+│   ├── file2.txt
+│   ├── file3.txt
+│   ├── page1
+│   │   ├── index.html
+│   │   ├── README
+│   │   └── style.css
+│   ├── page2
+│   │   ├── index.html
+│   │   ├── README
+│   │   └── style.css
+│   ├── picture1.png
+│   ├── picture2.png
+│   ├── picture3.png
+│   └── README
+└── README</code></pre>
+            <p>
+                Before learning new commands,
+                you should know that one of the Linux principles is that
+                <mark>the less you type, the more productive you are and the fewer mistakes you make</mark>.
+                The shell provides different ways to stick to this principle.
+                Let us see two of them:
+                the <strong>autocompletion</strong> and the <strong>history</strong>.
+            </p>
+            <h3 id="head_1007">Autocompletion</h3>
+            <p>
+                Command-line interpreters often come with autocompletion facilities.
+                Some of them are smarter than others and they are not always enabled
+                by default. It depends on your Linux distribution.
+            </p>
+            <p>
+                Usually, you can autocomplete commands, options and parameters by
+                using the <kbd>TAB</kbd> key.
+            </p>
+            <p>
+                So while typing a command, press <kbd>TAB</kbd> at any time.
+                The command will be completed automatically if there is only one.
+                If there are more, you must press <kbd>TAB</kbd> a second time
+                to have all of the possible lines displayed on the terminal. 
+            </p>
+            <p>
+                For instance, let us examine the following example.
+                Start by typing the following characters:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> --h</code></pre>
+            <p>
+                Now, press the <kbd>TAB</kbd> key only once.
+                Nothing happens.
+                It means that several possibilities are available.
+            </p>
+            <p>
+                Press the <kbd>TAB</kbd> key a second time.
+                All the possibilities are displayed.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> --h
+--help                --hide-control-chars
+--hide<span class="token operator">=</span>               --human-readable
+$ <span class="token function">ls</span> --h</code></pre>
+            <p>
+                We can see that four long options start with <code class="s">--h</code>.
+                Now, append a <code class="s">u</code> to your command.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> --hu</code></pre>
+            <p>
+                Press the <kbd>TAB</kbd> key only once.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> --human-readable</code></pre>
+            <p>
+                As you can see, the option has been fully completed.
+            </p>
+            <p>
+                What we did here for a long option can be done for command names and parameters as well.
+                So try the autocompletion until you get the hang of it.
+            </p>
+            <h3 id="head_1008">History</h3>
+            <p>
+                There is another way to avoid typing commands:
+                the <strong>history</strong> of commands.
+            </p>
+            <p>
+                By pressing the <kbd>up</kbd> and <kbd>down</kbd> arrow keys,
+                you can move back and forth through the history of commands.
+                Try to execute some commands and then press the <kbd>up</kbd>
+                and <kbd>down</kbd> arrow keys several times.
+                As you can see, you can easily execute previous commands without typing them again.
+            </p>
+            <p>
+                You can also use the following shorhands in order to execute previous commands.
+            </p>
+            <ul>
+                <li>
+                    <code class="s">!!</code> executes the previous command.
+                </li>
+                <li>
+                    <code class="s">!-n</code> executes the previous nth command
+                    (<code class="s">!-1</code> is then equivalent to <code class="s">!!</code>).
+                </li>
+                <li>
+                    <code class="s">![string]</code> executes the first
+                    previous command that starts with the occurrence
+                    <code class="s">[string]</code>.
+                </li>
+            </ul>
+            <p>
+                Here are some examples:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">cd</span> /home
+$ <span class="token function">ls</span> -laF
+total 48
+drwxr-xr-x  5 root  root   4096 june  24  2016 ./
+drwxr-xr-x 25 root  root   4096 june   4 10:24 <span class="token punctuation">..</span>/
+drwx-----x 73 david david 20480 june  20 22:23 david/
+$ <span class="token function">pwd</span>
+/home
+$ <span class="token function">!!</span> <span class="token comment"># Execute the previous command: pwd</span>
+p</code><code class=" language-bash">wd
+/home
+$ <span class="token function">!-2</span> <span class="token comment"># Execute the command before the previous command: ls -laF</span>
+l</code><code class=" language-bash">s -laF
+total 48
+drwxr-xr-x  5 root  root   4096 june  24  2016 ./
+drwxr-xr-x 25 root  root   4096 june   4 10:24 <span class="token punctuation">..</span>/
+drwx-----x 73 david david 20480 june  20 22:23 david/
+$ <span class="token function">!c</span> <span class="token comment"># Execute the first previous command that starts with 'c': cd /home</span>
+c</code><code class=" language-bash">d /home</code></pre>
+            <h2 id="head_1009">Command Types</h2>
+            <p>
+                Now that we have seen a few commands and some of their options,
+                you should ask yourselves:
+            </p>
+            <ul>
+                <li>How can I know a command and all of its options?</li>
+                <li>
+                    How can I know that the <code class="s">-h</code>
+                    short option is equivalent to the
+                    <code class="s">--human-readable</code> long option
+                    for the <code class="s">ls</code> command.
+                </li>
+                <li>How can I find the command I need?</li>
+            </ul>
+            <p>
+                That is what we are going to discuss in the next section.
+                But first, you should know that there are several types of commands.
+                Indeed, the way to find some documentation about commands
+                depends on their types.
+            </p>
+            <p>So, commands can be divided into three groups:</p>
+            <ul>
+                <li>The executable files.</li>
+                <li>The aliases.</li>
+                <li>The built-in commands.</li>
+            </ul>
+            <p>Let us describe them.</p>
+            <h3 id="head_1010">The Executable Files</h3>
+            <p>
+                When a command is an <strong>executable file</strong>,
+                the shell executes this command by running a program
+                file associated with this command.
+                It means that some files in your computer are associated with some commands.
+                These files are located at different places in your disk drive,
+                but all these places must be known by the command interpreter.
+                So, these places are held in an environment variable called
+                <var>$PATH</var>.
+                To print the contents of this variable you can type the following command:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> <span class="token variable">$PATH</span>
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code></pre>
+            <p>
+                Do not try to understand this command for the time being.
+                We will see the <code class="s">echo</code> command later on.
+                So, just focus on the result (note that it can differ
+                according to your operating system).
+            </p>
+            <p>
+                We can see six different paths all separated by the
+                <code class="s">:</code> character.
+                It means that when you enter a command in the command prompt,
+                which is associated with an executable file,
+                the shell is then looking for its associated file
+                in the paths held in the <var>$PATH</var> variable.
+                The associated file and the command have the same name.
+            </p>
+            <p>
+                For instance, when you enter the
+                <code class="s">ls</code> instruction:
+            </p>
+            <ul>
+                <li>
+                    First, the shell is looking for the
+                    <code class="s">ls</code>
+                    executable file in the
+                    <code class="s">/usr/local/sbin</code> directory.
+                </li>
+                <li>
+                    If the file is found, it is executed, and the shell prints its outpout.
+                </li>
+                <li>
+                    If the file is not found, the shell is then looking for the
+                    <code class="s">ls</code>
+                    executable file in the
+                    <code class="s">/usr/local/bin</code> directory.
+                </li>
+                <li>
+                    If the file is found, it is executed, and the shell prints its outpout.
+                </li>
+                <li>
+                    If the file is not found, the shell is then looking for the
+                    <code class="s">ls</code>
+                    executable file in the
+                    <code class="s">/usr/sbin</code> directory.
+                </li>
+                <li>And so on and so forth... up to the last directory.</li>
+            </ul>
+            <p>
+                Therefore, the associated file of the <code class="s">ls</code>
+                command is somewhere in one of these directories.
+                We will see later on in this practical how to find
+                the exact location of a command.
+            </p>
+            <h3 id="head_1011">The Aliases</h3>
+            <p>
+                In fact, an <strong>alias</strong> is not a command in itself.
+                It is used to define new commands by replacing
+                one or several commands and their options by a single word.
+                In other words, it is a way to abbreviate a long command,
+                which is often used, to a short command
+                (remember? the less you type,
+                the more productive you are,
+                the fewer mistakes you make).
+                Some operating systems have predefined aliases
+                but you can also define your own.
+                To print the defined aliases just execute the
+                <code class="s">alias</code> command.
+            </p>
+            <pre id="ls_alias_file" class=" language-bash"><code class=" language-bash">$ <span class="token function">alias</span>
+<span class="token function">alias</span> egrep<span class="token operator">=</span><span class="token string">'egrep --color=auto'</span>
+<span class="token function">alias</span> fgrep<span class="token operator">=</span><span class="token string">'fgrep --color=auto'</span>
+<span class="token function">alias</span> grep<span class="token operator">=</span><span class="token string">'grep --color=auto'</span>
+<span class="token function">alias</span> l<span class="token operator">=</span><span class="token string">'ls -CF'</span>
+<span class="token function">alias</span> la<span class="token operator">=</span><span class="token string">'ls -A'</span>
+<span class="token function">alias</span> ll<span class="token operator">=</span><span class="token string">'ls -alF'</span>
+<span class="token function">alias</span> ls<span class="token operator">=</span><span class="token string">'ls --color=auto'</span></code></pre>
+            <p>
+                As you can see on the above example, an
+                <code class="s">ls</code> alias is defined,
+                but as said previously,
+                <code class="s">ls</code> is already a command.
+            </p>
+            <p>
+                First, you have to know that by default, the
+                <code class="s">ls</code> command
+                prints its result with no colors.
+                To enable the colors, you have to add its
+                <code class="s">--color=auto</code> option.
+                But it is cumbersome to type this option every time you need the
+                <code class="s">ls</code> command.
+                So it is much more convenient to define an alias that replaces the
+                <code class="s">"ls"</code>
+                occurrence by the
+                <code class="s">"ls&nbsp;--color=auto"</code> occurrence.
+            </p>
+            <p>
+                <mark>
+                    Aliases take precedence over all types of commands.
+                </mark>
+            </p>
+            <p>
+                For example, when you type
+                <code class="s">ls -lh</code> in the command prompt,
+                the shell starts by checking if an alias is associated with this command.
+                In our case, it replaces <code class="s">ls</code> by
+                <code class="s">ls&nbsp;--color=auto</code>.
+                So the final command (the one that is executed) is:
+                <code class="s">ls&nbsp;--color=auto&nbsp;-lh</code>
+            </p>
+            <p>
+                You can define your own aliases by using the following syntax:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">alias</span> name_of_the_alias<span class="token operator">=</span><span class="token string">'command_to_be_executed'</span></code></pre>
+            <p>
+                For instance:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">alias</span> my_ls<span class="token operator">=</span><span class="token string">'ls -lFh'</span>
+$ <span class="token function">alias</span>
+<span class="token function">alias</span> egrep<span class="token operator">=</span><span class="token string">'egrep --color=auto'</span>
+<span class="token function">alias</span> fgrep<span class="token operator">=</span><span class="token string">'fgrep --color=auto'</span>
+<span class="token function">alias</span> grep<span class="token operator">=</span><span class="token string">'grep --color=auto'</span>
+<span class="token function">alias</span> l<span class="token operator">=</span><span class="token string">'ls -CF'</span>
+<span class="token function">alias</span> la<span class="token operator">=</span><span class="token string">'ls -A'</span>
+<span class="token function">alias</span> ll<span class="token operator">=</span><span class="token string">'ls -alF'</span>
+<span class="token function">alias</span> ls<span class="token operator">=</span><span class="token string">'ls --color=auto'</span>
+<span class="token function">alias</span> my_ls<span class="token operator">=</span><span class="token string">'ls -lFh'</span>
+$ my_ls
+total 96K
+-rwxrwxr-x 1 david david 8,5K may   17 23:23 a.out*
+-rw-rw-r-- 1 david david  101 may   17 23:23 facto.c
+-rw-rw-r-- 1 david david   18 may   17 23:15 facto.h
+-rw-rw-r-- 1 david david 1,3K may   17 23:21 facto.o
+drwxrwxr-x 2 david david 4,0K may   21 18:10 lib/
+-rw-rw-r-- 1 david david   90 may   17 23:21 main.c
+-rw-rw-r-- 1 david david   38 may   17 23:18 main.h
+-rw-rw-r-- 1 david david 1,6K may   17 23:20 main.o</code></pre>
+            <p>
+                To remove an alias definition, you can use the
+                <code class="s">unalias</code> command
+                followed by the name of the alias.
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">unalias</span> my_l</code><code class=" language-none">s
+$ my_ls
+my_ls: command not found</code></pre>
+            <h3 id="head_1012">The Built-in Commands</h3>
+            <p>
+                A <strong>built-in command</strong> belongs to the command interpreter
+                (i.e. the shell).
+                These commands can be slightly different from one shell to another.
+                When a built-in command is executed,
+                no external program is invoked by the interpreter.
+            </p>
+            <p>
+                So far, we have already seen two built-in commands:
+                <code class="s">cd</code> and <code class="s">pwd</code>.
+            </p>
+            <p>
+                But how can we know if a command is an alias, a built-in command
+                or an executable file?
+            </p>
+            <h3 id="head_1013">Determining a Command Type</h3>
+            <p>
+                To determine whether a command is an alias, a built-in command
+                or an executable file, you can use the <code class="s">type -a</code>
+                instruction followed by the command name.
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">type</span> -</code><code class=" language-none">a cd
+cd is a shell builti</code><code class=" language-bash">n
+$ <span class="token function">type</span> -a l</code><code class=" language-none">s
+ls is aliased to `ls --color=auto'
+ls is /bin/l</code><code class=" language-bash">s
+$ <span class="token function">type</span> -a pw</code><code class=" language-none">d
+pwd is a shell builtin
+pwd is /bin/pw</code><code class=" language-bash">d
+$ <span class="token function">type</span> -a typ</code><code class=" language-none">e
+type is a shell builtin</code></pre>
+            <p>
+                From the above example, we can deduce that:
+            </p>
+            <ul>
+                <li>
+                    The <code class="s">cd</code> command is built-in.
+                </li>
+                <li>
+                    The <code class="s">ls</code> command is both
+                    an alias and an executable file.
+                    This executable file is in the <code class="s">/bin</code> directory.
+                </li>
+                <li>
+                    The <code class="s">pwd</code> command is both
+                    a built-in command and an executable file.
+                    This executable file is in the <code class="s">/bin</code> directory.
+                </li>
+                <li>
+                    The <code class="s">type</code> command is built-in.
+                </li>
+            </ul>
+            <p>
+                When a command has several types, it is executed in the following
+                order of precedence:
+            </p>
+            <ol>
+                <li>The aliases.</li>
+                <li>The built-in commands.</li>
+                <li>The executable files.</li>
+            </ol>
+            <p>
+                The case of the <code class="s">ls</code> command,
+                which is an alias and an executable file,
+                has already been mentioned in a
+                <a href="#ls_alias_file">previous section</a>.
+            </p>
+            <p>
+                But what about the <code class="s">pwd</code> command,
+                which is a built-in command and an executable file.
+                So, when you enter this command, the interpreter follows the following steps:
+            </p>
+            <ol>
+                <li>
+                    It checks if <code class="s">pwd</code>
+                    is an alias and in this case, it is not.
+                </li>
+                <li>
+                    It checks if <code class="s">pwd</code>
+                    is a built-in command and in this case, it is.
+                    So it executes the command and prints the result.
+                </li>
+            </ol>
+            <p>
+                In fact, the <code class="s">/bin/pwd</code> executable file
+                is never executed in this context.
+                So what is it for?
+                In some contexts, this file can be useful,
+                but for now you can ignore it.
+                At your level, you can assume that if a command is both
+                a built-in command and an executable file,
+                only the built-in command is taken into account,
+                and the executable file is always ignored.
+            </p>
+            <p>
+                <mark>
+                    You have to bear in mind that all executable files that are
+                    associated with a command must be located in a directory
+                    specified in the <var>$PATH</var> variable.
+                </mark>
+            </p>
+            <p>
+                For instance, the <code class="s">ls</code> file is in the
+                <code class="s">/bin</code> directory and this directory
+                is specified in the <var>$PATH</var> variable
+                (the last one).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> <span class="token variable">$PATH</span>
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code></pre>
+            <p>
+                Now that you know how to determine a command type,
+                let us see how we can find the documentation of a command.
+            </p>
+            <h2 id="head_1014">Documentation</h2>
+            <h3 id="head_1015">The Executable Files</h3>
+            <h4 id="head_1016">The --help Option</h4>
+            <p>
+                Most commands that are associated with executable files provide
+                the <code class="s">--help</code> option that prints
+                some brief documentation about the command.
+            </p>
+            <p>
+                For instance, let us execute the
+                <code class="s">ls --help</code> command.
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">ls</span> --hel</code><code class=" language-none">p
+Usage: ls [OPTION]... [FILE]...
+List information about the FILEs (the current directory by default).
+Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -a, --all                  do not ignore entries starting with .
+  -A, --almost-all           do not list implied . and ..
+      --author               with -l, print the author of each fil</code><code class=" language-bash">e
+<span class="token comment"># ...snip...</span>
+  -</code><code class=" language-none">f                         do not sort, enable -aU, disable -ls --color
+  -F, --classify             append indicator (one of */=&gt;@|) to entries
+
+  -h, --human-readable       with -l and/or -s, print human readable size</code><code class=" language-bash">s
+<span class="token comment"># ...snip...</span>
+  -</code><code class=" language-none">k, --kibibytes            default to 1024-byte blocks for disk usage
+  -l                         use a long listing format
+  -L, --dereference          when showing file information for a symbolic
+                             link, show information for the file the link
+                             references rather than for the link itsel</code><code class=" language-bash">f
+<span class="token comment"># ...snip...</span>
+U</code><code class=" language-none">sing color to distinguish file types is disabled both by default and
+with --color=never.  With --color=auto, ls emits color codes only when
+standard output is connected to a terminal.  The LS_COLORS environment
+variable can change the settings.  Use the dircolors command to set it.
+
+Exit status:
+ 0  if OK,
+ 1  if minor problems (e.g., cannot access subdirectory),
+ 2  if serious trouble (e.g., cannot access command-line argument).
+
+GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils&gt;
+Full documentation at: &lt;http://www.gnu.org/software/coreutils/ls&gt;
+or available locally via: info '(coreutils) ls invocation'</code></pre>
+            <p>
+                For the sake of convenience,
+                only a part of the command output has been displayed.
+                Each line starting with the
+                <code class="s">#&nbsp;...&nbsp;snip&nbsp;...</code>
+                occurrence means that the text has been cut.
+                But this is enough to see that we can find a brief description
+                of the command and its options.
+                We can recognize the
+                <code class="s">-a</code>,
+                <code class="s">-F</code>,
+                <code class="s">-h</code> and
+                <code class="s">-l</code>
+                short options we already know as well as their long versions
+                (when they are available).
+                Execute this command on your terminal to see the complete result.
+            </p>
+            <p>
+                But sometimes this option does not provide enough information,
+                so we can consult the manual pages as well,
+                which are commonly called <strong>the man pages</strong>.
+            </p>
+            <h4 id="head_1017">The Man Pages</h4>
+            <p>
+                A <strong>man page</strong> is a page of manuel
+                that contains documentation about commands.
+                To display a man page, type the <code class="s">man</code>
+                command followed by the name of a command. For instance:
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">man</span> l</code><code class=" language-none">s</code></pre>
+            <p>
+                It displays the documentation of the
+                <code class="s">ls</code> command.
+            </p>
+            <p>
+                <mark>
+                    A man page is always a single page.
+                </mark>
+            </p>
+            <p>
+                You can navigate through this page by using the arrow keys and the space bar.
+                To get more information about moving, searching and jumping,
+                press <kbd>h</kbd>.
+            </p>
+            <p>
+                Press <kbd>q</kbd> to exit the page.
+            </p>
+            <p>
+                Man pages can also be found on the Internet.
+                Many websites display them freely.
+                For instance, <strong>Debian</strong>, which is a famous Linux distribution,
+                puts at your disposal all its man pages.
+                Click on the link below to display the man page of
+                the <code class="s">ls</code> command.
+                It should be similar to the one you displayed previously on your terminal.
+                Several languages are also available.
+            </p>
+            <p>
+                <a href="https://manpages.debian.org/stretch/coreutils/ls.1.en.html">man ls</a>
+            </p>
+            <p>
+                The following link allows you to display any command documentation.
+            </p>
+            <p>
+                <a href="https://manpages.debian.org/">https://manpages.debian.org/</a>
+            </p>
+            <p>
+                Note that the <code class="s">ls</code> man page starts with
+                <code class="s">LS(1)</code>.
+                What does this "(1)" mean?
+                It refers to the section of the manual.
+                The man pages have eight sections numbered from 1 to 8.
+                The first section (section 1) is about executable programs or shell commands.
+                Most commands we are going to use in this practical belong to the first section.
+                For the time being, you do not have to know the other sections,
+                but if you are interested, you can have a view of all sections by typing the
+                <code class="s">man man</code> command (or by clicking on this link:
+                <a href="https://manpages.debian.org/stretch/man-db/man.1.en.html">man man</a>).
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">man</span> m</code><code class=" language-none">an</code></pre>
+            <h4 id="head_1018">The Info Pages</h4>
+            <p>
+                The <code class="s">info</code> command is another way
+                to find some documentation about commands.
+                Usually the info pages contain more recent and more detailed information
+                than the man pages.
+            </p>
+            <p>
+                <mark>
+                    Unlike a man page, an info page can be made up of multiple pages.
+                    You can navigate through all these pages by using links.
+                </mark>
+            </p>
+            <p>
+                But unfortunately, it is not really convenient
+                to browse through info pages using a terminal.
+                Try and see for yourselves.
+                For instance type the following command:
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">info</span> l</code><code class=" language-none">s</code></pre>
+            <p>
+                For the time being, the man pages are enough for you.
+                So, do not worry if you get lost while browsing through info pages.
+            </p>
+            <h3 id="head_1019">The Built-in Commands</h3>
+            <p>
+                You cannot use <code class="s">man</code> to get information
+                about a single built-in command.
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">man</span> c</code><code class=" language-none">d
+No manual entry for cd</code></pre>
+            <p>
+                Instead, you have to use the <code class="s">help</code> command.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">help</span> c</code><code class=" language-none">d
+cd: cd [-L|[-P [-e]] [-@]] [dir]
+    Change the shell working directory.
+
+    Change the current directory to DIR.  The default DIR is the value of the
+    HOME shell variable</code><code class=" language-bash"><span class="token keyword">.</span>
+
+<span class="token comment"># ...snip...</span></code></pre>
+            <p>
+                You can also get information about all the built-in commands by typing:
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">man</span> b</code><code class=" language-none">uiltins</code></pre>
+            <h3 id="head_1020">How to Find Specific Commands</h3>
+            <p>
+                Now, we know some commands and how to find documentation about them.
+                However, what do you do when you want to do something,
+                but do not have a clue about which to use?
+                That's when the <code class="s">apropos</code> command comes in handy.
+            </p>
+            <p>
+                For instance, let us assume that we want to find
+                a command that displays a simple calendar of the year 2017.
+                So, let us try the following command:
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">apropos</span> calenda</code><code class=" language-none">r
+cal (1)              - displays a calendar and the date of Easter
+calendar (1)         - reminder service
+ncal (1)             - displays a calendar and the date of Easter
+zshcalsys (1)        - zsh calendar system</code></pre>
+            <p>
+                We have four results. The first one seems right. Let us try it on.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cal</span>
+     June 2018
+di lu ma me je ve sa
+                1  2
+ 3  4  5  6  7  8  9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30</code></pre>
+            <p>
+                It almost works!
+                Only the current month is displayed.
+                So now, if we want more detail about this command,
+                we can use the manual.
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">man</span> c</code><code class=" language-none">al</code></pre>
+            <p>
+                Once in the man page, type <code class="s">/year</code>
+                and press the <kbd>Enter</kbd> key to highlight all the occurrences of
+                <code class="s">year</code>.
+                Then press <kbd>n</kbd> to jump to the next occurrence until you find
+                an option that can be useful for our purpose.
+                Finally, we can see that the <code class="s">-y</code> option
+                can be used to display a calendar for a specific year.
+                So let us try it with the year 2017.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cal</span> -y 2017
+                            2017
+      January               February                March
+di lu ma me je ve sa  di lu ma me je ve sa  di lu ma me je ve sa
+ 1  2  3  4  5  6  7            1  2  3  4            1  2  3  4
+ 8  9 10 11 12 13 14   5  6  7  8  9 10 11   5  6  7  8  9 10 11
+15 16 17 18 19 20 21  12 13 14 15 16 17 18  12 13 14 15 16 17 18
+22 23 24 25 26 27 28  19 20 21 22 23 24 25  19 20 21 22 23 24 25
+29 30 31              26 27 28              26 27 28 29 30 31
+
+
+       April                  May                   June
+di lu ma me je ve sa  di lu ma me je ve sa  di lu ma me je ve sa
+                   1      1  2  3  4  5  6               1  2  3
+ 2  3  4  5  6  7  8   7  8  9 10 11 12 13   4  5  6  7  8  9 10
+ 9 10 11 12 13 14 15  14 15 16 17 18 19 20  11 12 13 14 15 16 17
+16 17 18 19 20 21 22  21 22 23 24 25 26 27  18 19 20 21 22 23 24
+23 24 25 26 27 28 29  28 29 30 31           25 26 27 28 29 30
+30
+
+        July                 August              September
+di lu ma me je ve sa  di lu ma me je ve sa  di lu ma me je ve sa
+                   1         1  2  3  4  5                  1  2
+ 2  3  4  5  6  7  8   6  7  8  9 10 11 12   3  4  5  6  7  8  9
+ 9 10 11 12 13 14 15  13 14 15 16 17 18 19  10 11 12 13 14 15 16
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  17 18 19 20 21 22 23
+23 24 25 26 27 28 29  27 28 29 30 31        24 25 26 27 28 29 30
+30 31
+
+      October               November              December
+di lu ma me je ve sa  di lu ma me je ve sa  di lu ma me je ve sa
+ 1  2  3  4  5  6  7            1  2  3  4                  1  2
+ 8  9 10 11 12 13 14   5  6  7  8  9 10 11   3  4  5  6  7  8  9
+15 16 17 18 19 20 21  12 13 14 15 16 17 18  10 11 12 13 14 15 16
+22 23 24 25 26 27 28  19 20 21 22 23 24 25  17 18 19 20 21 22 23
+29 30 31              26 27 28 29 30        24 25 26 27 28 29 30</code></pre>
+            <p>It works!</p>
+            <p>
+                This time, we were lucky because the <code class="s">calendar</code>
+                keyword was enough to find the command we needed.
+                We had to choose between four possibilities only, and the first one was right.
+            </p>
+            <p>
+                But sometimes, dozens of possibilities, if not hundreds, are displayed.
+                So it can be difficult to choose the right command.
+                To minimize the number of results, you can filter them with more keywords.
+                For instance, we wanted to find a command that displays a calendar.
+                So, <code class="s">display</code> and <code class="s">calendar</code> seem good.
+                Let us try these two keywords. 
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">apropos</span> display calendar</code></pre>
+            <p>
+                But this time, we have around two hundred results.
+                What happened?
+                By default, the <code class="s">apropos</code> command
+                displays commands that match any keyword.
+                In other words, it displays all the commands that match the
+                <code class="s">display</code> keyword plus all the
+                commands that match the <code class="s">calendar</code>
+                keyword.
+            </p>
+            <p>
+                To display only commands that match all the supplied keywords,
+                we have to use the <code class="s">-a</code> option.
+                (Have a look at the <code class="s">apropos</code>
+                man page to find this on your own.)
+            </p>
+            <p>
+                So, let us try again.
+            </p>
+            <pre class="  language-none"><code class=" language-bash">$ <span class="token function">apropos</span> -a display calenda</code><code class=" language-none">r
+cal (1)              - displays a calendar and the date of Easter
+ncal (1)             - displays a calendar and the date of Easter</code></pre>
+            <p>
+                So now, we can choose between two results only.
+                At first glance, they look identical, but if you check their man pages,
+                you could find some small differences
+                (but it is not the purpose of this practical).
+            </p>
+            <p>
+                Now that you know how to find the command you need,
+                let us see some other useful commands.
+            </p>
+            <h2 id="head_1021">Other Useful Commands</h2>
+            <h3 id="head_1022">Creating Empty Files and Directories</h3>
+            <h4 id="head_1023">The <code>touch</code> Command</h4>
+            <p>
+                The <code class="s">touch</code> command allows you
+                to create empty files.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span>
+index.html
+$ <span class="token function">touch</span> style.css
+$ <span class="token function">ls</span>
+index.html  style.css
+$ <span class="token function">touch</span> main.js lib.js
+$ <span class="token function">ls</span> -lh
+total 112K
+-rw-rw-r-- 1 david david 77K june  25 23:11 index.html
+-rw-rw-r-- 1 david david   0 june  25 23:12 lib.js
+-rw-rw-r-- 1 david david   0 june  25 23:12 main.js
+-rw-rw-r-- 1 david david   0 june  25 23:11 style.css</code></pre>
+            <p>
+                Sometimes it can be convenient to create empty files.
+                For example, you will occasionally need to create one or
+                several files for testing a command or a program.
+            </p>
+            <p>
+                You can also use the <code class="s">touch</code>
+                command on existing files.
+                It will update the access and modification times of the files
+                to the current time.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -lh
+total 112K
+-rw-rw-r-- 1 david david 77K june  25 23:11 index.html
+-rw-rw-r-- 1 david david   0 june  25 23:12 lib.js
+-rw-rw-r-- 1 david david   0 june  25 23:12 main.js
+-rw-rw-r-- 1 david david   0 june  25 23:11 style.css
+$ <span class="token function">touch</span> index.html lib.js
+$ <span class="token function">ls</span> -lh
+total 112K
+-rw-rw-r-- 1 david david 77K june  25 23:36 index.html
+-rw-rw-r-- 1 david david   0 june  25 23:36 lib.js
+-rw-rw-r-- 1 david david   0 june  25 23:12 main.js
+-rw-rw-r-- 1 david david   0 june  25 23:11 style.css</code></pre>
+            <h4 id="head_1024">The <code>mkdir</code> Command</h4>
+            <p>
+                The <code class="s">mkdir</code> command allows you
+                to create directories if they do not already exist.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">mkdir</span> first_dir
+$ <span class="token function">ls</span> -F
+first_dir/
+$ <span class="token function">mkdir</span> second_dir third_dir fourth_dir
+$ <span class="token function">ls</span> -F
+first_dir/  fourth_dir/  second_dir/  third_dir/
+$ <span class="token function">mkdir</span> second_dir
+mkdir: cannot create directory ‘second_dir’: File exists</code></pre>
+            <h3 id="head_1025">Removing Files and Directories</h3>
+            <h4 id="head_1026">The <code>rm</code> Command (Removing Files)</h4>
+            <p>
+                The <code class="s">rm</code> command allows you
+                to remove files.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">touch</span> file1 file2 file3 file4 file5
+$ <span class="token function">ls</span>
+file1  file2  file3  file4  file5
+$ <span class="token function">rm</span> file2
+$ <span class="token function">ls</span>
+file1  file3  file4  file5
+$ <span class="token function">rm</span> file1 file3 file5
+$ <span class="token function">ls</span>
+file4</code></pre>
+            <p>
+                <mark>
+                    <b>WARNING!</b> the shell does not have any trash can.
+                    That means after you delete files with the
+                    <code class="s">rm</code>
+                    command, they will be permanently deleted.
+                    Therefore, you have to be very careful when using this command.
+                </mark>
+            </p>
+            <h4 id="head_1027">The <code>rmdir</code> Command (Removing Empty Directories)</h4>
+            <p>
+                The <code class="s">rmdir</code> command allows you
+                to remove empty directories only.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">mkdir</span> dir1 dir2 dir3 dir4 dir5
+$ <span class="token function">ls</span> -F
+dir1/  dir2/  dir3/  dir4/  dir5/
+$ <span class="token function">rmdir</span> dir4
+$ <span class="token function">ls</span> -F
+dir1/  dir2/  dir3/  dir5/
+$ <span class="token function">rmdir</span> dir1 dir3 dir5
+$ <span class="token function">ls</span> -F
+dir2/
+$ <span class="token function">touch</span> dir2/file.txt
+$ <span class="token function">ls</span> dir2
+file.txt
+$ <span class="token function">rmdir</span> d</code><code class=" language-none">ir2
+rmdir: failed to remove 'dir2': Directory not empt</code><code class=" language-bash">y
+$ <span class="token function">ls</span> -F
+dir2/</code></pre>
+            <h4 id="head_1028">The <code>rm -rf</code> Command (Removing Non-Empty Directories)</h4>
+            <p>
+                In order to remove non-empty directories,
+                you can use the <code class="s">rm</code> command with the
+                couple of <code class="s">-r</code> and
+                <code class="s">-f</code> options.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -F
+dir2/
+$ <span class="token function">ls</span> dir2
+file.txt
+$ <span class="token function">rm</span> -rf dir2</code></pre>
+            <p>
+                The equivalent command using the long options is:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">rm</span> --recursive --force dir2</code></pre>
+            <p>
+                <mark>
+                    As said before, this command deletes files permanently.
+                    So, be careful when using it.
+                </mark>
+            </p>
+            <h3 id="head_1029">Downloading Files</h3>
+            <h4 id="head_1030">The <code>wget</code> Command</h4>
+            <p>
+                Among other things, the <code class="s">wget</code>
+                command allows you to download any file on the Internet.
+                Its syntax is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">wget</span> url_of_the_file_to_download</code></pre>
+            <p>It downloads the file in the current directory.</p>
+            <p>
+                For instance, go to your home directory.
+                Create the <code class="s">pw_01</code> directory.
+                Download the <code class="s">example.tar.bz2</code>
+                compressed file in the <code class="s">pw_01</code> directory.
+                To do so, type the following command.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span>
+$ <span class="token function">mkdir</span> pw_01
+$ <span class="token function">cd</span> pw_01
+$ <span class="token function">wget</span> http://www.debug-pro.com/epita/prog/s3/pw/pw_01_cli/example.tar.bz2
+$ <span class="token function">ls</span>
+dir_structexample.tar.bz2</code></pre>
+            <p>
+                Try this command on your own to download some other files
+                of your choice on the Internet.
+            </p>
+            <p>
+                The <code class="s">wget</code> command can do much more
+                than downloading a single file.
+                It can download web pages and full websites.
+                With its <code class="s">-c</code> option,
+                it can also resume downloads that had failed in
+                the middle of the downloading process
+                (you do not have to restart the download from scratch).
+                We are not going to use all of these features in this practical
+                (downloading single files will be enough for what we have to do),
+                but if you want to know more about this command,
+                do not hesitate to read its man page.
+            </p>
+            <h3 id="head_1031">Decompressing and Compressing Files</h3>
+            <h4 id="head_1032">The <code>tar</code> Command</h4>
+            <p>
+                A common way to decompress or compress files on Linux is to use the
+                <code class="s">tar</code> command with a specific 
+                lossless data-compression algorithm.
+                Actually, the <code class="s">tar</code> command
+                was initially designed to manipulate <strong>archives</strong>,
+                which are collections of mutiple files joined together in a single file
+                (often called <strong>tarball</strong>).
+                The file extension of such a file is usually
+                <code class="s">.tar</code>.
+            </p>
+            <p>
+                An archive is not necessarily compressed, but the
+                <code class="s">tar</code> command is also able to
+                invoke other programs that create and read compressed archives
+                by using a great variety of algorithms.
+                On Linux, one of the most common used
+                file-compression algorithm is <strong>bzip2</strong>.
+                The file extension of such a file is usually
+                <code class="s">.tar.bzip2</code>.
+            </p>
+            <p>
+                In this practical, we are going to see how to list archive contents
+                and how to decompress and compress
+                files using the <code class="s">bzip2</code> algorithm only.
+                If you want to know how to do other types of archive manipulation
+                or how to use different compression algorithms you should read
+                their man or info pages.
+            </p>
+            <h4 id="head_1033">Decompressing <code>bzip2</code> Files</h4>
+            <p>
+                Let us decompress the file you have downloaded in the previous section:
+                <code class="s">example.tar.bzip2</code>.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01
+$ <span class="token function">ls</span>
+example.tar.bz2
+$ <span class="token function">tar</span> -jxvf example.tar.bz2
+example/image/
+<span class="token comment"># ...snip...</span>
+example/README
+example/AUTHORS
+example/
+$ <span class="token function">ls</span> -F
+example/ example.tar.bz2</code></pre>
+            <p>
+                Let us examine the <code class="s">tar -jxvf</code> command,
+                which decompresses a bzip2-compressed tarball.
+                There are four options:
+            </p>
+            <ul>
+                <li>
+                    The <code class="s">-j</code> option specifies
+                    that the <strong>bzip2</strong>-compression algorithm should be used.
+                </li>
+                <li>
+                    The <code class="s">-x</code> option means that
+                    we want to <strong>extract</strong> files from an archive.
+                </li>
+                <li>
+                    The <code class="s">-v</code> option enables the
+                    <strong>verbose</strong> mode.
+                    That is, it prints all the files that are being processed.
+                    This option can be removed, but it is usually convenient to see
+                    what files have just been extracted.
+                </li>
+                <li>
+                    The <code class="s">-f</code> option lets you specify
+                    the <strong>filename</strong> of the archive
+                    (<code class="s">example.tar.bz2</code> in the above example).
+                </li>
+            </ul>
+            <p>
+                The equivalent command using the long options is:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tar</span> --bzip2 --extract --verbose --file example.tar.bz2</code></pre>
+            <p>It is easier to remember but much more cumbersome to key in.</p>
+            <p>
+                Once executed, we can see that a new folder has been created
+                (i.e. <code class="s">example</code>).
+                It contains all the extracted files.
+                If you no longer need it, you can delete the compressed archive.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">rm</span> example.tar.bz2
+$ <span class="token function">ls</span> -F
+example/</code></pre>
+            <h4 id="head_1034">Compressing Directories with <code>bzip2</code></h4>
+            <p>
+                Go into the <code class="s">example</code> directory
+                you have extracted in the previous section and list its contents.
+                You should find a <code class="s">compress_me</code> directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example
+$ <span class="token function">ls</span> -F
+AUTHORS  compress_me/  image/  test/  README  txt/</code></pre>
+            <p>
+                Browse into the <code class="s">compress_me</code> directory
+                in order to determine its structure
+                (e.g. you can use the <code class="s">tree</code> command).
+                It should look like this:
+            </p>
+            <p class="img">
+                <img src="The%20Command-Line%20Interface_fichiers/compress_me.svg" alt="compress_me Directory Hierarchy">
+            </p>
+            <p>
+                Go back into the <code class="s">example</code> directory.
+            </p>
+            <p>
+                Now, we are going to compress the
+                <code class="s">compress_me</code> directory
+                and call the output compressed file
+                <code class="s">compress_me.tar.bz2</code>.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example
+$ <span class="token function">ls</span> -F
+AUTHORS  compress_me/  image/  test/  README  txt/
+$ <span class="token function">tar</span> -jcvf compress_me.tar.bz2 compress_me/
+compress_me/
+compress_me/javascript/
+compress_me/javascript/lib/
+compress_me/javascript/lib/string.js
+compress_me/javascript/lib/array.js
+compress_me/javascript/main.js
+compress_me/css/
+compress_me/css/garden.css
+compress_me/css/sky.css
+compress_me/index.html
+$ <span class="token function">ls</span> -F
+AUTHORS  compress_me/  compress_me.tar.bz2  image/  test/  README  txt/</code></pre>
+            <p>
+                Let us examine the <code class="s">tar -jcvf</code> command,
+                which compresses a folder into a bzip2 tarball.
+                There are four options:
+            </p>
+            <ul>
+                <li>
+                    The <code class="s">-j</code> option specifies
+                    that the <strong>bzip2</strong>-compression algorithm should be used.
+                </li>
+                <li>
+                    The <code class="s">-c</code> option means that
+                    we want to <strong>create</strong> a new archive.
+                </li>
+                <li>
+                    The <code class="s">-v</code> option enables the
+                    <strong>verbose</strong> mode.
+                    That is, it prints all the files that are being processed.
+                    This option can be removed, but it is usually convenient to see
+                    what files have just been compressed.
+                </li>
+                <li>
+                    The <code class="s">-f</code> option lets you specify
+                    the <strong>filename</strong> of the archive
+                    (<code class="s">compress_me.tar.bz2</code>
+                    in the above example).
+                </li>
+            </ul>
+            <p>
+                The equivalent command using the long options is:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tar</span> --bzip2 --create --verbose --file compress_me.tar.bz2 compress_me/</code></pre>
+            <p>
+                Comparing the decompression and compression instructions,
+                we can notice that only the second option has changed.
+                The <code class="s">-x</code> option
+                (<code class="s">--extract</code>)
+                has been replaced by the
+                <code class="s">-c</code> option
+                (<code class="s">--create</code>).
+                For the compression, we also have to specify the directory we want to compress
+                as a parameter.
+            </p>
+            <p>
+                Once executed, the <code class="s">compress_me.tar.bz2</code>
+                file has been created.
+                It contains all the contents of the
+                <code class="s">compress_me</code> directory.
+                If you no longer need it, you can delete this directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -F
+AUTHORS  compress_me/  compress_me.tar.bz2  image/  test/  README  txt/
+$ <span class="token function">rm</span> -rf compress_me
+$ <span class="token function">ls</span> -F
+AUTHORS  compress_me.tar.bz2  image/  test/  README  txt/</code></pre>
+            <h4 id="head_1035">Listing Archive Contents</h4>
+            <p>
+                Sometimes, it can be useful to list the contents of an archive
+                in order to know what files it contains.
+                To do so, use the <code class="s">-t</code> and
+                <code class="s">-f</code> options.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token function">tar</span> -tf compress_me.tar.bz2
+compress_me/
+compress_me/javascript/
+compress_me/javascript/lib/
+compress_me/javascript/lib/string.js
+compress_me/javascript/lib/array.js
+compress_me/javascript/main.js
+compress_me/css/
+compress_me/css/garden.css
+compress_me/css/sky.css
+compress_me/index.html</code></pre>
+            <p>
+                The equivalent command using the long options is:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tar</span> --list --file compress_me.tar.bz2</code></pre>
+            <h3 id="head_1036">Printing on the Terminal</h3>
+            <h4 id="head_1037">The <code>echo</code> Command</h4>
+            <p>
+                The <code class="s">echo</code> command can be used
+                to print some text on the terminal.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> Hello World<span class="token operator">!</span>
+Hello World<span class="token operator">!</span>
+$ <span class="token keyword">echo</span> I am David
+I am David</code></pre>
+            <p>
+                It can also be used to print the contents of a variable.
+                For the time being the sole variable you know is the
+                <var>PATH</var> environment variable.
+                The name of a variable must be prefixed with the <code class="s">$</code> character.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> <span class="token variable">$PATH</span>
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code></pre>
+            <h4 id="head_1038">The <code>cat</code> Command</h4>
+            <p>
+                The <code class="s">cat</code> command can be used to print the contents of text files.
+                Go to the <code class="s">example</code> directory and print the contents
+                of the <code class="s">AUTHORS</code>
+                and <code class="s">README</code> files.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example
+$ <span class="token function">ls</span> -F
+AUTHORS  compress_me.tar.bz2 image/  test/  README  txt/
+$ <span class="token function">cat</span> AUTHORS
+David Bouchet
+$ <span class="token function">cat</span> README
+This directory contains some files and subdirectories
+that can be used as examples f</code><code class=" language-bash">or the first practical.</code></pre>
+            <p>
+                When the textual contents of a file is too large,
+                the <code class="s">cat</code> command is not really convenient.
+                For example, go to the <code class="s">example/txt</code> directory
+                and print the contents of the <code class="s">long_text.txt</code> file.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/txt/
+$ <span class="token function">cat</span> long_text.txt
+This f</code><code class=" language-bash">ile contains 200 lines.
+Line 2
+Line 3
+Line 4
+Line 5
+<span class="token comment"># ...snip...</span>
+Line 196
+Line 197
+Line 198
+Line 199
+This is the last line.</code></pre>
+            <p>
+                The text is so long that the terminal has scrolled down to the end of the file.
+                So, if you want to see the beginning of the text, you have to scroll everything up.
+                There are different ways to solve this problem.
+            </p>
+            <h4 id="head_1039">The <code>more</code> and <code>less</code> Commands</h4>
+            <p>
+                In order to display the contents of the
+                <code class="s">long_text.txt</code> file in a more convenient way,
+                you can use the <code class="s">more</code> command
+                to go through the file screenful by screenful.
+                You can press the <kbd>space</kbd> key to continue and the <kbd>q</kbd> key to quit.
+                So try the following command:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">more</span> long_text.txt</code></pre>
+            <p>
+                But the <code class="s">more</code> command is primitive and in some cases
+                it is better to use the <code class="s">less</code> command,
+                which has many more features.
+                Actually, you already know <code class="s">less</code> because the
+                <code class="s">man</code> command uses <code class="s">less</code>
+                to display its pages.
+            </p>
+            <p>
+                So, try the following command and navigate throughout the text as if you were
+                browsing a man page.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">less</span> long_text.txt</code></pre>
+            <h4 id="head_1040">The <code>head</code> and <code>tail</code> Commands</h4>
+            <p>
+                Sometimes, we just want to display the beginning or the end of a file.
+                To do so, we can use the <code class="s">head</code> and
+                <code class="s">tail</code> commands,
+                which display the first lines of a file or the last ones.
+                By default, ten lines will be displayed.
+                You can change this number by using the <code class="s">-n</code> option.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">head</span> long_text.txt
+This f</code><code class=" language-bash">ile contains 200 lines.
+Line 2
+Line 3
+Line 4
+Line 5
+Line 6
+Line 7
+Line 8
+Line 9
+Line 10
+$ <span class="token function">head</span> -n 3 long_text.txt
+This f</code><code class=" language-bash">ile contains 200 lines.
+Line 2
+Line 3
+$ <span class="token function">tail</span> long_text.txt
+Line 191
+Line 192
+Line 193
+Line 194
+Line 195
+Line 196
+Line 197
+Line 198
+Line 199
+This is the last line.
+$ <span class="token function">tail</span> -n 2 long_text.txt
+Line 199
+This is the last line.</code></pre>
+            <h3 id="head_1041">Copying, Moving and Renaming</h3>
+            <h4 id="head_1042">The <code>cp</code> Command</h4>
+            <p>
+                The <code class="s">cp</code> command can be used to copy files.
+                Here are some common examples:
+            </p>
+            <p>
+                You can copy one file into the same directory.
+                You have to change the filename.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/cp
+$ <span class="token function">ls</span> -F
+dir1/  dir2/  file1  file2  file3
+$ <span class="token function">cp</span> file1 new_file1
+$ <span class="token function">ls</span> -F
+dir1/  dir2/  file1  file2  file3  new_file1</code></pre>
+            <p>
+                You can copy one file into another directory.
+                You can keep the filename.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cp</span> file1 dir1
+$ <span class="token function">ls</span> -F dir1
+file1</code></pre>
+            <p>
+                Or you can change the filename.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cp</span> file2 dir1/new_file2
+$ <span class="token function">ls</span> -F dir1
+file1  new_file2</code></pre>
+            <p>
+                You can copy several files into another directory.
+                You have to keep the filenames.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cp</span> file1 file2 file3 dir2
+$ <span class="token function">ls</span> -F dir2
+file1  file2  file3</code></pre>
+            <p>
+                Thanks to its <code class="s">-r</code> option,
+                the <code class="s">cp</code> command can also be used to copy directories.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cp</span> -r dir1 dir2
+$ <span class="token function">ls</span> -F dir2
+dir1/  file1  file2  file3
+$ <span class="token function">ls</span> -F dir2/dir1
+file1  new_file2</code></pre>
+            <h4 id="head_1043">The <code>mv</code> Command</h4>
+            <p>
+                You can use the <code class="s">mv</code> command to move or rename
+                files and directories.
+                Here are some common examples:
+            </p>
+            <p>
+                You can rename files or directories.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/cp
+$ <span class="token function">ls</span> -F
+dir1/  dir2/  file1  file2  file3  new_file1
+$ <span class="token function">mv</span> new_file1 file4
+$ <span class="token function">ls</span> -F
+dir1/  dir2/  file1  file2  file3  file4
+$ <span class="token function">mv</span> dir1 dir0
+$ <span class="token function">ls</span> -F
+dir0/  dir2/  file1  file2  file3  file4</code></pre>
+            <p>
+                You can move files or directories into other directories.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -F dir0
+file1  new_file2
+$ <span class="token function">mv</span> file2 file3 dir0
+$ <span class="token function">ls</span> -F
+dir0/  dir2/  file1  file4
+$ <span class="token function">ls</span> -F dir0
+file1  file2  file3  new_file2
+$ <span class="token function">mv</span> dir2 dir0
+$ <span class="token function">ls</span> -F
+dir0/  file1  file4
+$ <span class="token function">ls</span> -F dir0
+dir2/  file1  file2  file3  new_file2</code></pre>
+            <h2 id="head_1044">Wildcard Characters</h2>
+            <p>
+                The <strong>wildcard characters</strong> allow you to specify several files
+                or directories by using only one parameter.
+            </p>
+            <p>
+                There are three wildcard characters:
+            </p>
+            <ul>
+                <li>The star wildcard: <code class="s">*</code></li>
+                <li>The question mark wildcard: <code class="s">?</code></li>
+                <li>The square brackets wildcard: <code class="s">[]</code></li>
+            </ul>
+            <h3 id="head_1045">The Star Wildcard</h3>
+            <p>
+                The <strong>star wildcard</strong> can represent any single character, any strings, or no character at all.
+                In other words, it can represent an undefined number of characters (starting from zero).
+            </p>
+            <p>
+                For instance, go to the <code class="s">~/pw_01/example/test/wildcard</code>
+                directory and try the following examples.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/wildcard
+$ <span class="token function">ls</span>
+image_1.jpg  photo_1.jpg  picture_1.jpg
+image_1.png  photo_1.png  picture_1.png
+image_2.jpg  photo_2.jpg  picture_2.jpg
+image_2.png  photo_2.png  picture_2.png
+image_3.jpg  photo_3.jpg  picture_3.jpg
+image_3.png  photo_3.png  picture_3.png
+$ <span class="token function">ls</span> image*
+image_1.jpg  image_2.jpg  image_3.jpg
+image_1.png  image_2.png  image_3.png
+$ <span class="token function">ls</span> *png
+image_1.png  photo_1.png  picture_1.png
+image_2.png  photo_2.png  picture_2.png
+image_3.png  photo_3.png  picture_3.png
+$ <span class="token function">ls</span> *2*
+image_2.jpg  photo_2.jpg  picture_2.jpg
+image_2.png  photo_2.png  picture_2.png</code></pre>
+            <ul>
+                <li>
+                    The second instruction (<code class="s">ls</code>)
+                    lists all the files in the directory.
+                </li>
+                <li>
+                    The third instruction (<code class="s">ls image*</code>)
+                    lists all the files that start with <code class="s">image</code>
+                    and end with any strings.
+                </li>
+                <li>
+                    The fourth instruction (<code class="s">ls *png</code>)
+                    lists all the files that start with any strings and ends with
+                    <code class="s">png</code>.
+                </li>
+                <li>
+                    The last instruction (<code class="s">ls *2*</code>)
+                    lists all the files that start with any strings
+                    followed by <code class="s">2</code>
+                    and end with any strings.
+                </li>
+            </ul>
+            <p>
+                Try different possible patterns on your own in order
+                to get the hang of it.
+            </p>
+            <h3 id="head_1046">The Question Mark Wildcard</h3>
+            <p>
+                The <strong>question mark wildcard</strong> represents any single character.
+                Here are some examples.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> photo_?.png
+photo_1.png  photo_2.png  photo_3.png
+$ <span class="token function">ls</span> ?????_1.jpg
+image_1.jpg  photo_1.jpg</code></pre>
+            <ul>
+                <li>
+                    The first instruction (<code class="s">ls photo_?.png</code>) lists all the files
+                    that start with <code class="s">photo_</code> followed by any single character
+                    and end with <code class="s">.png</code>.
+                </li>
+                <li>
+                    The second instruction (<code class="s">ls ?????_1.jpg</code>) lists all the files
+                    that start with any <b>five</b> characters followed by
+                    <code class="s">_1.jpg</code>.
+                </li>
+            </ul>
+            <h3 id="head_1047">The Square Brackets Wildcard</h3>
+            <p>
+                The <strong>square brackets wildcard</strong> represents any characters enclosed in the brackets.
+                These characters can be specified explicitly or by using a range of characters.
+                Try the following examples.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> image_<span class="token punctuation">[</span>13<span class="token punctuation">]</span>.png
+image_1.png  image_3.png
+$ <span class="token function">ls</span> image_<span class="token punctuation">[</span>1-3<span class="token punctuation">]</span>.png
+image_1.png  image_2.png  image_3.png</code></pre>
+            <ul>
+                <li>
+                    The first instruction (<code class="s">ls image_[13].png</code>)
+                    lists all the files that start with
+                    <code class="s">image_</code>
+                    followed by either the single digit 1
+                    or the single digit 3
+                    and ends with <code class="s">.png</code>.
+                </li>
+                <li>
+                    The second instruction (<code class="s">ls image_[1-3].png</code>)
+                    lists all the files that start with
+                    <code class="s">image_</code>
+                    followed by any single digit between 1 and 3 (i.e. 1, 2 or 3)
+                    and ends with <code class="s">.png</code>.
+                </li>
+            </ul>
+            <p>
+                Not only can a range of characters represent digits but also letters.
+                For instance:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">[0-9]</code> represents any single digit from 0 to 9.
+                </li>
+                <li>
+                    <code class="s">[a-z]</code> represents any single small letter from 'a' to 'z'.
+                </li>
+                <li>
+                    <code class="s">[A-Z]</code> represents any single capital letter from 'A' to 'Z'.
+                </li>
+                <li>
+                    <code class="s">[a-zA-Z]</code> represents any single small or capital letter.
+                </li>
+                <li>
+                    <code class="s">[a-zA-Z0-9]</code> represents any single small or capital letter or any digit.
+                </li>
+                <li>
+                    <code class="s">[a-cx]</code> represents either 'a', 'b', 'c' or 'x'.
+                </li>
+                <li>
+                    <code class="s">[a-cx-z]</code> represents either 'a', 'b', 'c', 'x', 'y' or 'z'.
+                </li>
+                <li>
+                    <code class="s">[a-cx-zm]</code> represents either 'a', 'b', 'c', 'x', 'y', 'z' or 'm'.
+                </li>
+                <li>
+                    <code class="s">[a-cx-zmp]</code> represents either 'a', 'b', 'c', 'x', 'y', 'z','m' or 'p'.
+                </li>
+            </ul>
+            <h3 id="head_1048">Combining Wildcards</h3>
+            <p>
+                We can also combine wildcards.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> ?<span class="token punctuation">[</span>mh<span class="token punctuation">]</span>*.png
+image_1.png  image_3.png  photo_2.png
+image_2.png  photo_1.png  photo_3.png</code></pre>
+            <p>
+                The above instruction lists all the files whose second letter is either 'm' or 'h'
+                and end with <code class="s">.png</code>.
+            </p>
+            <p>
+                <mark>
+                    Be careful when you use wildcards with the
+                    <code class="s">rm</code> command
+                    or any commands that affect files.
+                </mark>
+                For instance, it is not obvious what files the following instruction
+                is supposed to delete.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">rm</span> ?<span class="token punctuation">[</span>mh<span class="token punctuation">]</span>*<span class="token punctuation">[</span>13<span class="token punctuation">]</span>.png</code></pre>
+            <p>
+                Mistakes are bound to happen!
+            </p>
+            <p>
+                You have to keep in mind that the <code class="s">rm</code> instruction
+                deletes files permanently.
+            </p>
+            <p>
+                Here is a tip to check your command before executing it:
+                <mark>
+                    use the <code class="s">echo</code> command just before the full instuction.
+                </mark>
+                It will display the command you want to execute.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> <span class="token function">rm</span> ?<span class="token punctuation">[</span>mh<span class="token punctuation">]</span>*<span class="token punctuation">[</span>13<span class="token punctuation">]</span>.png
+<span class="token function">rm</span> image_1.png image_3.png photo_1.png photo_3.png</code></pre>
+            <p>
+                Then, check the command, and if everything is right, remove the
+                <code class="s">echo</code> command.
+            </p>
+            <p>
+                Now that you know more about wildcards, we can see
+                how to find files and directories in directory hierarchies.
+            </p>
+            <h2 id="head_1049">Finding Files and Directories</h2>
+            <h3 id="head_1050">The <code>find</code> Command</h3>
+            <p>
+                The <code class="s">find</code> command allows you to find
+                files in a directory hierarchy.
+                Its global syntax is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">find</span> <span class="token punctuation">[</span>STARTING-POINT<span class="token punctuation">]</span> <span class="token punctuation">[</span>EXPRESSION<span class="token punctuation">]</span></code></pre>
+            <ul>
+                <li>
+                    The <i>[STARTING-POINT]</i> is the path from where you want to start the search.
+                </li>
+                <li>
+                    The <i>[EXPRESSION]</i> specifies your search criterion.
+                </li>
+            </ul>
+            <p>
+                A great variety of criteria are available
+                (e.g. search by name, type, size, date, etc.).
+                In this practical we will talk about the search by name only,
+                but have a look at the man page of the <code class="s">find</code>
+                command and try other criteria on your own.
+            </p>
+            <p>
+                Let us see some examples, but first go to the
+                <code class="s">~/pw_01/example/test/find</code> directory.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/find
+$ <span class="token function">tree</span>
+<span class="token keyword">.</span>
+├── dir1
+│   ├── file1.pdf
+│   ├── file2.pdf
+│   ├── file3.pdf
+│   ├── image1.jpg
+│   ├── image2.jpg
+│   ├── image3.jpg
+│   └── README
+├── dir2
+│   ├── file1.txt
+│   ├── file2.txt
+│   ├── file3.txt
+│   ├── page1
+│   │   ├── index.html
+│   │   ├── README
+│   │   └── style.css
+│   ├── page2
+│   │   ├── index.html
+│   │   ├── README
+│   │   └── style.css
+│   ├── picture1.png
+│   ├── picture2.png
+│   ├── picture3.png
+│   └── README
+└── README</code></pre>
+            <p>
+                Now, try the command below.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">find</span> <span class="token keyword">.</span> -name README
+./dir2/README
+./dir2/page1/README
+./dir2/page2/README
+./README
+./dir1/README
+$ <span class="token function">find</span> <span class="token keyword">.</span> -name index.html
+./dir2/page1/index.html
+./dir2/page2/index.html
+$ <span class="token function">find</span> <span class="token keyword">.</span> -name <span class="token string">"*.png"</span>
+./dir2/picture1.png
+./dir2/picture3.png
+./dir2/picture2.png
+$ <span class="token function">find</span> <span class="token keyword">.</span> -name <span class="token string">"[ip]*"</span>
+./dir2/picture1.png
+./dir2/page1
+./dir2/page1/index.html
+./dir2/page2
+./dir2/page2/index.html
+./dir2/picture3.png
+./dir2/picture2.png
+./dir1/image2.jpg
+./dir1/image1.jpg
+./dir1/image3.jpg</code></pre>
+            <p>
+                By looking at the above examples,
+                I think that you can easily understand how this command works.
+                However, you should notice that:
+            </p>
+            <ul>
+                <li>
+                    The option used to search files by name is the
+                    <code class="s">-name</code> option
+                    followed by a filename pattern.
+                    This option does not have the same syntax as the short- and long-option syntax
+                    we saw in a <a href="#global_syntax">previous section</a>:
+                    a dash character is missing
+                    (i.e. it should be <code class="s">--name</code>).
+                    The reason is that some Linux commands do not use this kind of syntax.
+                </li>
+                <li>
+                    When using wildcards, the filename pattern must be enclosed
+                    with double quotation marks.
+                    Actually, it is not really true.
+                    You do not have to enclose filenames,
+                    but the presence or absence of quotation marks will affect the behavior of the wildcards.
+                    For now, we are more interested in using them with the quotation marks.
+                </li>
+                <li>
+                    The order of appearance of the found files is not sorted.
+                </li>
+            </ul>
+            <h3 id="grep_command">The <code>grep</code> Command</h3>
+            <p>
+                The <code class="s">grep</code> command allows you
+                to search files for text occurrences.
+                Its global syntax is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> PATTERN <span class="token punctuation">[</span>FILES<span class="token punctuation">..</span>.<span class="token punctuation">]</span></code></pre>
+            <ul>
+                <li>
+                    The <i>PATTERN</i> is the text occurrence you want to search for.
+                </li>
+                <li>
+                    The <i>[FILES...]</i> specifies in which files the occurrence must be searched for.
+                </li>
+            </ul>
+            <p>
+                Try the following examples:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/find/dir2
+$ <span class="token function">cat</span> file1.txt
+The file1 contains the word <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span>.
+$ <span class="token function">cat</span> file2.txt
+The file2 contains the word <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+$ <span class="token function">cat</span> file3.txt
+The file3 contains the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+The file3 contains again the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+$ <span class="token function">grep</span> Hello file?.txt
+file1.txt:The file1 contains the word <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span>.
+file3.txt:The file3 contains the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+file3.txt:The file3 contains again the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+$ <span class="token function">grep</span> World file?.txt
+file2.txt:The file2 contains the word <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+file3.txt:The file3 contains the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+file3.txt:The file3 contains again the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.</code></pre>
+            <p>
+                When an occurrence is found, the <code class="s">grep</code>
+                command outputs the filename followed by the line where the occurrence
+                has been found.
+            </p>
+            <p>
+                By default, the command searches files that are in the current
+                directory only.
+                If you want to search files in all subdirectories,
+                you can use the <code class="s">-R</code> option.
+                For instance, the following instruction searches files
+                (in the current directory and all subdirectories)
+                for the occurrence "Hello".
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -R Hello *
+file1.txt:The file1 contains the word <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span>.
+file3.txt:The file3 contains the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+file3.txt:The file3 contains again the words <span class="token punctuation">[</span>Hello<span class="token punctuation">]</span> and <span class="token punctuation">[</span>World<span class="token punctuation">]</span>.
+page1/index.html:    Hello World<span class="token operator">!</span></code></pre>
+            <h2 id="head_1051">Redirecting Outputs</h2>
+            <h3 id="head_1052">The Stantdard Output Streams</h3>
+            <p>
+                Linux defines one standard input stream and two standard output streams:
+            </p>
+            <ul>
+                <li><strong>sdtin</strong>: the standard input.</li>
+                <li><strong>stdout</strong>: the standard output.</li>
+                <li><strong>stderr</strong>: the standard error.</li>
+            </ul>
+            <p>
+                The <strong>standard input</strong> can be used by commands to get some input data.
+            </p>
+            <p>
+                The <strong>standard output</strong> is used by commands
+                to output any messages except for error messages.
+            </p>
+            <p>
+                The <strong>standard error</strong> is used by commands
+                to output any error messages.
+            </p>
+            <p>
+                By default, the output streams (<strong>sdtout</strong> and
+                <strong>stderr</strong>) are both connected to the terminal.
+            </p>
+            <p>
+                <img src="The%20Command-Line%20Interface_fichiers/redirection.png" alt="Redirection">
+            </p>
+            <p>
+                For example:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/redirection
+$ <span class="token function">ls</span>
+README
+$ <span class="token function">cat</span> README
+This directory is used to t</code><code class=" language-bash">est redirection.
+$ <span class="token function">cat</span> AUTHORS
+cat: AUTHORS: No such f</code><code class=" language-bash">ile or directory</code></pre>
+            <p>
+                First, we go to the
+                <code class="s">~/pw_01/example/test/redirection</code> directory
+                and we can see that there is only one file:
+                <code class="s">README</code>.
+            </p>
+            <p>
+                Then we print the contents of the
+                <code class="s">README</code> file.
+                Actually, the conceptual mechanism is as follows:
+                as there is no error, the output of the command
+                (i.e. the contents of the file) is sent to the standard output;
+                and by default the standard output sends everything to the terminal.
+                So the contents of the file are printed on the terminal.
+            </p>
+            <p>
+                <img src="The%20Command-Line%20Interface_fichiers/cat_readme.png" alt="cat README">
+            </p>
+            <p>
+                Finally, we try to print the contents of the
+                <code class="s">AUTHORS</code> file,
+                but this file does not exist.
+                So, an error message is printed on the terminal.
+                Actually, the conceptual mechanism is as follows:
+                as there is an error, the output of the command
+                (i.e. the error message) is sent to the standard error;
+                and by default the standard error sends everything to the terminal.
+                So the error message is printed on the terminal.
+            </p>
+            <p>
+                <img src="The%20Command-Line%20Interface_fichiers/cat_authors.png" alt="cat AUTHORS">
+            </p>
+            <p>
+                We can change this default behavior by redirecting the output streams
+                to files or to the standard input of other commands.
+            </p>
+            <h3 id="head_1053">The <code>&gt;</code> and <code>2&gt;</code> Operators</h3>
+            <p>
+                The <code class="s">&gt;</code> operator is used
+                to redirect the standard output to a file.
+            </p>
+            <p>
+                Let us see this first example:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">ls</span>
+README
+$ <span class="token function">cat</span> README
+This directory is used to t</code><code class=" language-bash">est redirection.
+$ <span class="token function">cat</span> README <span class="token operator">&gt;</span> capture
+$ <span class="token function">ls</span>
+capture  README
+$ <span class="token function">cat</span> capture
+This directory is used to t</code><code class=" language-bash">est redirection.</code></pre>
+            <p>
+                The first instruction redirects the standard output
+                to the <code class="s">capture</code> file.
+                So the contents of the <code class="s">README</code>
+                file are not sent to the terminal but to the
+                <code class="s">capture</code> file.
+                That is the reason why nothing is printed on the terminal.
+            </p>
+            <p>
+                The <code class="s">capture</code> file is then created
+                (if this file already exists, it is replaced by the new one)
+                and its contents are the output of the
+                <code class="s">cat</code> command
+                (i.e. the contents of the <code class="s">README</code> file).
+            </p>
+            <p>
+                <img src="The%20Command-Line%20Interface_fichiers/cat_readme_capture.png" alt="cat README &gt; capture">
+            </p>
+            <p>
+                Now, let us see this second example:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">ls</span>
+README
+$ <span class="token function">cat</span> AUTHORS <span class="token operator">&gt;</span> capture
+cat: AUTHORS: No such f</code><code class=" language-bash">ile or directory
+$ <span class="token function">ls</span>
+capture  README
+$ <span class="token function">cat</span> capture
+$</code></pre>
+            <p>
+                The first instruction redirects the standard output
+                to the <code class="s">capture</code> file
+                (as in the previous example).
+                But this time, an error occurs because the
+                <code class="s">AUTHORS</code> file does not exist.
+                So an error message is sent to the standard error,
+                which is still connected to the terminal.
+                Therefore, this message is printed on the terminal.
+            </p>
+            <p>
+                On the other hand, nothing is sent to the standard output
+                nor to the <code class="s">capture</code> file.
+                The latter is still created but it will be empty.
+            </p>
+            <p>
+                <img src="The%20Command-Line%20Interface_fichiers/cat_authors_capture.png" alt="cat README &gt; capture">
+            </p>
+            <p>
+                In the third example below, we are going to redirect
+                the error standard to a file.
+                The principle is the same as redirecting the standard output,
+                we just have to use the <code class="s">2&gt;</code> operator
+                instead of the <code class="s">&gt;</code> operator.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS 2<span class="token operator">&gt;</span> capture
+$ <span class="token function">ls</span>
+capture  README
+$ <span class="token function">cat</span> capture
+cat: AUTHORS: No such f</code><code class=" language-bash">ile or directory
+$ <span class="token function">cat</span> README 2<span class="token operator">&gt;</span> capture
+This directory is used to t</code><code class=" language-bash">est redirection.
+$ <span class="token function">ls</span>
+capture  README
+$ <span class="token function">cat</span> capture
+$</code></pre>
+            <p>
+                It can be useful to use redirection.
+                For instance, we can easily create small text file by using
+                the <code class="s">echo</code> command.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span>
+capture  README
+$ <span class="token keyword">echo</span> David Bouchet <span class="token operator">&gt;</span> AUTHORS
+$ <span class="token function">ls</span>
+AUTHORS  capture  README
+$ <span class="token function">cat</span> AUTHORS
+David Bouchet</code></pre> 
+            <p>
+                But be careful! remember that the destination file
+                is emptied if it already exists.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+David Bouchet
+$ <span class="token keyword">echo</span> is the author <span class="token operator">&gt;</span> AUTHORS
+$ <span class="token function">cat</span> AUTHORS
+is the author</code></pre> 
+            <p>
+                And sometimes we just want to get rid of error messages.
+                In this case we can redirect the standard error to the
+                <a href="https://en.wikipedia.org/wiki/Null_device">null device</a>.
+                The <strong>null device</strong> is a special file that ignores everything.
+            </p>
+            <p>
+                For instance, the following instruction does not print
+                all the directories we are not allowed to read (permission denied).
+                Try this instruction with and without the redirection
+                (and obviously, replace <code class="s">david</code>
+                by your login).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token function">find</span> / -name david 2<span class="token operator">&gt;</span> /dev/null</code></pre>
+            <h3 id="head_1054">The <code>&gt;&gt;</code> and <code>2&gt;&gt;</code> Operators</h3>
+            <p>
+                The <code class="s">&gt;&gt;</code> and
+                <code class="s">2&gt;&gt;</code> operators are similar to
+                the <code class="s">&gt;</code> and
+                <code class="s">2&gt;</code> operators respectively.
+            </p>
+            <p>
+                The difference is that
+                the <code class="s">&gt;&gt;</code>
+                and <code class="s">2&gt;&gt;</code> operators
+                do not empty the destination file if it already exists.
+                The new text is appended to the existing file.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+is the author
+$ <span class="token keyword">echo</span> David Bouchet <span class="token operator">&gt;</span> AUTHORS
+$ <span class="token function">cat</span> AUTHORS
+David Bouchet
+$ <span class="token keyword">echo</span> is the author <span class="token operator">&gt;&gt;</span> AUTHORS
+$ <span class="token function">cat</span> AUTHORS
+David Bouchet
+is the author</code></pre>
+            <h3 id="head_1055">The <code>|</code> Operator</h3>
+            <p>
+                The <code class="s">|</code> operator,
+                which has to be read "the <strong>pipe</strong> operator",
+                is one of the most powerful tools of the command interpreter.
+                It allows you to link multiple commands by connecting the standard output of
+                a command to the standard input of another command.
+            </p>
+            <p>
+                <img src="The%20Command-Line%20Interface_fichiers/pipe.png" alt="Pipe Operator">
+            </p>
+            <p>
+                So far, we have not used the standard input of commands.
+                Indeed, we have only used options and parameters.
+                That was enough for what we had to do.
+                Besides, some commands never read their standard input (e.g.
+                <code class="s">ls</code>,
+                <code class="s">cp</code>,
+                <code class="s">mv</code>,
+                <code class="s">rm</code>,
+                etc.)
+            </p>
+            <p>
+                However, the standard input is another way to pass data to a command.
+            </p>
+            <p>
+                For instance, let us asume that we want to list the contents of the
+                <code class="s">~/pw_01/example/test/pipe</code> directory
+                and all of its subdirectories.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/pipe
+$ <span class="token function">ls</span> -lR
+.:
+total 32
+drwxrwxr-x 2 david david  4096 july  21 22:54 dir1
+drwxrwxr-x 4 david david  4096 july  23 15:54 dir2
+drwxrwxr-x 2 david david 12288 july   6 14:55 dir3
+-rw-rw-r-- 1 david david    62 july   6 14:37 README
+<span class="token comment"># ...snip...</span>
+-rw-rw-r-- 1 david david     0 july   6 14:55 file_9e.txt
+-rw-rw-r-- 1 david david     0 july   6 14:55 file_9.jpg
+-rw-rw-r-- 1 david david     0 july   6 14:55 file_9.png</code></pre>
+            <p>
+                This listing is so long that we want to print one screenful at a time.
+                By using options, parameters and redirection, it could be done in this way:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -lR <span class="token operator">&gt;</span> temp_list
+$ <span class="token function">more</span> temp_list
+$ <span class="token function">rm</span> temp_list</code></pre>
+            <p>
+                We had to create and delete a temporary file.
+                It works but it is cumbersome.
+                On the other hand, by using the pipe operator,
+                it is simpler to do it this way:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token function">ls</span> -lR <span class="token operator">|</span> <span class="token function">more</span></code></pre>
+            <p>
+                First the <code class="s">ls -lR</code> is executed.
+                Then, its output is sent to the standard input of the
+                <code class="s">more</code> command.
+                Finally the <code class="s">more</code> command
+                prints the contents of its standard input screenful by screenful.
+                No temporary files have been created.
+            </p>
+            <p>
+                Now that you know how to link commands together,
+                let us see a more complex example
+                and let us learn some new commands as well.
+            </p>
+            <p>
+                Let us assume that we want to list, in alphabetical order,
+                all the <code class="s">README</code> files
+                of the <code class="s">example</code>
+                directory (and its subdirectories)
+                that do not contain the "Author" occurrence.
+            </p>
+            <p>
+                First, let us do the opposite, that is,
+                listing all the files that contain the "Author" occurrence.
+                To do so, we are going to use the
+                <code class="s">grep</code> command
+                we have already seen in a <a href="#grep_command">previous section</a>.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/pw_01/example/test/pipe
+$ <span class="token function">grep</span> -R Author
+test/pipe/dir2/README:Author: David Bouchet
+test/pipe/README:Author: David Bouchet
+test/pipe/dir1/README:Author: David Bouchet</code></pre>
+            <p>
+                Actually, we just want the paths of the file.
+                So we can use the <code class="s">-l</code> option of the
+                <code class="s">grep</code> command.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -Rl Author
+test/pipe/dir2/README
+test/pipe/README
+test/pipe/dir1/README</code></pre>
+            <p>
+                Now, if we replace the <code class="s">-l</code> option
+                by the <code class="s">-L</code> option,
+                the <code class="s">grep</code> command will list
+                all the files that <b>do not contain</b> the "Author" occurrence.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -RL Author
+AUTHORS
+README
+test/redirection/README
+test/wildcard/photo_2.png
+<span class="token comment"># ...snip...</span>
+compress_me/css/sky.css
+compress_me/index.html
+txt/long_text.txt</code></pre>
+            <p>
+                The problem is that we have all the files that do not contain the "Author" occurrence,
+                not just the <code class="s">README</code> files.
+                So, among all of these files we should print only the lines that contain the "README" occurrence.
+                To do this, we can send this list to another <code class="s">grep</code> command
+                by using the pipe operator.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -RL Author <span class="token operator">|</span> <span class="token function">grep</span> README
+README
+test/redirection/README
+test/pipe/dir2/page1/README
+test/pipe/dir2/page2/README
+test/find/dir2/README
+test/find/dir2/page1/README
+test/find/dir2/page2/README
+test/find/README
+test/find/dir1/README</code></pre>
+            <p>
+                We have all the <code class="s">README</code>
+                files that do not contain the "Author" occurrence,
+                but this list is not sorted.
+                To sort it we can link the <code class="s">sort</code> command
+                (<a href="https://manpages.debian.org/stretch/coreutils/sort.1.en.html">man sort</a>).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -RL Author <span class="token operator">|</span> <span class="token function">grep</span> README <span class="token operator">|</span> <span class="token function">sort</span>
+README
+test/find/dir1/README
+test/find/dir2/page1/README
+test/find/dir2/page2/README
+test/find/dir2/README
+test/find/README
+test/pipe/dir2/page1/README
+test/pipe/dir2/page2/README
+test/redirection/README</code></pre>
+            <p>
+                Now, let us assume that we do not want the filenames but only the number
+                of <code class="s">README</code> files that do not contain
+                the "Author" occurrence.
+                To do so, we can use the <code class="s">wc</code> command
+                (<a href="https://manpages.debian.org/stretch/coreutils/wc.1.en.html">man wc</a>)
+                with its <code class="s">-l</code> option that counts the number of lines.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -RL Author <span class="token operator">|</span> <span class="token function">grep</span> README <span class="token operator">|</span> <span class="token function">wc</span> -l
+9</code></pre>
+            <p>
+                So, nine <code class="s">README</code> files do not contain
+                the "Author" occurrence.
+            </p>
+            <h2 class="exercise" id="head_1056">Exercise</h2>
+            <p>
+                Here are some questions to practice
+                the stock of knowledge you have just acquired.
+                <mark>Try to answer them on your own before looking at the keys.</mark>
+                When it comes to computer programming,
+                there are often different ways to reach a goal or to be effective.
+                You may use commands that are different from those in the keys.
+            </p>
+            <p>
+                If you do not know an answer,
+                <mark>look first at the man pages</mark>
+                before anything else.
+                <mark>
+                    The most important thing is that you answer each question on your own
+                </mark>
+                (never mind whether you get it right or wrong)
+                and then read the key carefully.
+            </p>
+            <p class="question">
+                Go to the <code class="s">~/example/test/pipe</code> directory.
+            </p>
+                <details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> ~/example/test/pipe</code></pre>
+                </details>
+            <p class="question">
+                List the contents of this directory by appending an indactor to entries.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">dir1/  dir2/  dir3/  README</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> -F</code></pre>
+                </details>
+            <p class="question">
+                List the contents of this directory in a tree-like format.
+                Find the command and then the option in order to list the directories only
+                (not the files).
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token keyword">.</span>
+├── dir1
+├── dir2
+│   ├── page1
+│   └── page2
+└── dir3</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tree</span> -d</code></pre>
+                </details>
+            <p class="question">
+                Print the contents of the <code class="s">README</code> file.
+                The expected result is as follows:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">This directory contains some files to t</code><code class=" language-bash">est the pipe operator.
+Author: David Bouchet</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> README</code></pre>
+                </details>
+            <p class="question">
+                Rename the <code class="s">dir3</code> directory
+                as <code class="s">test_dir</code>.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">mv</span> dir3 test_dir</code></pre>
+                </details>
+            <p class="question">
+                Go to the <code class="s">test_dir</code> directory.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> test_dir</code></pre>
+                </details>
+            <p class="question">
+                List all the files that end with <code class="s">.tar.bz2</code>.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">doc.tar.bz2</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> *.tar.bz2</code></pre>
+                </details>
+            <p class="question">
+                List the contents of the <code class="s">doc.tar.bz2</code> archive.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">doc_00.pdf
+doc_01.pdf
+doc_02.pdf</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tar</span> -tf doc.tar.bz2</code></pre>
+                </details>
+            <p class="question">
+                Decompress the contents of the <code class="s">doc.tar.bz2</code> archive
+                (enable the verbose mode).
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">doc_00.pdf
+doc_01.pdf
+doc_02.pdf</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tar</span> -jxvf doc.tar.bz2</code></pre>
+                </details>
+            <p class="question">
+                Remove the <code class="s">doc.tar.bz2</code> file.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash"><span class="token function">rm</span> doc.tar.bz2</code></pre>
+                </details>
+            <p class="question">
+                List all the files that have an underscore followed by two digits in a row.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">doc_00.pdf    file_11.json  file_13.png   file_16.jpeg  file_18.json
+doc_01.pdf    file_11.png   file_14.jpeg  file_16.json  file_18.png
+doc_02.pdf    file_12.jpeg  file_14.json  file_16.png   file_19.jpeg
+file_10.jpeg  file_12.json  file_14.png   file_17.jpeg  file_19.json
+file_10.json  file_12.png   file_15.jpeg  file_17.json  file_19.png
+file_10.png   file_13.jpeg  file_15.json  file_17.png
+file_11.jpeg  file_13.json  file_15.png   file_18.jpeg</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> *_<span class="token punctuation">[</span>0-9<span class="token punctuation">]</span><span class="token punctuation">[</span>0-9<span class="token punctuation">]</span>*</code></pre>
+                </details>
+            <p class="question">
+                List all the files that have a four-letter extension.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">file_10.jpeg  file_12.jpeg  file_14.jpeg  file_16.jpeg  file_18.jpeg
+file_10.json  file_12.json  file_14.json  file_16.json  file_18.json
+file_11.jpeg  file_13.jpeg  file_15.jpeg  file_17.jpeg  file_19.jpeg
+file_11.json  file_13.json  file_15.json  file_17.json  file_19.json</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">ls</span> *.????</code></pre>
+                </details>
+            <p class="question">
+                By using the wildcards, print the instruction that removes all files
+                that have the small letter 'a' just before the extension.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token function">rm</span> file_0a.png file_0a.txt file_1a.png file_1a.txt</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> <span class="token function">rm</span> *a.*</code></pre>
+                </details>
+            <p class="question">
+                Now, remove all of these files.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">rm</span> *a.*</code></pre>
+                </details>
+            <p class="question">
+                Remove all files that have the letter either 'b', 'c', 'd' or 'e'
+                just before the extension.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">rm</span> *<span class="token punctuation">[</span>bcde<span class="token punctuation">]</span>.*</code></pre>
+                </details>
+            <p class="question">
+                Go back to the parent directory.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cd</span> <span class="token punctuation">..</span></code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>),
+                compress the <code class="s">dir2/page2</code> directory
+                (enable the verbose mode).
+                The compressed file must be called <code class="s">page2.tar.bz2</code>.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">dir2/page2/
+dir2/page2/README
+dir2/page2/style.css
+dir2/page2/index.html</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tar</span> -jcvf page2.tar.bz2 dir2/page2</code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>),
+                remove the <code class="s">dir2/page2</code> directory
+                (enable the verbose mode).
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">removed <span class="token string">'dir2/page2/README'</span>
+removed <span class="token string">'dir2/page2/style.css'</span>
+removed <span class="token string">'dir2/page2/index.html'</span>
+removed directory <span class="token string">'dir2/page2'</span></code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">rm</span> -rfv page2/dir2</code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>),
+                copy the <code class="s">dir2/page1</code> directory
+                to the <code class="s">dir1</code> directory.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash"><span class="token function">cp</span> -r dir2/page1 dir1</code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>),
+                move the <code class="s">page2.tar.bz2</code> archive
+                to the <code class="s">~/example</code> directory
+                (enable the verbose mode and use relative path).
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token string">'page2.tar.bz2'</span> -<span class="token operator">&gt;</span> <span class="token string">'../../page2.tar.bz2'</span></code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">mv</span> -v page2.tar.bz2 <span class="token punctuation">..</span>/<span class="token punctuation">..</span></code></pre>
+                </details>
+            <p class="question">
+                Create an <code class="s">AUTHORS</code>
+                file that contains only the last line of the
+                <code class="s">README</code> file.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">tail</span> -n 1 README <span class="token operator">&gt;</span> AUTHORS</code></pre>
+                </details>
+            <p class="question">
+                Append the first line of the <code class="s">README</code> file
+                to the <code class="s">AUTHORS</code> file.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">head</span> -n 1 README <span class="token operator">&gt;&gt;</span> AUTHORS</code></pre>
+                </details>
+            <p class="question">
+                Create the <code class="s">hello</code> file that contains the line "Hello,".
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> Hello, <span class="token operator">&gt;</span> hello</code></pre>
+                </details>
+            <p class="question">
+                Create the <code class="s">world</code> file that contains the line "World!".
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token keyword">echo</span> World<span class="token operator">!</span> <span class="token operator">&gt;</span> world</code></pre>
+                </details>
+            <p class="question">
+                Concatenate the <code class="s">hello</code>
+                and <code class="s">world</code> files.
+                The output file should be called <code class="s">hello_world</code>.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> hello world <span class="token operator">&gt;</span> hello_world</code></pre>
+                </details>
+            <p class="question">
+                Append the <code class="s">dir2/file1.txt</code>
+                and the <code class="s">dir2/file2.txt</code> files
+                to the <code class="s">hello_world</code> file.
+            </p>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> dir2/file<span class="token punctuation">[</span>12<span class="token punctuation">]</span>.txt <span class="token operator">&gt;&gt;</span> hello_world</code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>)
+                and all of its subdirectories,
+                print the number of PNG files, that is, the number of filenames that end with ".png".
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">23</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">find</span> <span class="token keyword">.</span> -name <span class="token string">"*.png"</span> <span class="token operator">|</span> <span class="token function">wc</span> -l</code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>)
+                and all of its subdirectories,
+                list all the JPEG files, that is, the filenames that end with ".jpg" or ".jpeg",
+                and sort them in alphabetical order.
+                Use the <code class="s">-o</code> option
+                of the <code class="s">find</code> command.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">./dir1/image1.jpg
+./dir1/image2.jpg
+./dir1/image3.jpg
+./test_dir/file_0.jpg
+./test_dir/file_10.jpeg
+./test_dir/file_11.jpeg
+./test_dir/file_12.jpeg
+./test_dir/file_13.jpeg
+./test_dir/file_14.jpeg
+./test_dir/file_15.jpeg
+./test_dir/file_16.jpeg
+./test_dir/file_17.jpeg
+./test_dir/file_18.jpeg
+./test_dir/file_19.jpeg
+./test_dir/file_1.jpg
+./test_dir/file_2.jpg
+./test_dir/file_3.jpg
+./test_dir/file_4.jpg
+./test_dir/file_5.jpg
+./test_dir/file_6.jpg
+./test_dir/file_7.jpg
+./test_dir/file_8.jpg
+./test_dir/file_9.jpg</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">find</span> <span class="token keyword">.</span> -name <span class="token string">"*.jpg"</span> -o -name <span class="token string">"*.jpeg"</span> <span class="token operator">|</span> <span class="token function">sort</span></code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>)
+                and all of its subdirectories,
+                list all the files that contain the "firstName" occurrence.
+                You have to print the paths of the files and the lines that contain this occurrence.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">test_dir/file_10.json:  <span class="token string">"firstName"</span><span class="token keyword">:</span> <span class="token string">"John"</span>,
+test_dir/file_12.json:  <span class="token string">"firstName"</span><span class="token keyword">:</span> <span class="token string">"Jack"</span>,
+test_dir/file_11.json:  <span class="token string">"firstName"</span><span class="token keyword">:</span> <span class="token string">"Jim"</span>,
+test_dir/file_13.json:  <span class="token string">"firstName"</span><span class="token keyword">:</span> <span class="token string">"Marc"</span>,
+test_dir/file_14.json:  <span class="token string">"firstName"</span><span class="token keyword">:</span> <span class="token string">"John"</span>,</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -R firstName *</code></pre>
+                </details>
+            <p class="question">
+                From the current directory (<code class="s">~/example/test/pipe</code>)
+                and all of its subdirectories,
+                list all the files that contain the "firstName" occurrence.
+                You have to print the paths of the files only
+                and they must be sorted in alphabetical order.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">test_dir/file_10.json
+test_dir/file_11.json
+test_dir/file_12.json
+test_dir/file_13.json
+test_dir/file_14.json</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -Rl firstName * <span class="token operator">|</span> <span class="token function">sort</span></code></pre>
+                </details>
+            <p class="question">
+                Finally, we want to print the long listing format
+                of the files listed in the previous question.
+                To do so, you have to send the output of the previous question
+                to the <code class="s">ls -l</code> command,
+                but the problem is that the <code class="s">ls</code>
+                command does not read its standard input.
+                So the following instruction will not work:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="token punctuation">[</span>any command<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token function">ls</span> -l</code></pre>
+            <p>
+                Therefore, you have to use the <code class="s">xargs</code> command,
+                which turns each line of its standard input into parameters for another command.
+                Read the man page of this command
+                (<a href="https://manpages.debian.org/stretch/findutils/xargs.1.en.html">man xargs</a>)
+                and answer the question.
+                Note also that the <code class="s">sort</code> command is useless here
+                because the <code class="s">ls</code> command sorts its result by default.
+                The expected result is as follows:
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">-rw-rw-r-- 1 david david 219 août   9 21:39 test_dir/file_10.json
+-rw-rw-r-- 1 david david 217 août   9 21:39 test_dir/file_11.json
+-rw-rw-r-- 1 david david 220 août   9 21:38 test_dir/file_12.json
+-rw-rw-r-- 1 david david 220 août   9 21:39 test_dir/file_13.json
+-rw-rw-r-- 1 david david 220 août   9 21:38 test_dir/file_14.json</code></pre>
+            <p>
+                </p><details>
+                    <summary>Key</summary>
+                    <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">grep</span> -Rl firstName * <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">ls</span> -l</code></pre>
+                </details>
+            <h2 id="head_1057">Submission</h2>
+            <p>
+                For this practical you are just going to create an
+                <code class="s">AUTHORS</code> file in your repository.
+            </p>
+            <h3 id="head_1058">Due Date</h3>
+            <p>By Friday 27 September 2019 23:42</p>
+            <h3 id="head_1059">Directory Hierarchy</h3>
+            Your git repository must contain the following files and directories:
+            <ul>
+                <li>
+                    <code class="s">pw_01_cli</code>
+                    <ul>
+                        <li><b>AUTHORS</b></li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                The <code class="s">AUTHORS</code> file
+                must contain the following information.
+            </p>
+            <div class="filename">AUTHORS</div>
+            <pre class="line-numbers language-bash"><code class=" language-bash">First Name
+Family Name
+Login
+Email Address<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>
+                The last character of your <code class="s">AUTHORS</code> file must be a newline character.
+            </p>
+            <p>For instance:</p>
+            <div class="filename">AUTHORS</div>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+John
+Smith
+john.smith
+john.smith@epita.fr
+$ <span class="token comment"># Command prompt ready for the next command...</span></code></pre>
+            <p>
+                To do so, you can type the following instructions
+                <mark>(replace <i>john.smith</i> by you own login)</mark>.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">git</span> clone git@git.cri.epita.net:p/2023-s3-tp/tp01-john.smith
+$ <span class="token function">cd</span> tp01-john.smith/
+$ <span class="token function">mkdir</span> pw_01_cli
+$ <span class="token comment"># Create the "pw_01_cli/AUTHORS" file.</span>
+$ <span class="token function">git</span> add pw_01_cli/AUTHORS
+$ <span class="token function">git</span> commit -s -m <span class="token string">"First commit"</span>
+$ <span class="token function">git</span> push</code></pre>
+            <p>
+                For further information, see
+                <a href="https://doc.cri.epita.fr/git/">https://doc.cri.epita.fr/git/</a>.
+            </p>
+        </main>
+        <footer>
+            <span>
+                <a href="http://validator.w3.org/check?uri=referer">
+                    HTML 5
+                </a>
+            </span>
+            <span>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3svg">
+                    CSS 3
+                </a>
+            </span>
+        </footer>
+        <script src="The%20Command-Line%20Interface_fichiers/prism.js"></script>
+        <script src="The%20Command-Line%20Interface_fichiers/script.js"></script>
+    
+
+</body></html>

@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="author" content="David Bouchet">
+        <title>Arrays and SDL</title>
+        <link rel="stylesheet" href="Arrays%20and%20SDL_fichiers/style.css">
+        <link rel="stylesheet" href="Arrays%20and%20SDL_fichiers/prism.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header style="top: 0em;">
+            <div>
+                <span><a href="#table_of_contents">≡</a></span>
+                <span><a href="http://www.debug-pro.com/epita/prog/s3/index.html">Practical Programming</a></span>
+                <span><a href="mailto:david.bouchet.epita@gmail.com">David Bouchet</a></span>
+            </div>
+        </header>
+        <div class="title">
+            <div class="practical_number">Practical Work #3</div>
+            <h1>Arrays and SDL</h1>
+        </div>
+        <nav id="table_of_contents"><h2><a href="#head_1000">Submission</a></h2><h3><a href="#head_1001">Due Date</a></h3><h3><a href="#head_1002">Directory Hierarchy</a></h3><h2><a href="#head_1003">Basic Array Manipulations</a></h2><h3><a href="#head_1004">Provided Code</a></h3><h3><a href="#head_1005">Minimal and Maximal Values</a></h3><h3><a href="#head_1006">Searching</a></h3><h3><a href="#head_1007">Sorting</a></h3><h2><a href="#head_1008">Simple DirectMedia Layer (SDL)</a></h2><h3><a href="#head_1009">Checking Libraries</a></h3><h3><a href="#head_1010">Makefile</a></h3><h3><a href="#head_1011">Displaying an Image</a></h3><h3><a href="#head_1012">Converting into Grayscale</a></h3></nav>
+        <main>
+            <h2 id="head_1000">Submission</h2>
+            <h3 id="head_1001">Due Date</h3>
+            <p>By Friday 18 October 2019 23:42</p>
+            <h3 id="head_1002">Directory Hierarchy</h3>
+            <p>
+                Create your git repository (replace <i>john.smith</i> by your own login).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">git</span> clone git@git.cri.epita.net:p/2023-s3-tp/tp03-john.smith</code></pre>
+            <p>
+                It must contain the following files and directories:
+            </p>
+            <ul>
+                <li>
+                    <code class="s">pw_03_arrays_sdl/</code>
+                    <ul>
+                        <li><b>AUTHORS</b></li>
+                        <li>
+                            <code class="s">arrays/</code>
+                            <ul>
+                                <li>
+                                    This directory will contain code for the
+                                    first series of exercises
+                                    (Basic Array Manipulations).
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <code class="s">sdl/</code>
+                            <ul>
+                                <li>
+                                    This directory will contain code for the
+                                    second series of exercises (SDL).
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                The <code class="s">AUTHORS</code> file
+                must contain the following information.
+            </p>
+            <div class="filename">AUTHORS</div>
+            <pre class="line-numbers language-bash"><code class=" language-bash">First Name
+Family Name
+Login
+Email Address<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>
+                The last character of your <code class="s">AUTHORS</code> file must be a newline character.
+            </p>
+            <p>For instance:</p>
+            <div class="filename">AUTHORS</div>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cat</span> AUTHORS
+John
+Smith
+john.smith
+john.smith@epita.fr
+$ <span class="token comment"># Command prompt ready for the next command...</span></code></pre>
+            <p>
+                <mark>
+                    Be careful, if you do not follow all the given instructions,
+                    no point will be given to your answers.
+                </mark>
+            </p>
+            <h2 class="exercise" id="head_1003">Basic Array Manipulations</h2>
+            <h3 id="head_1004">Provided Code</h3>
+            <p>
+                Two helper files are provided.
+                They are common to all exercises.
+                Other specific files will be given in due time.
+            </p>
+            <p>
+                The first provided file is a header,
+                which contains some useful functions for testing.
+            </p>
+            <div class="filename">tests_tools.h</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">/* Tools for testing array functions */</span>
+
+<span class="token macro property"># <span class="token directive keyword">ifndef</span> EPITA_IP_ARRAY_TESTS_TOOLS_H_</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> EPITA_IP_ARRAY_TESTS_TOOLS_H_</span>
+
+<span class="token comment">/*
+ * Needed in order to use some POSIX functions
+ * see feature_test_macros(7)
+ */</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> _XOPEN_SOURCE 500</span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token comment">/*
+ * helper functions (array fill, display ... )
+ * all functions are statically inlined, no links dependencies
+ */</span>
+
+<span class="token comment">/*
+ * array_random_fill(array, len, maxval): fill array with random values
+ * maxval is the maximum random value
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">void</span> <span class="token function">array_random_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> maxval<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> maxval<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_sorted_fill(array, len, step): fill array with sorted value
+ * step is the difference between values
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">void</span> <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> step<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> cur <span class="token operator">+</span><span class="token operator">=</span> step<span class="token punctuation">)</span>
+        array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_reverse_sorted_fill(array, len, step): fill array with values in
+ * reverse order
+ * step is the difference between values
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">void</span> <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> step<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> cur <span class="token operator">=</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> step<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">,</span> cur <span class="token operator">-</span><span class="token operator">=</span> step<span class="token punctuation">)</span>
+        array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * int_len(int x): number of decimal digit
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">int</span> <span class="token function">int_len</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> x <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">;</span> x <span class="token operator">/</span><span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span>
+        len <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> len<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_print(array, len): print the array
+ */</span>
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">void</span> <span class="token function">array_print</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> maxval<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> line <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> intlen <span class="token operator">=</span> <span class="token function">int_len</span><span class="token punctuation">(</span>maxval<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>line <span class="token operator">&gt;</span> <span class="token number">72</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"|\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            line <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        line <span class="token operator">+</span><span class="token operator">=</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"| %*d "</span><span class="token punctuation">,</span> intlen<span class="token punctuation">,</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"|\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> check(C__) ((C__) ? "\x1b[44mOK\x1b[0m" : "\x1b[41mKO\x1b[0m")</span>
+
+<span class="token macro property"># <span class="token directive keyword">endif</span> </span><span class="token comment">/* EPITA_IP_ARRAY_TESTS_TOOLS_H_ */</span></code></pre>
+            <p>
+                The second provided file is a simple <em>Makefile</em>.
+            </p>
+            <div class="filename">Makefile</div>
+            <pre class=" language-makefile"><code class=" language-makefile"><span class="token comment"># Simple Makefile</span>
+
+<span class="token comment"># Compilers vars</span>
+CC<span class="token operator">=</span>gcc
+CPPFLAGS<span class="token operator">=</span> -MMD
+CFLAGS<span class="token operator">=</span> -Wall -Wextra -std<span class="token operator">=</span>c99 -O2
+LDFLAGS<span class="token operator">=</span>
+LDLIBS<span class="token operator">=</span>
+
+SRC<span class="token operator">=</span> array_min_max.c array_searching.c array_sorting.c
+DEP<span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">{</span>SRC<span class="token punctuation">:</span>.c<span class="token operator">=</span>.d<span class="token punctuation">}</span>
+PRG<span class="token operator">=</span> <span class="token variable">$</span><span class="token punctuation">{</span>SRC<span class="token punctuation">:</span>.c<span class="token operator">=</span><span class="token punctuation">}</span>
+
+<span class="token symbol">all</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">{</span>PRG<span class="token punctuation">}</span>
+
+<span class="token keyword">-include</span> <span class="token variable">$</span><span class="token punctuation">{</span>DEP<span class="token punctuation">}</span>
+
+<span class="token symbol">clean</span><span class="token punctuation">:</span>
+	rm -f *.o
+	rm -f <span class="token variable">$</span><span class="token punctuation">{</span>DEP<span class="token punctuation">}</span>
+	rm -f <span class="token variable">$</span><span class="token punctuation">{</span>PRG<span class="token punctuation">}</span>
+
+<span class="token comment"># END Makefile</span></code></pre>
+            <h3 id="head_1005">Minimal and Maximal Values</h3>
+            <p>
+                In this section, you will implement the four following functions:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> <span class="token function">array_min</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">array_max</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">size_t</span> <span class="token function">array_min_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">size_t</span> <span class="token function">array_max_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">array_min()</code> returns the minimal value
+                    of an <var>array</var> of size <var>len</var>.
+                </li>
+                <li>
+                    <code class="s">array_max()</code> returns the maximal value
+                    of an <var>array</var> of size <var>len</var>.
+                </li>
+                <li>
+                    <code class="s">array_min_index()</code> returns the index of the minimal
+                    value of an <var>array</var> of size <var>len</var>.
+                </li>
+                <li>
+                    <code class="s">array_max_index()</code> returns the index of the maximal
+                    value of an <var>array</var> of size <var>len</var>.
+                </li>
+            </ul>
+            <p>
+                Complete the following <code class="s">array_min_max.c</code> file
+                (replace only the TODO comments by your own code).
+                Some tests are also provided.
+            </p>
+            <div class="filename">array_min_max.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">/* array_min_max.c: min and max searching */</span>
+
+<span class="token macro property"># <span class="token directive keyword">define</span> _XOPEN_SOURCE 500</span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;assert.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;err.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">"tests_tools.h"</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">define</span> MAXVAL 100</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> STEP 10</span>
+
+<span class="token comment">/*
+ * In all following functions parameters array and len are defined as:
+ * array: an integer array
+ * len: the length of the array, must be greater than 0
+ */</span>
+
+<span class="token comment">/*
+ * min and max value
+ */</span>
+
+<span class="token comment">/*
+ * array_min(array, len): returns min value of array
+ */</span>
+<span class="token keyword">int</span> <span class="token function">array_min</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_max(array, len): returns max value of array
+ */</span>
+<span class="token keyword">int</span> <span class="token function">array_max</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * min and max index
+ */</span>
+
+<span class="token comment">/*
+ * array_min_index(array, len): returns the index of the min value of array
+ */</span>
+<span class="token keyword">size_t</span> <span class="token function">array_min_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_max_index(array, len): returns the index of the max value of array
+ */</span>
+<span class="token keyword">size_t</span> <span class="token function">array_max_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * Tests
+ */</span>
+
+<span class="token comment">/*
+ * Test functions
+ */</span>
+
+<span class="token comment">/*
+ * min value tests
+ */</span>
+<span class="token keyword">void</span> <span class="token function">test_min</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> min<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Test min value search ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    min <span class="token operator">=</span> <span class="token function">array_min</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_min: %d\t(should be %d)\n"</span><span class="token punctuation">,</span> min<span class="token punctuation">,</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Reverse sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    min <span class="token operator">=</span> <span class="token function">array_min</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_min: %d\t(should be %d)\n"</span><span class="token punctuation">,</span> min<span class="token punctuation">,</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Random array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    min <span class="token operator">=</span> <span class="token function">array_min</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_min: %d\n"</span><span class="token punctuation">,</span> min<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * max value tests
+ */</span>
+<span class="token keyword">void</span> <span class="token function">test_max</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> max<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Test max value search ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    max <span class="token operator">=</span> <span class="token function">array_max</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_max: %d\t(should be %d)\n"</span><span class="token punctuation">,</span> max<span class="token punctuation">,</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Reverse sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    max <span class="token operator">=</span> <span class="token function">array_max</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_max: %d\t(should be %d)\n"</span><span class="token punctuation">,</span> max<span class="token punctuation">,</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Random array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    max <span class="token operator">=</span> <span class="token function">array_max</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_max: %d\n"</span><span class="token punctuation">,</span> max<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * min index test
+ */</span>
+<span class="token keyword">void</span> <span class="token function">test_min_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">size_t</span> min<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Test min value index search ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    min <span class="token operator">=</span> <span class="token function">array_min_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_min_index: array[%zu] = %d\n"</span><span class="token punctuation">,</span> min<span class="token punctuation">,</span> array<span class="token punctuation">[</span>min<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Reverse sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    min <span class="token operator">=</span> <span class="token function">array_min_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_min_index: array[%zu] = %d\n"</span><span class="token punctuation">,</span> min<span class="token punctuation">,</span> array<span class="token punctuation">[</span>min<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Random array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    min <span class="token operator">=</span> <span class="token function">array_min_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_min_index: array[%zu] = %d\n"</span><span class="token punctuation">,</span> min<span class="token punctuation">,</span> array<span class="token punctuation">[</span>min<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * max index test
+ */</span>
+<span class="token keyword">void</span> <span class="token function">test_max_index</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">size_t</span> max<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Test max value index search ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    max <span class="token operator">=</span> <span class="token function">array_max_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_max_index: array[%zu] = %d\n"</span><span class="token punctuation">,</span> max<span class="token punctuation">,</span> array<span class="token punctuation">[</span>max<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Reverse sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    max <span class="token operator">=</span> <span class="token function">array_max_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_max_index: array[%zu] = %d\n"</span><span class="token punctuation">,</span> max<span class="token punctuation">,</span> array<span class="token punctuation">[</span>max<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Random array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    max <span class="token operator">=</span> <span class="token function">array_max_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  array_max_index: array[%zu] = %d\n"</span><span class="token punctuation">,</span> max<span class="token punctuation">,</span> array<span class="token punctuation">[</span>max<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * main
+ */</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">size_t</span> len<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"must provide array length"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    len <span class="token operator">=</span> <span class="token function">strtoul</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token function">calloc</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_min</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_max</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_min_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_max_index</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">free</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Finally, you can compile and test your code with the following commands:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">make</span> array_min_max
+gc</code><code class=" language-bash">c -Wall -Wextra -std<span class="token operator">=</span>c99 -O2 -MMD   array_min_max.c tests_tools.h   -o array_min_max
+$ ./array_min_max 10
+<span class="token comment"># ...snip...</span></code></pre>
+            <h3 id="head_1006">Searching</h3>
+            <p>
+                In this section, you will implement the two following functions:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">size_t</span> <span class="token function">array_find</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">size_t</span> <span class="token function">array_bin_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">array_find()</code> returns the index of
+                    an <var>x</var> value if this value is in the given <var>array</var>.
+                    Otherwise, it returns <var>len</var>.
+                </li>
+                <li>
+                    <code class="s">array_bin_search()</code> returns the index of
+                    an <var>x</var> value if this value is in the given <b>sorted</b> <var>array</var>.
+                    Otherwise, it returns the expected index of <var>x</var>.
+                    This function must implement a <strong>binary search algorithm</strong>.
+                </li>
+            </ul>
+            <p>
+                The binary search algorithm is as follows (you should already know it):
+            </p>
+            <pre class=" language-none"><code class=" language-none">bin_search(array, left, right, x):
+    if left == right:
+        return right
+    mid = left + (right - left) / 2
+    if array[mid] == x:
+        return mid
+    if x &lt; array[mid]:
+        return bin_search(array, left, mid, x)
+    else:
+        return bin_search(array, mid + 1, right, x)</code></pre>
+            <p>
+                Of course, you can turn it into a loop.
+                Note also that if <var>x</var> is not in the array,
+                the binary search should return
+                the expected position of <var>x</var>, that is,
+                where <var>x</var> should be inserted
+                if we want to preserve the order of the sorted array.
+            </p>
+            <p>
+                Complete the following <code class="s">array_searching.c</code> file
+                (replace only the TODO comments by your own code).
+                Some tests are also provided.
+            </p>
+            <div class="filename">array_searching.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">/* searching in array */</span>
+
+<span class="token macro property"># <span class="token directive keyword">define</span> _XOPEN_SOURCE 500</span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;assert.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;err.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;time.h&gt;</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">"tests_tools.h"</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">define</span> MAXVAL 100</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> STEP 10</span>
+
+<span class="token comment">/*
+ * In all following functions parameters array and len are defined as:
+ * array: an integer array
+ * len: the length of the array, must be greater than 0
+ */</span>
+
+<span class="token comment">/*
+ * searching for value
+ */</span>
+
+<span class="token comment">/*
+ * array_find(array, len, x): returns the position of x in array or len if not
+ * present
+ */</span>
+<span class="token keyword">size_t</span> <span class="token function">array_find</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_bin_search(array, len, x): search in a sorted array using binary search
+ * returns the position of x, or the expected position of x if not present
+ */</span>
+<span class="token keyword">size_t</span> <span class="token function">array_bin_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * Tests
+ */</span>
+
+<span class="token keyword">int</span> <span class="token function">array_random_sorted_fill</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> maxstep<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> cur <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> step <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> maxstep<span class="token punctuation">;</span>
+        cur <span class="token operator">+</span><span class="token operator">=</span> step<span class="token punctuation">;</span>
+        array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> cur<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">size_t</span> <span class="token punctuation">(</span><span class="token operator">*</span>search_fun<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">void</span> <span class="token function">search_help</span><span class="token punctuation">(</span>search_fun fun<span class="token punctuation">,</span> <span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  searching %d: "</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">size_t</span> i <span class="token operator">=</span> <span class="token function">fun</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> len<span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"array[%zu] = %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"not found (%zu)\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">static</span>
+<span class="token keyword">void</span> <span class="token function">test_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Test value search ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> len <span class="token operator">*</span> STEP<span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Reverse sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> len <span class="token operator">*</span> STEP<span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Random array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token punctuation">(</span>MAXVAL <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_find<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">static</span>
+<span class="token keyword">void</span> <span class="token function">test_bin_search</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> x<span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Test value binary search ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  founded index may not contain searched value\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Basic sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> len <span class="token operator">*</span> STEP<span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"**** Basic sorted array ****\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> maxval <span class="token operator">=</span> <span class="token function">array_random_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> maxval<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    x <span class="token operator">=</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token punctuation">(</span>maxval <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">search_help</span><span class="token punctuation">(</span>array_bin_search<span class="token punctuation">,</span> array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * main
+ */</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">srandom</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">size_t</span> len<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"must provide array length"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    len <span class="token operator">=</span> <span class="token function">strtoul</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token function">calloc</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_search</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_bin_search</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">free</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Finally, you can compile and test your code with the following commands:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">make</span> array_searching
+gc</code><code class=" language-bash">c -Wall -Wextra -std<span class="token operator">=</span>c99 -O2 -MMD   array_searching.c tests_tools.h   -o array_searching
+$ ./array_searching 10
+<span class="token comment"># ...snip...</span></code></pre>
+            <h3 id="head_1007">Sorting</h3>
+            <p>
+                In this section, you will implement a selection sort algorithm:
+            </p>
+            <pre class=" language-none"><code class=" language-none">select_sort(array, len):
+    for i in range(len):
+        # find min index in array between i and len
+        min = array_min(array[i:len])
+        swap(array[i], array[min])</code></pre>
+            <p>
+                As you can see, we need a function
+                that finds the index of the minimal value in an array
+                (we've already done it!) and a function for swapping array cells.
+                We also want a function that checks if an array is sorted (for tests).
+                For the index of the minimal value, you are free to reuse your code
+                (you can call your function shifted by <var>i</var> with
+                <code class="s">array_min_index(array+i, len-i)</code>
+                but beware of shifting the resulting index by <var>i</var> again)
+                or write a specific version or simply include the code in the sort function. 
+            </p>
+            <p>
+                Therefore, you have to write the three following functions:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> <span class="token function">array_is_sorted</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">array_swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> i<span class="token punctuation">,</span> <span class="token keyword">size_t</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">array_select_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <ul>
+                <li>
+                    <code class="s">is_sorted()</code> returns true (not 0)
+                    if the given array is sorted in increasing order.
+                </li>
+                <li>
+                    <code class="s">array_swap()</code> swaps the <var>i</var>
+                    and <var>j</var> cells of the given array.
+                </li>
+                <li>
+                    <code class="s">array_select_sort()</code> sorts the given array
+                    by using the select sort algorithm.
+                </li>
+            </ul>
+            <p>
+                To do so, complete the following <code class="s">array_sorting.c</code> file
+                (replace only the TODO comments by your own code).
+                Some tests are also provided.
+            </p>
+            <div class="filename">array_sorting.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">/* array_sorting.c : sorting arrays */</span>
+
+<span class="token macro property"># <span class="token directive keyword">define</span> _XOPEN_SOURCE 500</span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;assert.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;err.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">&lt;time.h&gt;</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">include</span> <span class="token string">"tests_tools.h"</span></span>
+
+<span class="token macro property"># <span class="token directive keyword">define</span> MAXVAL 100</span>
+<span class="token macro property"># <span class="token directive keyword">define</span> STEP 10</span>
+
+<span class="token comment">/*
+ * In all following functions parameters array and len are defined as:
+ * array: an integer array
+ * len: the length of the array, must be greater than 0
+ */</span>
+
+<span class="token comment">/* tools for sorting */</span>
+
+<span class="token comment">/*
+ * array_is_sorted(array, len): returns true if array is sorted in increasing
+ * order
+ */</span>
+<span class="token keyword">int</span> <span class="token function">array_is_sorted</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * array_swap(array, i, j): swap cell value at position i and j
+ */</span>
+<span class="token keyword">void</span> <span class="token function">array_swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> i<span class="token punctuation">,</span> <span class="token keyword">size_t</span> j<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selection sort */</span>
+
+<span class="token comment">/*
+ * array_select_sort(array, len): sort array using select sort
+ */</span>
+<span class="token keyword">void</span> <span class="token function">array_select_sort</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// TODO</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * Tests
+ */</span>
+
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">double</span> <span class="token function">time_gdiff</span><span class="token punctuation">(</span><span class="token keyword">struct</span> timespec t0<span class="token punctuation">,</span> <span class="token keyword">struct</span> timespec t1<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">double</span> s <span class="token operator">=</span> t1<span class="token punctuation">.</span>tv_sec <span class="token operator">-</span> t0<span class="token punctuation">.</span>tv_sec<span class="token punctuation">;</span>
+    s <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>t1<span class="token punctuation">.</span>tv_nsec <span class="token operator">-</span> t0<span class="token punctuation">.</span>tv_nsec<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1e-9</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+<span class="token keyword">void</span> <span class="token function">sort_help</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">,</span> <span class="token keyword">int</span> maxval<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> timespec t0<span class="token punctuation">,</span> t1<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Array before sort:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> maxval<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  ... sorting ...\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">clock_gettime</span><span class="token punctuation">(</span>CLOCK_MONOTONIC<span class="token punctuation">,</span> <span class="token operator">&amp;</span>t0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_select_sort</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">clock_gettime</span><span class="token punctuation">(</span>CLOCK_MONOTONIC<span class="token punctuation">,</span> <span class="token operator">&amp;</span>t1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Array after sort:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_print</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> maxval<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  time for sorting: %gs\n"</span><span class="token punctuation">,</span> <span class="token function">time_gdiff</span><span class="token punctuation">(</span>t0<span class="token punctuation">,</span> t1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  sort check: %s\n"</span><span class="token punctuation">,</span> <span class="token function">check</span><span class="token punctuation">(</span><span class="token function">array_is_sorted</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">test_sorting</span><span class="token punctuation">(</span><span class="token keyword">int</span> array<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">size_t</span> len<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"*** Sorted array ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sort_help</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP <span class="token operator">*</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n*** Reverse sorted array ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_reverse_sorted_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sort_help</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> STEP <span class="token operator">*</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n*** Random array ***\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">array_random_fill</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">sort_help</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">,</span> MAXVAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+ * main
+ */</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">srandom</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">size_t</span> len<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"must provide array length"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    len <span class="token operator">=</span> <span class="token function">strtoul</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>array <span class="token operator">=</span> <span class="token function">calloc</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">test_sorting</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">free</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Finally, you can compile and test your code with the following commands:
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">make</span> array_sorting
+gc</code><code class=" language-bash">c -Wall -Wextra -std<span class="token operator">=</span>c99 -O2 -MMD   array_sorting.c   -o array_sorting
+$ ./array_sorting 10
+<span class="token comment"># ...snip...</span></code></pre>
+            <h2 class="exercise" id="head_1008">Simple DirectMedia Layer (SDL)</h2>
+            <h3 id="head_1009">Checking Libraries</h3>
+            <p>
+                First, you have to check that you have all the libraries you need.
+                The <code class="s">pkg-config</code> command gives the compiler options.
+                Execute the commands below and check that you have the same results
+                (the <code class="s">ls</code> command prints
+                the installation paths of the library).
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">pkg-config</span> --cflags sdl
+-D_GNU_SOURCE<span class="token operator">=</span>1 -D_REENTRANT -I/usr/include/SDL
+$ <span class="token function">ls</span> /usr/include/SDL/SDL.h /usr/include/SDL/SDL_image.h
+/usr/include/SDL/SDL.h  /usr/include/SDL/SDL_image.h</code></pre>
+            <h3 id="head_1010">Makefile</h3>
+            <p>
+                The following <code class="s">Makefile</code> is provided:
+            </p>
+            <pre class=" language-makefile"><code class=" language-makefile"><span class="token comment"># Simple SDL mini Makefile</span>
+
+CC<span class="token operator">=</span>gcc
+
+CPPFLAGS<span class="token operator">=</span> `pkg-config --cflags sdl` -MMD
+CFLAGS<span class="token operator">=</span> -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O3
+LDFLAGS<span class="token operator">=</span>
+LDLIBS<span class="token operator">=</span> `pkg-config --libs sdl` -lSDL_image
+
+<span class="token symbol">all</span><span class="token punctuation">:</span> display grayscale
+
+<span class="token symbol">display</span><span class="token punctuation">:</span> display.o
+<span class="token symbol">grayscale</span><span class="token punctuation">:</span> pixel_operations.o grayscale.o
+
+<span class="token symbol">grayscale.o</span><span class="token punctuation">:</span> pixel_operations.h
+
+<span class="token symbol">clean</span><span class="token punctuation">:</span>
+	<span class="token variable">$</span><span class="token punctuation">{</span>RM<span class="token punctuation">}</span> *.o
+	<span class="token variable">$</span><span class="token punctuation">{</span>RM<span class="token punctuation">}</span> *.d
+	<span class="token variable">$</span><span class="token punctuation">{</span>RM<span class="token punctuation">}</span> display
+	<span class="token variable">$</span><span class="token punctuation">{</span>RM<span class="token punctuation">}</span> grayscale
+
+<span class="token comment"># END</span></code></pre>
+            <h3 id="head_1011">Displaying an Image</h3>
+            <p>
+                You will display an image by using the SDL.
+            </p>
+            <p>
+                To do so, you have to:
+            </p>
+            <ul>
+                <li>Initialize the SDL.</li>
+                <li>Load an image from a file.</li>
+                <li>Display the image.</li>
+                <li>Wait for a key to be pressed.</li>
+                <li>Free the allocated memory used for loading and displaying the image.</li>
+            </ul>
+            <p>
+                Some parts of this code is not really interesting.
+                So, some commented functions are given.
+            </p>
+            <p>
+                Initializing the SDL:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">init_sdl</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Init only the video part.</span>
+    <span class="token comment">// If it fails, die with an error message.</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">SDL_Init</span><span class="token punctuation">(</span>SDL_INIT_VIDEO<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"Could not initialize SDL: %s.\n"</span><span class="token punctuation">,</span> <span class="token function">SDL_GetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Loading an image from a file:
+            </p>
+            <pre class=" language-c"><code class=" language-c">SDL_Surface<span class="token operator">*</span> <span class="token function">load_image</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    SDL_Surface <span class="token operator">*</span>img<span class="token punctuation">;</span>
+
+    <span class="token comment">// Load an image using SDL_image with format detection.</span>
+    <span class="token comment">// If it fails, die with an error message.</span>
+    img <span class="token operator">=</span> <span class="token function">IMG_Load</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>img<span class="token punctuation">)</span>
+        <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">"can't load %s: %s"</span><span class="token punctuation">,</span> path<span class="token punctuation">,</span> <span class="token function">IMG_GetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> img<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Displaying an image:
+            </p>
+            <pre class=" language-c"><code class=" language-c">SDL_Surface<span class="token operator">*</span> <span class="token function">display_image</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>img<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    SDL_Surface <span class="token operator">*</span>screen<span class="token punctuation">;</span>
+
+    <span class="token comment">// Set the window to the same size as the image</span>
+    screen <span class="token operator">=</span> <span class="token function">SDL_SetVideoMode</span><span class="token punctuation">(</span>img<span class="token operator">-&gt;</span>w<span class="token punctuation">,</span> img<span class="token operator">-&gt;</span>h<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> SDL_SWSURFACE<span class="token operator">|</span>SDL_ANYFORMAT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>screen <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// error management</span>
+        <span class="token function">errx</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Couldn't set %dx%d video mode: %s\n"</span><span class="token punctuation">,</span>
+                img<span class="token operator">-&gt;</span>w<span class="token punctuation">,</span> img<span class="token operator">-&gt;</span>h<span class="token punctuation">,</span> <span class="token function">SDL_GetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Blit onto the screen surface</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">SDL_BlitSurface</span><span class="token punctuation">(</span>img<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> screen<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token function">warnx</span><span class="token punctuation">(</span><span class="token string">"BlitSurface error: %s\n"</span><span class="token punctuation">,</span> <span class="token function">SDL_GetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Update the screen</span>
+    <span class="token function">SDL_UpdateRect</span><span class="token punctuation">(</span>screen<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> img<span class="token operator">-&gt;</span>w<span class="token punctuation">,</span> img<span class="token operator">-&gt;</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// return the screen for further uses</span>
+    <span class="token keyword">return</span> screen<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                Waiting for a key to be pressed.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">wait_for_keypressed</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    SDL_Event event<span class="token punctuation">;</span>
+
+    <span class="token comment">// Wait for a key to be down.</span>
+    <span class="token keyword">do</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">SDL_PollEvent</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">while</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>type <span class="token operator">!=</span> SDL_KEYDOWN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Wait for a key to be up.</span>
+    <span class="token keyword">do</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">SDL_PollEvent</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">while</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>type <span class="token operator">!=</span> SDL_KEYUP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                To free the allocated memory, just use the following SDL function.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">void</span> <span class="token function">SDL_FreeSurface</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>surface<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Be careful, two surfaces will be created.
+            </p>
+            <ul>
+                <li>
+                    The surface when you load the image
+                    (returned by <code class="s">load_image()</code>).
+                </li>
+                <li>
+                    The surface when you display the image
+                    (returned by <code class="s">display_image()</code>).
+                </li>
+            </ul>
+            <p>
+                So they both must be freed.
+            </p>
+            <p>
+                Finally, complete the <code class="s">display.c</code> file below
+                (replace the TODO comments only).
+                Two pointers are used for the surface variables,
+                but do not worry, you do not have to know what a pointer is
+                to do or to understand this practical.
+                For now, consider that pointers are just simple variables
+                (and technically, they are).
+                We will see them in details later on.
+            </p>
+            <div class="filename">display.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;err.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"SDL/SDL.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"SDL/SDL_image.h"</span></span>
+
+<span class="token comment">// TODO: Insert all the above functions.</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    SDL_Surface<span class="token operator">*</span> image_surface<span class="token punctuation">;</span>
+    SDL_Surface<span class="token operator">*</span> screen_surface<span class="token punctuation">;</span>
+
+    <span class="token comment">// TODO: Initialize the SDL</span>
+
+    image_surface <span class="token operator">=</span> <span class="token function">load_image</span><span class="token punctuation">(</span><span class="token string">"my_image.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// TODO: Display the image.</span>
+
+    <span class="token comment">// TODO: Wait for a key to be pressed.</span>
+
+    <span class="token comment">// TODO: Free the image surface.</span>
+    <span class="token comment">// TODO: Free the screen surface.</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                You can compile and run your code by typing the following commands.
+                Do not forget to put an image in the same folder as your executable file.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">make</span> display
+gc</code><code class=" language-bash">c -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O3 `pk</code><code class=" language-bash">g-config --cflags sdl` -MMD  -c -o display.o display.c
+gc</code><code class=" language-bash">c   display.o  `pk</code><code class=" language-bash">g-config --libs sdl` -lSDL_image -o display
+$ ./display</code></pre>
+            <h3 id="head_1012">Converting into Grayscale</h3>
+            <p>
+                Now that you can display an image,
+                you are going to convert it into grayscale.
+            </p>
+            <p>
+                First, copy the <code class="s">display.c</code> file
+                to the <code class="s">grayscale.c</code> file.
+            </p>
+            <pre class=" language-bash"><code class=" language-bash">$ <span class="token function">cp</span> display.c grayscale.c</code></pre>
+            <p>
+                <mark>
+                    From now on, you will modify the
+                    <code class="s">grayscale.c</code> file only.
+                </mark>
+            </p>
+            <p>
+                The two following files are given.
+            </p>
+            <div class="filename">pixel_operations.h</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token macro property">#<span class="token directive keyword">ifndef</span> PIXEL_OPERATIONS_H_</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> PIXEL_OPERATIONS_H_</span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;SDL.h&gt;</span></span>
+
+Uint32 <span class="token function">get_pixel</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>surface<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> x<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">put_pixel</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>surface<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> x<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> y<span class="token punctuation">,</span> Uint32 pixel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">update_surface</span><span class="token punctuation">(</span>SDL_Surface<span class="token operator">*</span> screen<span class="token punctuation">,</span> SDL_Surface<span class="token operator">*</span> image<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token macro property">#<span class="token directive keyword">endif</span></span></code></pre>
+            <div class="filename">pixel_operations.c</div>
+            <pre class=" language-c"><code class=" language-c"><span class="token comment">// Simple get/put pixel for SDL</span>
+<span class="token comment">// Inspired by code from SDL documentation</span>
+<span class="token comment">// (http://www.libsdl.org/release/SDL-1.2.15/docs/html/guidevideo.html)</span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;err.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"pixel_operations.h"</span></span>
+
+<span class="token keyword">static</span> <span class="token keyword">inline</span>
+Uint8<span class="token operator">*</span> <span class="token function">pixel_ref</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>surf<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> x<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> y<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> bpp <span class="token operator">=</span> surf<span class="token operator">-&gt;</span>format<span class="token operator">-&gt;</span>BytesPerPixel<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>Uint8<span class="token operator">*</span><span class="token punctuation">)</span>surf<span class="token operator">-&gt;</span>pixels <span class="token operator">+</span> y <span class="token operator">*</span> surf<span class="token operator">-&gt;</span>pitch <span class="token operator">+</span> x <span class="token operator">*</span> bpp<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Uint32 <span class="token function">get_pixel</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>surface<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> x<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> y<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Uint8 <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">pixel_ref</span><span class="token punctuation">(</span>surface<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>surface<span class="token operator">-&gt;</span>format<span class="token operator">-&gt;</span>BytesPerPixel<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token operator">*</span><span class="token punctuation">(</span>Uint16 <span class="token operator">*</span><span class="token punctuation">)</span>p<span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>SDL_BYTEORDER <span class="token operator">==</span> SDL_BIG_ENDIAN<span class="token punctuation">)</span>
+                <span class="token keyword">return</span> p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token number">16</span> <span class="token operator">|</span> p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token number">8</span> <span class="token operator">|</span> p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token keyword">return</span> p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">|</span> p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token number">8</span> <span class="token operator">|</span> p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token number">16</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token operator">*</span><span class="token punctuation">(</span>Uint32 <span class="token operator">*</span><span class="token punctuation">)</span>p<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">put_pixel</span><span class="token punctuation">(</span>SDL_Surface <span class="token operator">*</span>surface<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> x<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> y<span class="token punctuation">,</span> Uint32 pixel<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Uint8 <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">pixel_ref</span><span class="token punctuation">(</span>surface<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">switch</span><span class="token punctuation">(</span>surface<span class="token operator">-&gt;</span>format<span class="token operator">-&gt;</span>BytesPerPixel<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            <span class="token operator">*</span>p <span class="token operator">=</span> pixel<span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
+            <span class="token operator">*</span><span class="token punctuation">(</span>Uint16 <span class="token operator">*</span><span class="token punctuation">)</span>p <span class="token operator">=</span> pixel<span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>SDL_BYTEORDER <span class="token operator">==</span> SDL_BIG_ENDIAN<span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel <span class="token operator">&gt;&gt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+                p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel <span class="token operator">&gt;&gt;</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+                p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> pixel <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">{</span>
+                p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> pixel <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+                p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel <span class="token operator">&gt;&gt;</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+                p<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>pixel <span class="token operator">&gt;&gt;</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xff</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
+            <span class="token operator">*</span><span class="token punctuation">(</span>Uint32 <span class="token operator">*</span><span class="token punctuation">)</span>p <span class="token operator">=</span> pixel<span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">update_surface</span><span class="token punctuation">(</span>SDL_Surface<span class="token operator">*</span> screen<span class="token punctuation">,</span> SDL_Surface<span class="token operator">*</span> image<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">SDL_BlitSurface</span><span class="token punctuation">(</span>image<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> screen<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token function">warnx</span><span class="token punctuation">(</span><span class="token string">"BlitSurface error: %s\n"</span><span class="token punctuation">,</span> <span class="token function">SDL_GetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">SDL_UpdateRect</span><span class="token punctuation">(</span>screen<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> image<span class="token operator">-&gt;</span>w<span class="token punctuation">,</span> image<span class="token operator">-&gt;</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+            <p>
+                You do not have to understand the contents of these files.
+                You just have to know how to use their functions.
+            </p>
+            <p>
+                Here are some examples that can be helpful.
+            </p>
+            <p>
+                If the coordinates of a pixel
+                are <var>x</var> and <var>y</var>,
+                you can get its value by using the
+                <code class="s">get_pixel()</code> function.
+            </p>
+            <pre class=" language-c"><code class=" language-c">Uint32 pixel <span class="token operator">=</span> <span class="token function">get_pixel</span><span class="token punctuation">(</span>image_surface<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                If the coordinates of a pixel
+                are <var>x</var> and <var>y</var>,
+                you can set its value by using the
+                <code class="s">put_pixel()</code> function.
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token function">put_pixel</span><span class="token punctuation">(</span>image_surface<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> pixel<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                To get the
+                <a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB</a>
+                values of a pixel in the
+                <var>r</var>, <var>g</var>, <var>b</var> variables,
+                you can use the following instructions:
+            </p>
+            <pre class=" language-c"><code class=" language-c">Uint8 r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">;</span>
+<span class="token function">SDL_GetRGB</span><span class="token punctuation">(</span>pixel<span class="token punctuation">,</span> image_surface<span class="token operator">-&gt;</span>format<span class="token punctuation">,</span> <span class="token operator">&amp;</span>r<span class="token punctuation">,</span> <span class="token operator">&amp;</span>g<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                To get a pixel value from RGB values 
+                you can use the following instruction:
+            </p>
+            <pre class=" language-c"><code class=" language-c">Uint32 pixel <span class="token operator">=</span> <span class="token function">SDL_MapRGB</span><span class="token punctuation">(</span>image_surface<span class="token operator">-&gt;</span>format<span class="token punctuation">,</span> r<span class="token punctuation">,</span> g<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                To get the width of your image,
+                you can use the the following instruction:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> width <span class="token operator">=</span> image_surface<span class="token operator">-&gt;</span>w<span class="token punctuation">;</span></code></pre>
+            <p>
+                To get the height of your image,
+                you can use the following instruction:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> height <span class="token operator">=</span> image_surface<span class="token operator">-&gt;</span>h<span class="token punctuation">;</span></code></pre>
+            <p>
+                To redraw the surfaces:
+            </p>
+            <pre class=" language-c"><code class=" language-c"><span class="token function">update_surface</span><span class="token punctuation">(</span>screen_image<span class="token punctuation">,</span> surface_image<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                So now, rewrite the main function in the <code class="s">grayscale.c</code> file.
+                <mark>Do not modify the <code class="s">display.c</code> file</mark>.
+                You also have to include the <code class="s">pixel_operations.h</code> file.
+            </p> 
+            <p>
+                Your main function should follow the following steps:
+            </p>
+            <ul>
+                <li>Display the image.</li>
+                <li>Wait for a key to be pressed.</li>
+                <li> For each pixel of the image:
+                    <ul>
+                        <li>Get the pixel value.</li>
+                        <li>Get the RGB values of the pixel.</li>
+                        <li>
+                            Compute the weighted average of the RGB values:<br>
+                            <code>average = 0.3*r + 0.59*g + 0.11*b</code>
+                        </li>
+                        <li>
+                            Update the RGB values by using this average
+                            (<code>r = g = b = average</code>).
+                        </li>
+                        <li>Get the new pixel value from the new RGB values.</li>
+                        <li>Put the new pixel value on the surface.</li>
+                    </ul>
+                </li>
+                <li>Redraw the surfaces.</li>
+                <li>Wait for a key to be pressed.</li>
+                <li>Free the surfaces.</li>
+            </ul>
+            <p>
+                You can compile and run your code by typing the following commands.
+                Do not forget to put an image in the same folder as your executable file.
+            </p>
+            <pre class="  language-bash"><code class=" language-bash">$ <span class="token function">make</span> grayscale
+gc</code><code class=" language-bash">c -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O3 `pk</code><code class=" language-bash">g-config --cflags sdl` -MMD  -c -o grayscale.o grayscale.c
+gc</code><code class=" language-bash">c -Wall -Wextra -Werror -std<span class="token operator">=</span>c99 -O3 `pk</code><code class=" language-bash">g-config --cflags sdl` -MMD  -c -o pixel_operations.o pixel_operations.c
+gc</code><code class=" language-bash">c   grayscale.o pixel_operations.o  `pk</code><code class=" language-bash">g-config --libs sdl` -lSDL_image -o grayscale
+$ ./grayscale</code></pre>
+        </main>
+        <footer>
+            <span>
+                <a href="http://validator.w3.org/check?uri=referer">
+                    HTML 5
+                </a>
+            </span>
+            <span>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3svg">
+                    CSS 3
+                </a>
+            </span>
+        </footer>
+        <script src="Arrays%20and%20SDL_fichiers/prism.js"></script>
+        <script src="Arrays%20and%20SDL_fichiers/script.js"></script>
+    
+
+</body></html>
