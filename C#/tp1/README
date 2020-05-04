@@ -1,0 +1,22 @@
+=---------------={README tp1 C#}=---------------=
+
+Exercice 1
+normalement tout va bien, eventuellement dans le cas ou le fichier n'existe pas, je cree le fichier en utilisant directement les commandes File.append aui cree d'eux meme le fichier
+
+
+Exercice 2: Maze
+
+En suivant les fonctions de bases je n'ai pas su utiliser correctement le tanleaux processed.
+De plus j'execute une sauvegarde du labyrinthe dans le fichier.solved a chaque recursion via la fonction SaveSolution aui est appelee
+dans SolveMazeBackTracking
+
+pour AskMaze, j'utilise un console Readline qui force l'utilisateur a appuyer sur une touche: le but est d'avoir le message d'erreur affichee a l'ecran avant de retaper le chemin d'acces ce aue je trouve plus propre
+
+getOutputFile: RAS
+ParseFile: RAS
+FindStart: RAS
+
+SolveMaze: j'initialise processed dans le main avec un tableaux de valeur egale a 0
+
+
+Bonus part, j'indiaue via un true/false dans la console si le maze est bien resolu

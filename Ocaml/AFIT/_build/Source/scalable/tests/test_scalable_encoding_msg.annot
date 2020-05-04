@@ -1,0 +1,196 @@
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 179 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 181
+type(
+  unit
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 188 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 194
+type(
+  ((string * int) * int list) list
+)
+ident(
+  def t_list "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 260 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 315
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 200 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 208
+type(
+  string
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 210 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 211
+type(
+  int
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 199 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 212
+type(
+  string * int
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 214 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 222
+type(
+  int -> int list
+)
+ident(
+  int_ref Scalable.from_int "Source/scalable/scalable.mli" 20 835 835 "Source/scalable/scalable.mli" 20 835 865
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 223 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 236
+type(
+  int
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 214 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 236
+call(
+  stack
+)
+type(
+  int list
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 198 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 237
+type(
+  (string * int) * int list
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 197 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 238
+type(
+  ((string * int) * int list) list
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 260 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 268
+type(
+  (string ->
+   (string -> int -> int list) ->
+   ((string * int) * int list) list -> OUnit2.test) ->
+  string ->
+  (string -> int -> int list) -> ((string * int) * int list) list -> unit
+)
+ident(
+  int_ref Test_scalable_templates.run_test "Source/scalable/tests/test_scalable_templates.ml" 141 5451 5455 "Source/scalable/tests/test_scalable_templates.ml" 141 5451 5463
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 269 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 283
+type(
+  string ->
+  (string -> int -> int list) ->
+  ((string * int) * int list) list -> OUnit2.test
+)
+ident(
+  int_ref Test_scalable_templates.template_s1i_1 "Source/scalable/tests/test_scalable_templates.ml" 131 4945 4949 "Source/scalable/tests/test_scalable_templates.ml" 131 4945 4963
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 284 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 301
+type(
+  string
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 302 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 308
+type(
+  string -> int -> int list
+)
+ident(
+  int_ref Encoding_msg.encode "Source/scalable/encoding_msg.mli" 8 226 226 "Source/scalable/encoding_msg.mli" 8 226 264
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 309 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 315
+type(
+  ((string * int) * int list) list
+)
+ident(
+  int_ref t_list "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 188 "Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 194
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 260 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 315
+call(
+  stack
+)
+type(
+  unit
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 10 175 184 "Source/scalable/tests/test_scalable_encoding_msg.ml" 12 251 315
+type(
+  unit
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 324 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 326
+type(
+  unit
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 333 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 339
+type(
+  ((int list * int) * string) list
+)
+ident(
+  def t_list "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 405 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 459
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 345 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 353
+type(
+  int -> int list
+)
+ident(
+  int_ref Scalable.from_int "Source/scalable/scalable.mli" 20 835 835 "Source/scalable/scalable.mli" 20 835 865
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 354 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 367
+type(
+  int
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 345 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 367
+call(
+  stack
+)
+type(
+  int list
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 369 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 370
+type(
+  int
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 344 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 371
+type(
+  int list * int
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 373 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 381
+type(
+  string
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 343 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 382
+type(
+  (int list * int) * string
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 342 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 383
+type(
+  ((int list * int) * string) list
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 405 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 413
+type(
+  (string ->
+   (int list -> int -> string) ->
+   ((int list * int) * string) list -> OUnit2.test) ->
+  string ->
+  (int list -> int -> string) -> ((int list * int) * string) list -> unit
+)
+ident(
+  int_ref Test_scalable_templates.run_test "Source/scalable/tests/test_scalable_templates.ml" 141 5451 5455 "Source/scalable/tests/test_scalable_templates.ml" 141 5451 5463
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 414 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 427
+type(
+  string ->
+  (int list -> int -> string) ->
+  ((int list * int) * string) list -> OUnit2.test
+)
+ident(
+  int_ref Test_scalable_templates.template_2i_s "Source/scalable/tests/test_scalable_templates.ml" 133 5063 5067 "Source/scalable/tests/test_scalable_templates.ml" 133 5063 5080
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 428 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 445
+type(
+  string
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 446 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 452
+type(
+  int list -> int -> string
+)
+ident(
+  int_ref Encoding_msg.decode "Source/scalable/encoding_msg.mli" 15 480 480 "Source/scalable/encoding_msg.mli" 15 480 518
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 453 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 459
+type(
+  ((int list * int) * string) list
+)
+ident(
+  int_ref t_list "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 333 "Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 339
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 405 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 459
+call(
+  stack
+)
+type(
+  unit
+)
+"Source/scalable/tests/test_scalable_encoding_msg.ml" 15 320 329 "Source/scalable/tests/test_scalable_encoding_msg.ml" 17 396 459
+type(
+  unit
+)

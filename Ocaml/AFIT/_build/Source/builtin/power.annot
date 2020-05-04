@@ -1,0 +1,860 @@
+"Source/builtin/power.ml" 16 326 334 "Source/builtin/power.ml" 16 326 337
+type(
+  int -> int -> int
+)
+ident(
+  def pow "Source/builtin/power.ml" 16 326 326 "Source/builtin/power.ml" 1 0 -1
+)
+"Source/builtin/power.ml" 16 326 338 "Source/builtin/power.ml" 16 326 339
+type(
+  int
+)
+ident(
+  def x "Source/builtin/power.ml" 16 326 340 "Source/builtin/power.ml" 19 377 400
+)
+"Source/builtin/power.ml" 16 326 340 "Source/builtin/power.ml" 16 326 341
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 16 326 344 "Source/builtin/power.ml" 19 377 400
+)
+"Source/builtin/power.ml" 16 326 350 "Source/builtin/power.ml" 16 326 351
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 16 326 340 "Source/builtin/power.ml" 16 326 341
+)
+"Source/builtin/power.ml" 17 357 360 "Source/builtin/power.ml" 17 357 361
+type(
+  int
+)
+"Source/builtin/power.ml" 17 357 365 "Source/builtin/power.ml" 17 357 366
+type(
+  int
+)
+"Source/builtin/power.ml" 18 367 370 "Source/builtin/power.ml" 18 367 371
+type(
+  int
+)
+"Source/builtin/power.ml" 18 367 375 "Source/builtin/power.ml" 18 367 376
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 16 326 338 "Source/builtin/power.ml" 16 326 339
+)
+"Source/builtin/power.ml" 19 377 380 "Source/builtin/power.ml" 19 377 381
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 19 377 385 "Source/builtin/power.ml" 19 377 400
+)
+"Source/builtin/power.ml" 19 377 385 "Source/builtin/power.ml" 19 377 386
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 16 326 338 "Source/builtin/power.ml" 16 326 339
+)
+"Source/builtin/power.ml" 19 377 386 "Source/builtin/power.ml" 19 377 387
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 19 377 388 "Source/builtin/power.ml" 19 377 391
+type(
+  int -> int -> int
+)
+ident(
+  int_ref pow "Source/builtin/power.ml" 16 326 334 "Source/builtin/power.ml" 16 326 337
+)
+"Source/builtin/power.ml" 19 377 392 "Source/builtin/power.ml" 19 377 393
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 16 326 338 "Source/builtin/power.ml" 16 326 339
+)
+"Source/builtin/power.ml" 19 377 395 "Source/builtin/power.ml" 19 377 396
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 19 377 380 "Source/builtin/power.ml" 19 377 381
+)
+"Source/builtin/power.ml" 19 377 396 "Source/builtin/power.ml" 19 377 397
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/power.ml" 19 377 397 "Source/builtin/power.ml" 19 377 398
+type(
+  int
+)
+"Source/builtin/power.ml" 19 377 394 "Source/builtin/power.ml" 19 377 399
+type(
+  int
+)
+"Source/builtin/power.ml" 19 377 387 "Source/builtin/power.ml" 19 377 400
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 19 377 385 "Source/builtin/power.ml" 19 377 400
+type(
+  int
+)
+"Source/builtin/power.ml" 16 326 344 "Source/builtin/power.ml" 19 377 400
+type(
+  int
+)
+"Source/builtin/power.ml" 25 514 522 "Source/builtin/power.ml" 25 514 527
+type(
+  int -> int -> int
+)
+ident(
+  def power "Source/builtin/power.ml" 25 514 514 "Source/builtin/power.ml" 1 0 -1
+)
+"Source/builtin/power.ml" 25 514 528 "Source/builtin/power.ml" 25 514 529
+type(
+  int
+)
+ident(
+  def x "Source/builtin/power.ml" 25 514 530 "Source/builtin/power.ml" 28 608 633
+)
+"Source/builtin/power.ml" 25 514 530 "Source/builtin/power.ml" 25 514 531
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 25 514 534 "Source/builtin/power.ml" 28 608 633
+)
+"Source/builtin/power.ml" 25 514 540 "Source/builtin/power.ml" 25 514 541
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 25 514 530 "Source/builtin/power.ml" 25 514 531
+)
+"Source/builtin/power.ml" 26 547 550 "Source/builtin/power.ml" 26 547 551
+type(
+  int
+)
+"Source/builtin/power.ml" 26 547 555 "Source/builtin/power.ml" 26 547 556
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 560 "Source/builtin/power.ml" 27 557 561
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 27 557 567 "Source/builtin/power.ml" 27 557 607
+)
+"Source/builtin/power.ml" 27 557 567 "Source/builtin/power.ml" 27 557 568
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 27 557 560 "Source/builtin/power.ml" 27 557 561
+)
+"Source/builtin/power.ml" 27 557 569 "Source/builtin/power.ml" 27 557 572
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( mod ) "stdlib.mli" 288 11226 11226 "stdlib.mli" 288 11226 11274
+)
+"Source/builtin/power.ml" 27 557 573 "Source/builtin/power.ml" 27 557 574
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 567 "Source/builtin/power.ml" 27 557 574
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 575 "Source/builtin/power.ml" 27 557 576
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/power.ml" 27 557 577 "Source/builtin/power.ml" 27 557 578
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 567 "Source/builtin/power.ml" 27 557 578
+type(
+  bool
+)
+"Source/builtin/power.ml" 27 557 582 "Source/builtin/power.ml" 27 557 583
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 25 514 528 "Source/builtin/power.ml" 25 514 529
+)
+"Source/builtin/power.ml" 27 557 583 "Source/builtin/power.ml" 27 557 584
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 27 557 585 "Source/builtin/power.ml" 27 557 590
+type(
+  int -> int -> int
+)
+ident(
+  int_ref power "Source/builtin/power.ml" 25 514 522 "Source/builtin/power.ml" 25 514 527
+)
+"Source/builtin/power.ml" 27 557 592 "Source/builtin/power.ml" 27 557 593
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 25 514 528 "Source/builtin/power.ml" 25 514 529
+)
+"Source/builtin/power.ml" 27 557 593 "Source/builtin/power.ml" 27 557 594
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 27 557 594 "Source/builtin/power.ml" 27 557 595
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 25 514 528 "Source/builtin/power.ml" 25 514 529
+)
+"Source/builtin/power.ml" 27 557 591 "Source/builtin/power.ml" 27 557 596
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 599 "Source/builtin/power.ml" 27 557 600
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 27 557 560 "Source/builtin/power.ml" 27 557 561
+)
+"Source/builtin/power.ml" 27 557 600 "Source/builtin/power.ml" 27 557 601
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/power.ml" 27 557 601 "Source/builtin/power.ml" 27 557 602
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 598 "Source/builtin/power.ml" 27 557 603
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 603 "Source/builtin/power.ml" 27 557 604
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( / ) "stdlib.mli" 279 10780 10780 "stdlib.mli" 279 10780 10826
+)
+"Source/builtin/power.ml" 27 557 604 "Source/builtin/power.ml" 27 557 605
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 597 "Source/builtin/power.ml" 27 557 606
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 584 "Source/builtin/power.ml" 27 557 607
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 27 557 582 "Source/builtin/power.ml" 27 557 607
+type(
+  int
+)
+"Source/builtin/power.ml" 28 608 611 "Source/builtin/power.ml" 28 608 612
+type(
+  int
+)
+"Source/builtin/power.ml" 28 608 616 "Source/builtin/power.ml" 28 608 621
+type(
+  int -> int -> int
+)
+ident(
+  int_ref power "Source/builtin/power.ml" 25 514 522 "Source/builtin/power.ml" 25 514 527
+)
+"Source/builtin/power.ml" 28 608 623 "Source/builtin/power.ml" 28 608 624
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 25 514 528 "Source/builtin/power.ml" 25 514 529
+)
+"Source/builtin/power.ml" 28 608 624 "Source/builtin/power.ml" 28 608 625
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 28 608 625 "Source/builtin/power.ml" 28 608 626
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 25 514 528 "Source/builtin/power.ml" 25 514 529
+)
+"Source/builtin/power.ml" 28 608 622 "Source/builtin/power.ml" 28 608 627
+type(
+  int
+)
+"Source/builtin/power.ml" 28 608 629 "Source/builtin/power.ml" 28 608 630
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 25 514 530 "Source/builtin/power.ml" 25 514 531
+)
+"Source/builtin/power.ml" 28 608 630 "Source/builtin/power.ml" 28 608 631
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( / ) "stdlib.mli" 279 10780 10780 "stdlib.mli" 279 10780 10826
+)
+"Source/builtin/power.ml" 28 608 631 "Source/builtin/power.ml" 28 608 632
+type(
+  int
+)
+"Source/builtin/power.ml" 28 608 628 "Source/builtin/power.ml" 28 608 633
+type(
+  int
+)
+"Source/builtin/power.ml" 28 608 616 "Source/builtin/power.ml" 28 608 633
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 25 514 534 "Source/builtin/power.ml" 28 608 633
+type(
+  int
+)
+"Source/builtin/power.ml" 46 1079 1087 "Source/builtin/power.ml" 46 1079 1096
+type(
+  int -> int -> int -> int
+)
+ident(
+  def mod_power "Source/builtin/power.ml" 46 1079 1079 "Source/builtin/power.ml" 1 0 -1
+)
+"Source/builtin/power.ml" 46 1079 1097 "Source/builtin/power.ml" 46 1079 1098
+type(
+  int
+)
+ident(
+  def x "Source/builtin/power.ml" 46 1079 1099 "Source/builtin/power.ml" 50 1176 1239
+)
+"Source/builtin/power.ml" 46 1079 1099 "Source/builtin/power.ml" 46 1079 1100
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 46 1079 1101 "Source/builtin/power.ml" 50 1176 1239
+)
+"Source/builtin/power.ml" 46 1079 1101 "Source/builtin/power.ml" 46 1079 1102
+type(
+  int
+)
+ident(
+  def m "Source/builtin/power.ml" 47 1105 1107 "Source/builtin/power.ml" 50 1176 1239
+)
+"Source/builtin/power.ml" 47 1105 1113 "Source/builtin/power.ml" 47 1105 1114
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 46 1079 1099 "Source/builtin/power.ml" 46 1079 1100
+)
+"Source/builtin/power.ml" 48 1120 1123 "Source/builtin/power.ml" 48 1120 1124
+type(
+  int
+)
+"Source/builtin/power.ml" 48 1120 1127 "Source/builtin/power.ml" 48 1120 1128
+type(
+  int
+)
+"Source/builtin/power.ml" 49 1129 1132 "Source/builtin/power.ml" 49 1129 1133
+type(
+  int
+)
+"Source/builtin/power.ml" 49 1129 1140 "Source/builtin/power.ml" 49 1129 1141
+type(
+  int
+)
+ident(
+  def k "Source/builtin/power.ml" 50 1176 1183 "Source/builtin/power.ml" 50 1176 1239
+)
+"Source/builtin/power.ml" 49 1129 1143 "Source/builtin/power.ml" 49 1129 1149
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/power.ml" 49 1129 1150 "Source/builtin/power.ml" 49 1129 1159
+type(
+  int -> int -> int -> int
+)
+ident(
+  int_ref mod_power "Source/builtin/power.ml" 46 1079 1087 "Source/builtin/power.ml" 46 1079 1096
+)
+"Source/builtin/power.ml" 49 1129 1160 "Source/builtin/power.ml" 49 1129 1161
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 46 1079 1097 "Source/builtin/power.ml" 46 1079 1098
+)
+"Source/builtin/power.ml" 49 1129 1163 "Source/builtin/power.ml" 49 1129 1164
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 46 1079 1099 "Source/builtin/power.ml" 46 1079 1100
+)
+"Source/builtin/power.ml" 49 1129 1164 "Source/builtin/power.ml" 49 1129 1165
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( / ) "stdlib.mli" 279 10780 10780 "stdlib.mli" 279 10780 10826
+)
+"Source/builtin/power.ml" 49 1129 1165 "Source/builtin/power.ml" 49 1129 1166
+type(
+  int
+)
+"Source/builtin/power.ml" 49 1129 1162 "Source/builtin/power.ml" 49 1129 1167
+type(
+  int
+)
+"Source/builtin/power.ml" 49 1129 1168 "Source/builtin/power.ml" 49 1129 1169
+type(
+  int
+)
+ident(
+  int_ref m "Source/builtin/power.ml" 46 1079 1101 "Source/builtin/power.ml" 46 1079 1102
+)
+"Source/builtin/power.ml" 49 1129 1149 "Source/builtin/power.ml" 49 1129 1170
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 49 1129 1171 "Source/builtin/power.ml" 49 1129 1172
+type(
+  int
+)
+ident(
+  int_ref m "Source/builtin/power.ml" 46 1079 1101 "Source/builtin/power.ml" 46 1079 1102
+)
+"Source/builtin/power.ml" 49 1129 1143 "Source/builtin/power.ml" 49 1129 1172
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1183 "Source/builtin/power.ml" 50 1176 1189
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/power.ml" 50 1176 1191 "Source/builtin/power.ml" 50 1176 1197
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/power.ml" 50 1176 1199 "Source/builtin/power.ml" 50 1176 1200
+type(
+  int
+)
+ident(
+  int_ref k "Source/builtin/power.ml" 49 1129 1140 "Source/builtin/power.ml" 49 1129 1141
+)
+"Source/builtin/power.ml" 50 1176 1200 "Source/builtin/power.ml" 50 1176 1201
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 50 1176 1201 "Source/builtin/power.ml" 50 1176 1202
+type(
+  int
+)
+ident(
+  int_ref k "Source/builtin/power.ml" 49 1129 1140 "Source/builtin/power.ml" 49 1129 1141
+)
+"Source/builtin/power.ml" 50 1176 1198 "Source/builtin/power.ml" 50 1176 1203
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1204 "Source/builtin/power.ml" 50 1176 1205
+type(
+  int
+)
+ident(
+  int_ref m "Source/builtin/power.ml" 46 1079 1101 "Source/builtin/power.ml" 46 1079 1102
+)
+"Source/builtin/power.ml" 50 1176 1190 "Source/builtin/power.ml" 50 1176 1206
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1206 "Source/builtin/power.ml" 50 1176 1207
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 50 1176 1211 "Source/builtin/power.ml" 50 1176 1212
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 46 1079 1099 "Source/builtin/power.ml" 46 1079 1100
+)
+"Source/builtin/power.ml" 50 1176 1213 "Source/builtin/power.ml" 50 1176 1216
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( mod ) "stdlib.mli" 288 11226 11226 "stdlib.mli" 288 11226 11274
+)
+"Source/builtin/power.ml" 50 1176 1217 "Source/builtin/power.ml" 50 1176 1218
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1211 "Source/builtin/power.ml" 50 1176 1218
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1218 "Source/builtin/power.ml" 50 1176 1219
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/power.ml" 50 1176 1219 "Source/builtin/power.ml" 50 1176 1220
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1211 "Source/builtin/power.ml" 50 1176 1220
+type(
+  bool
+)
+"Source/builtin/power.ml" 50 1176 1226 "Source/builtin/power.ml" 50 1176 1227
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1233 "Source/builtin/power.ml" 50 1176 1234
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 46 1079 1097 "Source/builtin/power.ml" 46 1079 1098
+)
+"Source/builtin/power.ml" 50 1176 1207 "Source/builtin/power.ml" 50 1176 1236
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1189 "Source/builtin/power.ml" 50 1176 1237
+type(
+  int
+)
+"Source/builtin/power.ml" 50 1176 1238 "Source/builtin/power.ml" 50 1176 1239
+type(
+  int
+)
+ident(
+  int_ref m "Source/builtin/power.ml" 46 1079 1101 "Source/builtin/power.ml" 46 1079 1102
+)
+"Source/builtin/power.ml" 50 1176 1183 "Source/builtin/power.ml" 50 1176 1239
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 49 1129 1136 "Source/builtin/power.ml" 50 1176 1239
+type(
+  int
+)
+"Source/builtin/power.ml" 47 1105 1107 "Source/builtin/power.ml" 50 1176 1239
+type(
+  int
+)
+"Source/builtin/power.ml" 61 1536 1544 "Source/builtin/power.ml" 61 1536 1559
+type(
+  int -> int -> int -> int
+)
+ident(
+  def prime_mod_power "Source/builtin/power.ml" 61 1536 1536 "Source/builtin/power.ml" 1 0 -1
+)
+"Source/builtin/power.ml" 61 1536 1560 "Source/builtin/power.ml" 61 1536 1561
+type(
+  int
+)
+ident(
+  def x "Source/builtin/power.ml" 61 1536 1562 "Source/builtin/power.ml" 66 1648 1698
+)
+"Source/builtin/power.ml" 61 1536 1562 "Source/builtin/power.ml" 61 1536 1563
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 66 1648 1698
+)
+"Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 61 1536 1565
+type(
+  int
+)
+ident(
+  def p "Source/builtin/power.ml" 62 1568 1570 "Source/builtin/power.ml" 66 1648 1698
+)
+"Source/builtin/power.ml" 62 1568 1576 "Source/builtin/power.ml" 62 1568 1577
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 61 1536 1562 "Source/builtin/power.ml" 61 1536 1563
+)
+"Source/builtin/power.ml" 63 1583 1588 "Source/builtin/power.ml" 63 1583 1589
+type(
+  int
+)
+"Source/builtin/power.ml" 63 1583 1593 "Source/builtin/power.ml" 63 1583 1594
+type(
+  int
+)
+"Source/builtin/power.ml" 64 1595 1600 "Source/builtin/power.ml" 64 1595 1601
+type(
+  int
+)
+"Source/builtin/power.ml" 64 1595 1605 "Source/builtin/power.ml" 64 1595 1611
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/power.ml" 64 1595 1612 "Source/builtin/power.ml" 64 1595 1613
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 61 1536 1560 "Source/builtin/power.ml" 61 1536 1561
+)
+"Source/builtin/power.ml" 64 1595 1614 "Source/builtin/power.ml" 64 1595 1615
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 61 1536 1565
+)
+"Source/builtin/power.ml" 64 1595 1605 "Source/builtin/power.ml" 64 1595 1615
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 65 1616 1621 "Source/builtin/power.ml" 65 1616 1622
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 65 1616 1628 "Source/builtin/power.ml" 65 1616 1647
+)
+"Source/builtin/power.ml" 65 1616 1628 "Source/builtin/power.ml" 65 1616 1629
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 65 1616 1621 "Source/builtin/power.ml" 65 1616 1622
+)
+"Source/builtin/power.ml" 65 1616 1630 "Source/builtin/power.ml" 65 1616 1631
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/power.ml" 65 1616 1632 "Source/builtin/power.ml" 65 1616 1633
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 61 1536 1565
+)
+"Source/builtin/power.ml" 65 1616 1628 "Source/builtin/power.ml" 65 1616 1633
+type(
+  bool
+)
+"Source/builtin/power.ml" 65 1616 1637 "Source/builtin/power.ml" 65 1616 1643
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/power.ml" 65 1616 1644 "Source/builtin/power.ml" 65 1616 1645
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 61 1536 1560 "Source/builtin/power.ml" 61 1536 1561
+)
+"Source/builtin/power.ml" 65 1616 1646 "Source/builtin/power.ml" 65 1616 1647
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 61 1536 1565
+)
+"Source/builtin/power.ml" 65 1616 1637 "Source/builtin/power.ml" 65 1616 1647
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 66 1648 1653 "Source/builtin/power.ml" 66 1648 1654
+type(
+  int
+)
+ident(
+  def n "Source/builtin/power.ml" 66 1648 1658 "Source/builtin/power.ml" 66 1648 1698
+)
+"Source/builtin/power.ml" 66 1648 1658 "Source/builtin/power.ml" 66 1648 1664
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/power.ml" 66 1648 1666 "Source/builtin/power.ml" 66 1648 1667
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 61 1536 1560 "Source/builtin/power.ml" 61 1536 1561
+)
+"Source/builtin/power.ml" 66 1648 1667 "Source/builtin/power.ml" 66 1648 1668
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/power.ml" 66 1648 1669 "Source/builtin/power.ml" 66 1648 1684
+type(
+  int -> int -> int -> int
+)
+ident(
+  int_ref prime_mod_power "Source/builtin/power.ml" 61 1536 1544 "Source/builtin/power.ml" 61 1536 1559
+)
+"Source/builtin/power.ml" 66 1648 1685 "Source/builtin/power.ml" 66 1648 1686
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/power.ml" 61 1536 1560 "Source/builtin/power.ml" 61 1536 1561
+)
+"Source/builtin/power.ml" 66 1648 1688 "Source/builtin/power.ml" 66 1648 1689
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/power.ml" 66 1648 1653 "Source/builtin/power.ml" 66 1648 1654
+)
+"Source/builtin/power.ml" 66 1648 1689 "Source/builtin/power.ml" 66 1648 1690
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/power.ml" 66 1648 1690 "Source/builtin/power.ml" 66 1648 1691
+type(
+  int
+)
+"Source/builtin/power.ml" 66 1648 1687 "Source/builtin/power.ml" 66 1648 1692
+type(
+  int
+)
+"Source/builtin/power.ml" 66 1648 1693 "Source/builtin/power.ml" 66 1648 1694
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 61 1536 1565
+)
+"Source/builtin/power.ml" 66 1648 1668 "Source/builtin/power.ml" 66 1648 1695
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 66 1648 1665 "Source/builtin/power.ml" 66 1648 1696
+type(
+  int
+)
+"Source/builtin/power.ml" 66 1648 1697 "Source/builtin/power.ml" 66 1648 1698
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/power.ml" 61 1536 1564 "Source/builtin/power.ml" 61 1536 1565
+)
+"Source/builtin/power.ml" 66 1648 1658 "Source/builtin/power.ml" 66 1648 1698
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/power.ml" 62 1568 1570 "Source/builtin/power.ml" 66 1648 1698
+type(
+  int
+)

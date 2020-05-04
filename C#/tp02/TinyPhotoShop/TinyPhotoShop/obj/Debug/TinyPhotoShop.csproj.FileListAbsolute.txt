@@ -1,0 +1,11 @@
+C:\Users\etien\Desktop\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\bin\Debug\TinyPhotoShop.exe
+C:\Users\etien\Desktop\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\bin\Debug\TinyPhotoShop.pdb
+C:\Users\etien\Desktop\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.csprojAssemblyReference.cache
+C:\Users\etien\Desktop\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.csproj.CoreCompileInputs.cache
+C:\Users\etien\Desktop\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.exe
+C:\Users\etien\Desktop\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.pdb
+C:\Users\etien\Desktop\prog S2#\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\bin\Debug\TinyPhotoShop.exe
+C:\Users\etien\Desktop\prog S2#\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\bin\Debug\TinyPhotoShop.pdb
+C:\Users\etien\Desktop\prog S2#\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.csprojResolveAssemblyReference.cache
+C:\Users\etien\Desktop\prog S2#\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.exe
+C:\Users\etien\Desktop\prog S2#\csharp-tp2-etienne.lazarz\TinyPhotoShop\TinyPhotoShop\obj\Debug\TinyPhotoShop.pdb

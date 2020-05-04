@@ -1,0 +1,43 @@
+"Source/scalable/test_primes.ml" 8 115 119 "Source/scalable/test_primes.ml" 8 115 127
+type(
+  'a -> bool
+)
+ident(
+  def is_prime "Source/scalable/test_primes.ml" 14 292 292 "Source/scalable/test_primes.ml" 1 0 -1
+)
+"Source/scalable/test_primes.ml" 8 115 128 "Source/scalable/test_primes.ml" 8 115 129
+type(
+  'a
+)
+ident(
+  def n "Source/scalable/test_primes.ml" 8 115 132 "Source/scalable/test_primes.ml" 8 115 136
+)
+"Source/scalable/test_primes.ml" 8 115 132 "Source/scalable/test_primes.ml" 8 115 136
+type(
+  bool
+)
+"Source/scalable/test_primes.ml" 14 292 296 "Source/scalable/test_primes.ml" 14 292 311
+type(
+  'a -> 'b -> bool
+)
+ident(
+  def is_pseudo_prime "Source/scalable/test_primes.ml" 14 292 329 "Source/scalable/test_primes.ml" 1 0 -1
+)
+"Source/scalable/test_primes.ml" 14 292 312 "Source/scalable/test_primes.ml" 14 292 313
+type(
+  'a
+)
+ident(
+  def p "Source/scalable/test_primes.ml" 14 292 314 "Source/scalable/test_primes.ml" 14 292 329
+)
+"Source/scalable/test_primes.ml" 14 292 314 "Source/scalable/test_primes.ml" 14 292 322
+type(
+  'b
+)
+ident(
+  def test_seq "Source/scalable/test_primes.ml" 14 292 325 "Source/scalable/test_primes.ml" 14 292 329
+)
+"Source/scalable/test_primes.ml" 14 292 325 "Source/scalable/test_primes.ml" 14 292 329
+type(
+  bool
+)

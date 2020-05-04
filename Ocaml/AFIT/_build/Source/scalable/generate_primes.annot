@@ -1,0 +1,473 @@
+"Source/scalable/generate_primes.ml" 13 283 287 "Source/scalable/generate_primes.ml" 13 283 304
+type(
+  'a -> 'b list
+)
+ident(
+  def init_eratosthenes "Source/scalable/generate_primes.ml" 21 452 452 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 13 283 305 "Source/scalable/generate_primes.ml" 13 283 306
+type(
+  'a
+)
+ident(
+  def n "Source/scalable/generate_primes.ml" 13 283 309 "Source/scalable/generate_primes.ml" 13 283 311
+)
+"Source/scalable/generate_primes.ml" 13 283 309 "Source/scalable/generate_primes.ml" 13 283 311
+type(
+  'b list
+)
+"Source/scalable/generate_primes.ml" 21 452 456 "Source/scalable/generate_primes.ml" 21 452 468
+type(
+  'a -> 'b list
+)
+ident(
+  def eratosthenes "Source/scalable/generate_primes.ml" 29 683 683 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 21 452 469 "Source/scalable/generate_primes.ml" 21 452 470
+type(
+  'a
+)
+ident(
+  def n "Source/scalable/generate_primes.ml" 21 452 473 "Source/scalable/generate_primes.ml" 21 452 475
+)
+"Source/scalable/generate_primes.ml" 21 452 473 "Source/scalable/generate_primes.ml" 21 452 475
+type(
+  'b list
+)
+"Source/scalable/generate_primes.ml" 29 683 687 "Source/scalable/generate_primes.ml" 29 683 697
+type(
+  'a -> 'b -> unit
+)
+ident(
+  def write_list "Source/scalable/generate_primes.ml" 35 892 892 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 29 683 698 "Source/scalable/generate_primes.ml" 29 683 700
+type(
+  'a
+)
+ident(
+  def li "Source/scalable/generate_primes.ml" 29 683 701 "Source/scalable/generate_primes.ml" 29 683 710
+)
+"Source/scalable/generate_primes.ml" 29 683 701 "Source/scalable/generate_primes.ml" 29 683 705
+type(
+  'b
+)
+ident(
+  def file "Source/scalable/generate_primes.ml" 29 683 708 "Source/scalable/generate_primes.ml" 29 683 710
+)
+"Source/scalable/generate_primes.ml" 29 683 708 "Source/scalable/generate_primes.ml" 29 683 710
+type(
+  unit
+)
+"Source/scalable/generate_primes.ml" 35 892 896 "Source/scalable/generate_primes.ml" 35 892 913
+type(
+  'a -> 'b -> unit
+)
+ident(
+  def write_list_primes "Source/scalable/generate_primes.ml" 40 1014 1014 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 35 892 914 "Source/scalable/generate_primes.ml" 35 892 915
+type(
+  'a
+)
+ident(
+  def n "Source/scalable/generate_primes.ml" 35 892 916 "Source/scalable/generate_primes.ml" 35 892 925
+)
+"Source/scalable/generate_primes.ml" 35 892 916 "Source/scalable/generate_primes.ml" 35 892 920
+type(
+  'b
+)
+ident(
+  def file "Source/scalable/generate_primes.ml" 35 892 923 "Source/scalable/generate_primes.ml" 35 892 925
+)
+"Source/scalable/generate_primes.ml" 35 892 923 "Source/scalable/generate_primes.ml" 35 892 925
+type(
+  unit
+)
+"Source/scalable/generate_primes.ml" 40 1014 1018 "Source/scalable/generate_primes.ml" 40 1014 1032
+type(
+  in_channel -> string option
+)
+ident(
+  def input_line_opt "Source/scalable/generate_primes.ml" 46 1203 1203 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 40 1014 1033 "Source/scalable/generate_primes.ml" 40 1014 1037
+type(
+  in_channel
+)
+ident(
+  def in_c "Source/scalable/generate_primes.ml" 41 1040 1042 "Source/scalable/generate_primes.ml" 42 1069 1095
+)
+"Source/scalable/generate_primes.ml" 41 1040 1052 "Source/scalable/generate_primes.ml" 41 1040 1062
+type(
+  in_channel -> string
+)
+ident(
+  int_ref Stdlib.input_line "stdlib.mli" 949 36046 36046 "stdlib.mli" 949 36046 36083
+)
+"Source/scalable/generate_primes.ml" 41 1040 1063 "Source/scalable/generate_primes.ml" 41 1040 1067
+type(
+  in_channel
+)
+ident(
+  int_ref in_c "Source/scalable/generate_primes.ml" 40 1014 1033 "Source/scalable/generate_primes.ml" 40 1014 1037
+)
+"Source/scalable/generate_primes.ml" 41 1040 1051 "Source/scalable/generate_primes.ml" 41 1040 1068
+call(
+  stack
+)
+type(
+  string
+)
+"Source/scalable/generate_primes.ml" 41 1040 1046 "Source/scalable/generate_primes.ml" 41 1040 1068
+type(
+  string option
+)
+"Source/scalable/generate_primes.ml" 42 1069 1076 "Source/scalable/generate_primes.ml" 42 1069 1087
+type(
+  exn
+)
+"Source/scalable/generate_primes.ml" 42 1069 1091 "Source/scalable/generate_primes.ml" 42 1069 1095
+type(
+  string option
+)
+"Source/scalable/generate_primes.ml" 41 1040 1042 "Source/scalable/generate_primes.ml" 42 1069 1095
+type(
+  string option
+)
+"Source/scalable/generate_primes.ml" 46 1203 1207 "Source/scalable/generate_primes.ml" 46 1203 1218
+type(
+  'a -> unit
+)
+ident(
+  def create_list "Source/scalable/generate_primes.ml" 51 1326 1326 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 46 1203 1219 "Source/scalable/generate_primes.ml" 46 1203 1223
+type(
+  'a
+)
+ident(
+  def in_c "Source/scalable/generate_primes.ml" 46 1203 1226 "Source/scalable/generate_primes.ml" 46 1203 1228
+)
+"Source/scalable/generate_primes.ml" 46 1203 1226 "Source/scalable/generate_primes.ml" 46 1203 1228
+type(
+  unit
+)
+"Source/scalable/generate_primes.ml" 51 1326 1330 "Source/scalable/generate_primes.ml" 51 1326 1346
+type(
+  'a -> 'b list
+)
+ident(
+  def read_list_primes "Source/scalable/generate_primes.ml" 60 1514 1514 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 51 1326 1347 "Source/scalable/generate_primes.ml" 51 1326 1351
+type(
+  'a
+)
+ident(
+  def file "Source/scalable/generate_primes.ml" 51 1326 1354 "Source/scalable/generate_primes.ml" 51 1326 1356
+)
+"Source/scalable/generate_primes.ml" 51 1326 1354 "Source/scalable/generate_primes.ml" 51 1326 1356
+type(
+  'b list
+)
+"Source/scalable/generate_primes.ml" 60 1514 1522 "Source/scalable/generate_primes.ml" 60 1514 1534
+type(
+  'a list -> 'a
+)
+ident(
+  def last_element "Source/scalable/generate_primes.ml" 60 1514 1514 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 60 1514 1535 "Source/scalable/generate_primes.ml" 60 1514 1536
+type(
+  'a list
+)
+ident(
+  def l "Source/scalable/generate_primes.ml" 60 1514 1539 "Source/scalable/generate_primes.ml" 64 1671 1697
+)
+"Source/scalable/generate_primes.ml" 60 1514 1545 "Source/scalable/generate_primes.ml" 60 1514 1546
+type(
+  'a list
+)
+ident(
+  int_ref l "Source/scalable/generate_primes.ml" 60 1514 1535 "Source/scalable/generate_primes.ml" 60 1514 1536
+)
+"Source/scalable/generate_primes.ml" 61 1552 1556 "Source/scalable/generate_primes.ml" 61 1552 1558
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 61 1552 1562 "Source/scalable/generate_primes.ml" 61 1552 1570
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.failwith "stdlib.mli" 47 1981 1981 "stdlib.mli" 47 1981 2008
+)
+"Source/scalable/generate_primes.ml" 61 1552 1571 "Source/scalable/generate_primes.ml" 62 1624 1655
+type(
+  string
+)
+"Source/scalable/generate_primes.ml" 61 1552 1562 "Source/scalable/generate_primes.ml" 62 1624 1655
+call(
+  tail
+)
+type(
+  'a
+)
+"Source/scalable/generate_primes.ml" 63 1656 1660 "Source/scalable/generate_primes.ml" 63 1656 1661
+type(
+  'a
+)
+ident(
+  def e "Source/scalable/generate_primes.ml" 63 1656 1669 "Source/scalable/generate_primes.ml" 63 1656 1670
+)
+"Source/scalable/generate_primes.ml" 63 1656 1663 "Source/scalable/generate_primes.ml" 63 1656 1665
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 63 1656 1660 "Source/scalable/generate_primes.ml" 63 1656 1665
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 63 1656 1669 "Source/scalable/generate_primes.ml" 63 1656 1670
+type(
+  'a
+)
+ident(
+  int_ref e "Source/scalable/generate_primes.ml" 63 1656 1660 "Source/scalable/generate_primes.ml" 63 1656 1661
+)
+"Source/scalable/generate_primes.ml" 64 1671 1675 "Source/scalable/generate_primes.ml" 64 1671 1676
+type(
+  'a
+)
+ident(
+  def h "Source/scalable/generate_primes.ml" 64 1671 1683 "Source/scalable/generate_primes.ml" 64 1671 1697
+)
+"Source/scalable/generate_primes.ml" 64 1671 1678 "Source/scalable/generate_primes.ml" 64 1671 1679
+type(
+  'a list
+)
+ident(
+  def t "Source/scalable/generate_primes.ml" 64 1671 1683 "Source/scalable/generate_primes.ml" 64 1671 1697
+)
+"Source/scalable/generate_primes.ml" 64 1671 1675 "Source/scalable/generate_primes.ml" 64 1671 1679
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 64 1671 1683 "Source/scalable/generate_primes.ml" 64 1671 1695
+type(
+  'a list -> 'a
+)
+ident(
+  int_ref last_element "Source/scalable/generate_primes.ml" 60 1514 1522 "Source/scalable/generate_primes.ml" 60 1514 1534
+)
+"Source/scalable/generate_primes.ml" 64 1671 1696 "Source/scalable/generate_primes.ml" 64 1671 1697
+type(
+  'a list
+)
+ident(
+  int_ref t "Source/scalable/generate_primes.ml" 64 1671 1678 "Source/scalable/generate_primes.ml" 64 1671 1679
+)
+"Source/scalable/generate_primes.ml" 64 1671 1683 "Source/scalable/generate_primes.ml" 64 1671 1697
+call(
+  tail
+)
+type(
+  'a
+)
+"Source/scalable/generate_primes.ml" 60 1514 1539 "Source/scalable/generate_primes.ml" 64 1671 1697
+type(
+  'a
+)
+"Source/scalable/generate_primes.ml" 69 1768 1776 "Source/scalable/generate_primes.ml" 69 1768 1784
+type(
+  'a list -> 'a * 'a
+)
+ident(
+  def last_two "Source/scalable/generate_primes.ml" 69 1768 1768 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 69 1768 1785 "Source/scalable/generate_primes.ml" 69 1768 1786
+type(
+  'a list
+)
+ident(
+  def l "Source/scalable/generate_primes.ml" 69 1768 1789 "Source/scalable/generate_primes.ml" 73 1955 1977
+)
+"Source/scalable/generate_primes.ml" 69 1768 1795 "Source/scalable/generate_primes.ml" 69 1768 1796
+type(
+  'a list
+)
+ident(
+  int_ref l "Source/scalable/generate_primes.ml" 69 1768 1785 "Source/scalable/generate_primes.ml" 69 1768 1786
+)
+"Source/scalable/generate_primes.ml" 70 1802 1806 "Source/scalable/generate_primes.ml" 70 1802 1808
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 70 1802 1812 "Source/scalable/generate_primes.ml" 70 1802 1813
+type(
+  'a
+)
+"Source/scalable/generate_primes.ml" 70 1802 1811 "Source/scalable/generate_primes.ml" 70 1802 1814
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 70 1802 1806 "Source/scalable/generate_primes.ml" 70 1802 1814
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 70 1802 1818 "Source/scalable/generate_primes.ml" 70 1802 1826
+type(
+  string -> 'a * 'a
+)
+ident(
+  int_ref Stdlib.failwith "stdlib.mli" 47 1981 1981 "stdlib.mli" 47 1981 2008
+)
+"Source/scalable/generate_primes.ml" 70 1802 1827 "Source/scalable/generate_primes.ml" 71 1874 1931
+type(
+  string
+)
+"Source/scalable/generate_primes.ml" 70 1802 1818 "Source/scalable/generate_primes.ml" 71 1874 1931
+call(
+  tail
+)
+type(
+  'a * 'a
+)
+"Source/scalable/generate_primes.ml" 72 1932 1936 "Source/scalable/generate_primes.ml" 72 1932 1937
+type(
+  'a
+)
+ident(
+  def e "Source/scalable/generate_primes.ml" 72 1932 1948 "Source/scalable/generate_primes.ml" 72 1932 1954
+)
+"Source/scalable/generate_primes.ml" 72 1932 1939 "Source/scalable/generate_primes.ml" 72 1932 1940
+type(
+  'a
+)
+ident(
+  def g "Source/scalable/generate_primes.ml" 72 1932 1948 "Source/scalable/generate_primes.ml" 72 1932 1954
+)
+"Source/scalable/generate_primes.ml" 72 1932 1942 "Source/scalable/generate_primes.ml" 72 1932 1944
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 72 1932 1939 "Source/scalable/generate_primes.ml" 72 1932 1944
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 72 1932 1936 "Source/scalable/generate_primes.ml" 72 1932 1944
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 72 1932 1949 "Source/scalable/generate_primes.ml" 72 1932 1950
+type(
+  'a
+)
+ident(
+  int_ref e "Source/scalable/generate_primes.ml" 72 1932 1936 "Source/scalable/generate_primes.ml" 72 1932 1937
+)
+"Source/scalable/generate_primes.ml" 72 1932 1952 "Source/scalable/generate_primes.ml" 72 1932 1953
+type(
+  'a
+)
+ident(
+  int_ref g "Source/scalable/generate_primes.ml" 72 1932 1939 "Source/scalable/generate_primes.ml" 72 1932 1940
+)
+"Source/scalable/generate_primes.ml" 72 1932 1948 "Source/scalable/generate_primes.ml" 72 1932 1954
+type(
+  'a * 'a
+)
+"Source/scalable/generate_primes.ml" 73 1955 1959 "Source/scalable/generate_primes.ml" 73 1955 1960
+type(
+  'a
+)
+ident(
+  def h "Source/scalable/generate_primes.ml" 73 1955 1967 "Source/scalable/generate_primes.ml" 73 1955 1977
+)
+"Source/scalable/generate_primes.ml" 73 1955 1962 "Source/scalable/generate_primes.ml" 73 1955 1963
+type(
+  'a list
+)
+ident(
+  def t "Source/scalable/generate_primes.ml" 73 1955 1967 "Source/scalable/generate_primes.ml" 73 1955 1977
+)
+"Source/scalable/generate_primes.ml" 73 1955 1959 "Source/scalable/generate_primes.ml" 73 1955 1963
+type(
+  'a list
+)
+"Source/scalable/generate_primes.ml" 73 1955 1967 "Source/scalable/generate_primes.ml" 73 1955 1975
+type(
+  'a list -> 'a * 'a
+)
+ident(
+  int_ref last_two "Source/scalable/generate_primes.ml" 69 1768 1776 "Source/scalable/generate_primes.ml" 69 1768 1784
+)
+"Source/scalable/generate_primes.ml" 73 1955 1976 "Source/scalable/generate_primes.ml" 73 1955 1977
+type(
+  'a list
+)
+ident(
+  int_ref t "Source/scalable/generate_primes.ml" 73 1955 1962 "Source/scalable/generate_primes.ml" 73 1955 1963
+)
+"Source/scalable/generate_primes.ml" 73 1955 1967 "Source/scalable/generate_primes.ml" 73 1955 1977
+call(
+  tail
+)
+type(
+  'a * 'a
+)
+"Source/scalable/generate_primes.ml" 69 1768 1789 "Source/scalable/generate_primes.ml" 73 1955 1977
+type(
+  'a * 'a
+)
+"Source/scalable/generate_primes.ml" 84 2290 2294 "Source/scalable/generate_primes.ml" 84 2290 2307
+type(
+  'a -> 'b -> 'c list
+)
+ident(
+  def double_primes "Source/scalable/generate_primes.ml" 90 2494 2494 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 84 2290 2308 "Source/scalable/generate_primes.ml" 84 2290 2313
+type(
+  'a
+)
+ident(
+  def limit "Source/scalable/generate_primes.ml" 84 2290 2314 "Source/scalable/generate_primes.ml" 84 2290 2326
+)
+"Source/scalable/generate_primes.ml" 84 2290 2314 "Source/scalable/generate_primes.ml" 84 2290 2321
+type(
+  'b
+)
+ident(
+  def isprime "Source/scalable/generate_primes.ml" 84 2290 2324 "Source/scalable/generate_primes.ml" 84 2290 2326
+)
+"Source/scalable/generate_primes.ml" 84 2290 2324 "Source/scalable/generate_primes.ml" 84 2290 2326
+type(
+  'c list
+)
+"Source/scalable/generate_primes.ml" 90 2494 2498 "Source/scalable/generate_primes.ml" 90 2494 2509
+type(
+  'a -> 'b -> 'c list
+)
+ident(
+  def twin_primes "Source/scalable/generate_primes.ml" 90 2494 2528 "Source/scalable/generate_primes.ml" 1 0 -1
+)
+"Source/scalable/generate_primes.ml" 90 2494 2510 "Source/scalable/generate_primes.ml" 90 2494 2515
+type(
+  'a
+)
+ident(
+  def limit "Source/scalable/generate_primes.ml" 90 2494 2516 "Source/scalable/generate_primes.ml" 90 2494 2528
+)
+"Source/scalable/generate_primes.ml" 90 2494 2516 "Source/scalable/generate_primes.ml" 90 2494 2523
+type(
+  'b
+)
+ident(
+  def isprime "Source/scalable/generate_primes.ml" 90 2494 2526 "Source/scalable/generate_primes.ml" 90 2494 2528
+)
+"Source/scalable/generate_primes.ml" 90 2494 2526 "Source/scalable/generate_primes.ml" 90 2494 2528
+type(
+  'c list
+)

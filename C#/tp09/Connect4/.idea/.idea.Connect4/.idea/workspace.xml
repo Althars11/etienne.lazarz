@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e8b88cd-99ba-4b8c-a2fe-422ffc890cc0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Connect4/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4/Program.cs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1715631027">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="2803" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="2803" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Connect4/Program.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+              <folding>
+                <marker date="1577129742696" expanded="false" signature="6:39" ph="..." />
+                <marker date="1577129742696" expanded="true" signature="59:1629" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="88:1627" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="141:1223" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="455:620" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="637:1191" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="732:1177" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="1293:1621" ph="{...}" />
+                <marker date="1577129742696" expanded="true" signature="1432:1611" ph="/* while (s.Connected &amp;&amp; ismygridempty) ... */" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Connect4/Network.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+              <folding>
+                <marker date="1576587635194" expanded="false" signature="6:76" ph="..." />
+                <marker date="1576587635194" expanded="true" signature="96:1678" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="123:1676" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="169:455" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="195:298" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="330:432" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="504:899" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="530:764" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="796:876" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="947:1238" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="1301:1502" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="1340:1465" ph="{...}" />
+                <marker date="1576587635194" expanded="true" signature="1555:1670" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Connect4/Connect4.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+              <folding>
+                <marker date="1576594688547" expanded="false" signature="6:32" ph="..." />
+                <marker date="1576594688547" expanded="true" signature="52:2612" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="80:2610" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="112:188" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="262:511" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="347:501" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="405:487" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="542:954" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="592:944" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="650:736" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="854:930" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1014:1477" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1062:1120" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1214:1438" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1278:1403" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1522:2604" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1673:1995" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1739:1981" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="1873:1963" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="2067:2502" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="2133:2488" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="2206:2470" ph="{...}" />
+                <marker date="1576594688547" expanded="true" signature="2346:2448" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Connect4/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Connect4/Connect4.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Connect4/Network.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Connect4/Network.cs" />
+        <option value="$PROJECT_DIR$/Connect4/Connect4.cs" />
+        <option value="$PROJECT_DIR$/Connect4/Program.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Connect4" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e8b88cd-99ba-4b8c-a2fe-422ffc890cc0" name="Default Changelist" comment="" />
+      <created>1576582139083</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576582139083</updated>
+      <workItem from="1576582141483" duration="12111000" />
+      <workItem from="1576775223467" duration="1226000" />
+      <workItem from="1576966212042" duration="2994000" />
+      <workItem from="1577129704255" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="16370000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.102684565" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.33152908" />
+      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.23969072" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" order="0" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="2" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.33152908" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="7" />
+      <window_info anchor="bottom" id="Find" order="8" />
+      <window_info anchor="bottom" id="Run" order="9" />
+      <window_info anchor="bottom" id="Debug" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="13" />
+      <window_info anchor="right" id="Errors In Solution" order="0" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="2" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Connect4/Network.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <marker date="1576587635194" expanded="false" signature="6:76" ph="..." />
+            <marker date="1576587635194" expanded="true" signature="96:1678" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="123:1676" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="169:455" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="195:298" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="330:432" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="504:899" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="530:764" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="796:876" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="947:1238" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="1301:1502" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="1340:1465" ph="{...}" />
+            <marker date="1576587635194" expanded="true" signature="1555:1670" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Connect4/Connect4.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <folding>
+            <marker date="1576594688547" expanded="false" signature="6:32" ph="..." />
+            <marker date="1576594688547" expanded="true" signature="52:2612" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="80:2610" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="112:188" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="262:511" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="347:501" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="405:487" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="542:954" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="592:944" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="650:736" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="854:930" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1014:1477" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1062:1120" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1214:1438" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1278:1403" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1522:2604" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1673:1995" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1739:1981" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="1873:1963" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="2067:2502" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="2133:2488" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="2206:2470" ph="{...}" />
+            <marker date="1576594688547" expanded="true" signature="2346:2448" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Connect4/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="30" column="40" lean-forward="true" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <marker date="1577129742696" expanded="false" signature="6:39" ph="..." />
+            <marker date="1577129742696" expanded="true" signature="59:1629" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="88:1627" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="141:1223" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="455:620" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="637:1191" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="732:1177" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="1293:1621" ph="{...}" />
+            <marker date="1577129742696" expanded="true" signature="1432:1611" ph="/* while (s.Connected &amp;&amp; ismygridempty) ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,62 @@
+"Source/scalable/basic_arithmetics.ml" 9 202 206 "Source/scalable/basic_arithmetics.ml" 9 202 211
+type(
+  'a -> 'b -> 'c list
+)
+ident(
+  def gcd_b "Source/scalable/basic_arithmetics.ml" 18 471 471 "Source/scalable/basic_arithmetics.ml" 1 0 -1
+)
+"Source/scalable/basic_arithmetics.ml" 9 202 212 "Source/scalable/basic_arithmetics.ml" 9 202 214
+type(
+  'a
+)
+ident(
+  def bA "Source/scalable/basic_arithmetics.ml" 9 202 215 "Source/scalable/basic_arithmetics.ml" 9 202 222
+)
+"Source/scalable/basic_arithmetics.ml" 9 202 215 "Source/scalable/basic_arithmetics.ml" 9 202 217
+type(
+  'b
+)
+ident(
+  def bB "Source/scalable/basic_arithmetics.ml" 9 202 220 "Source/scalable/basic_arithmetics.ml" 9 202 222
+)
+"Source/scalable/basic_arithmetics.ml" 9 202 220 "Source/scalable/basic_arithmetics.ml" 9 202 222
+type(
+  'c list
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 475 "Source/scalable/basic_arithmetics.ml" 18 471 483
+type(
+  'a -> 'b -> 'c list * 'd list * 'e list
+)
+ident(
+  def bezout_b "Source/scalable/basic_arithmetics.ml" 18 471 504 "Source/scalable/basic_arithmetics.ml" 1 0 -1
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 484 "Source/scalable/basic_arithmetics.ml" 18 471 486
+type(
+  'a
+)
+ident(
+  def bA "Source/scalable/basic_arithmetics.ml" 18 471 487 "Source/scalable/basic_arithmetics.ml" 18 471 504
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 487 "Source/scalable/basic_arithmetics.ml" 18 471 489
+type(
+  'b
+)
+ident(
+  def bB "Source/scalable/basic_arithmetics.ml" 18 471 492 "Source/scalable/basic_arithmetics.ml" 18 471 504
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 493 "Source/scalable/basic_arithmetics.ml" 18 471 495
+type(
+  'c list
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 497 "Source/scalable/basic_arithmetics.ml" 18 471 499
+type(
+  'd list
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 501 "Source/scalable/basic_arithmetics.ml" 18 471 503
+type(
+  'e list
+)
+"Source/scalable/basic_arithmetics.ml" 18 471 492 "Source/scalable/basic_arithmetics.ml" 18 471 504
+type(
+  'c list * 'd list * 'e list
+)

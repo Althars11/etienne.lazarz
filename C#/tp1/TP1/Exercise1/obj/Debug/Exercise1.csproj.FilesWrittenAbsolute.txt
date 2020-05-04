@@ -1,0 +1,5 @@
+/afs/cri.epita.net/user/e/et/etienne.lazarz/u/S2#/csharp-tp1-etienne.lazarz/TP1/Exercise1/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/afs/cri.epita.net/user/e/et/etienne.lazarz/u/S2#/csharp-tp1-etienne.lazarz/TP1/Exercise1/bin/Debug/Exercise1.pdb
+/afs/cri.epita.net/user/e/et/etienne.lazarz/u/S2#/csharp-tp1-etienne.lazarz/TP1/Exercise1/bin/Debug/Exercise1.exe
+/afs/cri.epita.net/user/e/et/etienne.lazarz/u/S2#/csharp-tp1-etienne.lazarz/TP1/Exercise1/obj/Debug/Exercise1.exe
+/afs/cri.epita.net/user/e/et/etienne.lazarz/u/S2#/csharp-tp1-etienne.lazarz/TP1/Exercise1/obj/Debug/Exercise1.pdb

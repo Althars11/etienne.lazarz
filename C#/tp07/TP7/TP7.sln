@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP7", "TP7\TP7.csproj", "{AF9AA4DF-83F0-40E9-BD89-1C87D0C3BFA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF9AA4DF-83F0-40E9-BD89-1C87D0C3BFA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF9AA4DF-83F0-40E9-BD89-1C87D0C3BFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF9AA4DF-83F0-40E9-BD89-1C87D0C3BFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF9AA4DF-83F0-40E9-BD89-1C87D0C3BFA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

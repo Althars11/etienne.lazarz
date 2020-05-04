@@ -1,0 +1,19 @@
+=------------={C# tp2: TinyPhotoShop}=---------------=
+
+Dans l'ensemble pas êxtremement difficile, ce sont les notions qui mettent le plus de temps à être assimilées.
+Sans la tool box du départ, Steganography devient plus dure...
+
+Steganography:
+	-Encrypt et Decrypt Image ok
+	-Encrypt et decrypt text est buggé, il retourne une chaine de caractère incompréhensible que je n'ai pas réussi à fix
+
+Basic.cs:
+	-RAS, les fonctions compilent et fonctionnent normalement.
+
+Geometry.cs:
+	-RAS, ormis que l'architecture des fonctions à été difficile, je suis d'abord par des buffers intermédiaire pour chaque ligne afin de réecrire les pixel 1 par 1.
+	methode que j'ai abandonné car trop couteuse et trop moche :) au profit
+	de la creation d'une nouvelle bitmap sur laquelle je réecris.
+	
+
+	-Resize: je suis passé par une fonction auxiliaire : getneighbours renvoyant la couleur(RGB) moyenne de chaque pixels voisin du pixel passé en argument.

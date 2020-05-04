@@ -1,0 +1,114 @@
+"Source/scalable/power.ml" 14 317 321 "Source/scalable/power.ml" 14 317 324
+type(
+  'a -> 'b -> 'c list
+)
+ident(
+  def pow "Source/scalable/power.ml" 20 483 483 "Source/scalable/power.ml" 1 0 -1
+)
+"Source/scalable/power.ml" 14 317 325 "Source/scalable/power.ml" 14 317 326
+type(
+  'a
+)
+ident(
+  def x "Source/scalable/power.ml" 14 317 327 "Source/scalable/power.ml" 14 317 333
+)
+"Source/scalable/power.ml" 14 317 327 "Source/scalable/power.ml" 14 317 328
+type(
+  'b
+)
+ident(
+  def n "Source/scalable/power.ml" 14 317 331 "Source/scalable/power.ml" 14 317 333
+)
+"Source/scalable/power.ml" 14 317 331 "Source/scalable/power.ml" 14 317 333
+type(
+  'c list
+)
+"Source/scalable/power.ml" 20 483 487 "Source/scalable/power.ml" 20 483 492
+type(
+  'a -> 'b -> 'c list
+)
+ident(
+  def power "Source/scalable/power.ml" 31 786 786 "Source/scalable/power.ml" 1 0 -1
+)
+"Source/scalable/power.ml" 20 483 493 "Source/scalable/power.ml" 20 483 494
+type(
+  'a
+)
+ident(
+  def x "Source/scalable/power.ml" 20 483 495 "Source/scalable/power.ml" 20 483 501
+)
+"Source/scalable/power.ml" 20 483 495 "Source/scalable/power.ml" 20 483 496
+type(
+  'b
+)
+ident(
+  def n "Source/scalable/power.ml" 20 483 499 "Source/scalable/power.ml" 20 483 501
+)
+"Source/scalable/power.ml" 20 483 499 "Source/scalable/power.ml" 20 483 501
+type(
+  'c list
+)
+"Source/scalable/power.ml" 31 786 790 "Source/scalable/power.ml" 31 786 799
+type(
+  'a -> 'b -> 'c -> 'd list
+)
+ident(
+  def mod_power "Source/scalable/power.ml" 43 1166 1166 "Source/scalable/power.ml" 1 0 -1
+)
+"Source/scalable/power.ml" 31 786 800 "Source/scalable/power.ml" 31 786 801
+type(
+  'a
+)
+ident(
+  def x "Source/scalable/power.ml" 31 786 802 "Source/scalable/power.ml" 31 786 810
+)
+"Source/scalable/power.ml" 31 786 802 "Source/scalable/power.ml" 31 786 803
+type(
+  'b
+)
+ident(
+  def n "Source/scalable/power.ml" 31 786 804 "Source/scalable/power.ml" 31 786 810
+)
+"Source/scalable/power.ml" 31 786 804 "Source/scalable/power.ml" 31 786 805
+type(
+  'c
+)
+ident(
+  def m "Source/scalable/power.ml" 31 786 808 "Source/scalable/power.ml" 31 786 810
+)
+"Source/scalable/power.ml" 31 786 808 "Source/scalable/power.ml" 31 786 810
+type(
+  'd list
+)
+"Source/scalable/power.ml" 43 1166 1170 "Source/scalable/power.ml" 43 1166 1185
+type(
+  'a -> 'b -> 'c -> 'd list
+)
+ident(
+  def prime_mod_power "Source/scalable/power.ml" 43 1166 1196 "Source/scalable/power.ml" 1 0 -1
+)
+"Source/scalable/power.ml" 43 1166 1186 "Source/scalable/power.ml" 43 1166 1187
+type(
+  'a
+)
+ident(
+  def x "Source/scalable/power.ml" 43 1166 1188 "Source/scalable/power.ml" 43 1166 1196
+)
+"Source/scalable/power.ml" 43 1166 1188 "Source/scalable/power.ml" 43 1166 1189
+type(
+  'b
+)
+ident(
+  def n "Source/scalable/power.ml" 43 1166 1190 "Source/scalable/power.ml" 43 1166 1196
+)
+"Source/scalable/power.ml" 43 1166 1190 "Source/scalable/power.ml" 43 1166 1191
+type(
+  'c
+)
+ident(
+  def p "Source/scalable/power.ml" 43 1166 1194 "Source/scalable/power.ml" 43 1166 1196
+)
+"Source/scalable/power.ml" 43 1166 1194 "Source/scalable/power.ml" 43 1166 1196
+type(
+  'd list
+)

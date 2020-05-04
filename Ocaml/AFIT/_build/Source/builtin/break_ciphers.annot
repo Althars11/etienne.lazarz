@@ -1,0 +1,216 @@
+"Source/builtin/break_ciphers.ml" 9 167 171 "Source/builtin/break_ciphers.ml" 9 167 176
+type(
+  int * 'a -> int * int
+)
+ident(
+  def break "Source/builtin/break_ciphers.ml" 12 281 307 "Source/builtin/break_ciphers.ml" 1 0 -1
+)
+"Source/builtin/break_ciphers.ml" 9 167 178 "Source/builtin/break_ciphers.ml" 9 167 181
+type(
+  int
+)
+ident(
+  def key "Source/builtin/break_ciphers.ml" 10 186 188 "Source/builtin/break_ciphers.ml" 12 281 307
+)
+"Source/builtin/break_ciphers.ml" 9 167 182 "Source/builtin/break_ciphers.ml" 9 167 183
+type(
+  'a
+)
+"Source/builtin/break_ciphers.ml" 9 167 177 "Source/builtin/break_ciphers.ml" 9 167 184
+type(
+  int * 'a
+)
+"Source/builtin/break_ciphers.ml" 10 186 196 "Source/builtin/break_ciphers.ml" 10 186 205
+type(
+  int -> int -> int * int
+)
+ident(
+  def break_rec "Source/builtin/break_ciphers.ml" 10 186 188 "Source/builtin/break_ciphers.ml" 12 281 307
+)
+"Source/builtin/break_ciphers.ml" 10 186 206 "Source/builtin/break_ciphers.ml" 10 186 209
+type(
+  int
+)
+ident(
+  def key "Source/builtin/break_ciphers.ml" 10 186 210 "Source/builtin/break_ciphers.ml" 11 214 280
+)
+"Source/builtin/break_ciphers.ml" 10 186 210 "Source/builtin/break_ciphers.ml" 10 186 211
+type(
+  int
+)
+ident(
+  def n "Source/builtin/break_ciphers.ml" 11 214 218 "Source/builtin/break_ciphers.ml" 11 214 280
+)
+"Source/builtin/break_ciphers.ml" 11 214 221 "Source/builtin/break_ciphers.ml" 11 214 227
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/break_ciphers.ml" 11 214 228 "Source/builtin/break_ciphers.ml" 11 214 231
+type(
+  int
+)
+ident(
+  int_ref key "Source/builtin/break_ciphers.ml" 10 186 206 "Source/builtin/break_ciphers.ml" 10 186 209
+)
+"Source/builtin/break_ciphers.ml" 11 214 232 "Source/builtin/break_ciphers.ml" 11 214 233
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/break_ciphers.ml" 10 186 210 "Source/builtin/break_ciphers.ml" 10 186 211
+)
+"Source/builtin/break_ciphers.ml" 11 214 221 "Source/builtin/break_ciphers.ml" 11 214 233
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 11 214 234 "Source/builtin/break_ciphers.ml" 11 214 235
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/break_ciphers.ml" 11 214 236 "Source/builtin/break_ciphers.ml" 11 214 237
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 11 214 221 "Source/builtin/break_ciphers.ml" 11 214 237
+type(
+  bool
+)
+"Source/builtin/break_ciphers.ml" 11 214 244 "Source/builtin/break_ciphers.ml" 11 214 247
+type(
+  int
+)
+ident(
+  int_ref key "Source/builtin/break_ciphers.ml" 10 186 206 "Source/builtin/break_ciphers.ml" 10 186 209
+)
+"Source/builtin/break_ciphers.ml" 11 214 247 "Source/builtin/break_ciphers.ml" 11 214 248
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( / ) "stdlib.mli" 279 10780 10780 "stdlib.mli" 279 10780 10826
+)
+"Source/builtin/break_ciphers.ml" 11 214 248 "Source/builtin/break_ciphers.ml" 11 214 249
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/break_ciphers.ml" 10 186 210 "Source/builtin/break_ciphers.ml" 10 186 211
+)
+"Source/builtin/break_ciphers.ml" 11 214 244 "Source/builtin/break_ciphers.ml" 11 214 249
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 11 214 251 "Source/builtin/break_ciphers.ml" 11 214 252
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/break_ciphers.ml" 10 186 210 "Source/builtin/break_ciphers.ml" 10 186 211
+)
+"Source/builtin/break_ciphers.ml" 11 214 243 "Source/builtin/break_ciphers.ml" 11 214 253
+type(
+  int * int
+)
+"Source/builtin/break_ciphers.ml" 11 214 259 "Source/builtin/break_ciphers.ml" 11 214 268
+type(
+  int -> int -> int * int
+)
+ident(
+  int_ref break_rec "Source/builtin/break_ciphers.ml" 10 186 196 "Source/builtin/break_ciphers.ml" 10 186 205
+)
+"Source/builtin/break_ciphers.ml" 11 214 269 "Source/builtin/break_ciphers.ml" 11 214 272
+type(
+  int
+)
+ident(
+  int_ref key "Source/builtin/break_ciphers.ml" 10 186 206 "Source/builtin/break_ciphers.ml" 10 186 209
+)
+"Source/builtin/break_ciphers.ml" 11 214 274 "Source/builtin/break_ciphers.ml" 11 214 275
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/break_ciphers.ml" 10 186 210 "Source/builtin/break_ciphers.ml" 10 186 211
+)
+"Source/builtin/break_ciphers.ml" 11 214 276 "Source/builtin/break_ciphers.ml" 11 214 277
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/break_ciphers.ml" 11 214 278 "Source/builtin/break_ciphers.ml" 11 214 279
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 11 214 273 "Source/builtin/break_ciphers.ml" 11 214 280
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 11 214 259 "Source/builtin/break_ciphers.ml" 11 214 280
+call(
+  tail
+)
+type(
+  int * int
+)
+"Source/builtin/break_ciphers.ml" 11 214 218 "Source/builtin/break_ciphers.ml" 11 214 280
+type(
+  int * int
+)
+"Source/builtin/break_ciphers.ml" 12 281 284 "Source/builtin/break_ciphers.ml" 12 281 293
+type(
+  int -> int -> int * int
+)
+ident(
+  int_ref break_rec "Source/builtin/break_ciphers.ml" 10 186 196 "Source/builtin/break_ciphers.ml" 10 186 205
+)
+"Source/builtin/break_ciphers.ml" 12 281 294 "Source/builtin/break_ciphers.ml" 12 281 297
+type(
+  int
+)
+ident(
+  int_ref key "Source/builtin/break_ciphers.ml" 9 167 178 "Source/builtin/break_ciphers.ml" 9 167 181
+)
+"Source/builtin/break_ciphers.ml" 12 281 299 "Source/builtin/break_ciphers.ml" 12 281 302
+type(
+  int
+)
+ident(
+  int_ref key "Source/builtin/break_ciphers.ml" 9 167 178 "Source/builtin/break_ciphers.ml" 9 167 181
+)
+"Source/builtin/break_ciphers.ml" 12 281 303 "Source/builtin/break_ciphers.ml" 12 281 304
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/break_ciphers.ml" 12 281 305 "Source/builtin/break_ciphers.ml" 12 281 306
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 12 281 298 "Source/builtin/break_ciphers.ml" 12 281 307
+type(
+  int
+)
+"Source/builtin/break_ciphers.ml" 12 281 284 "Source/builtin/break_ciphers.ml" 12 281 307
+call(
+  tail
+)
+type(
+  int * int
+)
+"Source/builtin/break_ciphers.ml" 10 186 188 "Source/builtin/break_ciphers.ml" 12 281 307
+type(
+  int * int
+)

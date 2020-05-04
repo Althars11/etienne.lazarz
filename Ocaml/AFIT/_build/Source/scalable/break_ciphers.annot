@@ -1,0 +1,26 @@
+"Source/scalable/break_ciphers.ml" 9 179 183 "Source/scalable/break_ciphers.ml" 9 179 188
+type(
+  'a -> 'b list * 'c list
+)
+ident(
+  def break "Source/scalable/break_ciphers.ml" 9 179 203 "Source/scalable/break_ciphers.ml" 1 0 -1
+)
+"Source/scalable/break_ciphers.ml" 9 179 189 "Source/scalable/break_ciphers.ml" 9 179 192
+type(
+  'a
+)
+ident(
+  def key "Source/scalable/break_ciphers.ml" 9 179 195 "Source/scalable/break_ciphers.ml" 9 179 203
+)
+"Source/scalable/break_ciphers.ml" 9 179 196 "Source/scalable/break_ciphers.ml" 9 179 198
+type(
+  'b list
+)
+"Source/scalable/break_ciphers.ml" 9 179 200 "Source/scalable/break_ciphers.ml" 9 179 202
+type(
+  'c list
+)
+"Source/scalable/break_ciphers.ml" 9 179 195 "Source/scalable/break_ciphers.ml" 9 179 203
+type(
+  'b list * 'c list
+)

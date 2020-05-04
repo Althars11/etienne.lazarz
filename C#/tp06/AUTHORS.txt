@@ -1,0 +1,1 @@
+echo "* etienne.lazarz" > AUTHORS

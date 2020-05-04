@@ -1,0 +1,15 @@
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\Brainfuck.exe.config
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\Brainfuck.exe
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\Brainfuck.pdb
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\mscorlib.dll
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\fr\mscorlib.resources.dll
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\normidna.nlp
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\normnfc.nlp
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\normnfd.nlp
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\normnfkc.nlp
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\bin\Debug\normnfkd.nlp
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\obj\Debug\Brainfuck.csprojResolveAssemblyReference.cache
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\obj\Debug\Brainfuck.IDE.resources
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\obj\Debug\Brainfuck.csproj.GenerateResource.Cache
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\obj\Debug\Brainfuck.exe
+C:\Users\etien\Desktop\csharp-tp5-etienne.lazarz\Brainfuck\Brainfuck\obj\Debug\Brainfuck.pdb

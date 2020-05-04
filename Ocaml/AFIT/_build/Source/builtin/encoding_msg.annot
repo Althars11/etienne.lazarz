@@ -1,0 +1,764 @@
+"Source/builtin/encoding_msg.ml" 12 274 278 "Source/builtin/encoding_msg.ml" 12 274 284
+type(
+  string -> int -> int
+)
+ident(
+  def encode "Source/builtin/encoding_msg.ml" 23 728 728 "Source/builtin/encoding_msg.ml" 1 0 -1
+)
+"Source/builtin/encoding_msg.ml" 12 274 285 "Source/builtin/encoding_msg.ml" 12 274 288
+type(
+  string
+)
+ident(
+  def str "Source/builtin/encoding_msg.ml" 12 274 289 "Source/builtin/encoding_msg.ml" 16 461 510
+)
+"Source/builtin/encoding_msg.ml" 12 274 289 "Source/builtin/encoding_msg.ml" 12 274 293
+type(
+  int
+)
+ident(
+  def bits "Source/builtin/encoding_msg.ml" 13 296 298 "Source/builtin/encoding_msg.ml" 16 461 510
+)
+"Source/builtin/encoding_msg.ml" 13 296 306 "Source/builtin/encoding_msg.ml" 13 296 316
+type(
+  string -> int -> int -> int
+)
+ident(
+  def encode_rec "Source/builtin/encoding_msg.ml" 13 296 298 "Source/builtin/encoding_msg.ml" 16 461 510
+)
+"Source/builtin/encoding_msg.ml" 13 296 317 "Source/builtin/encoding_msg.ml" 13 296 320
+type(
+  string
+)
+ident(
+  def str "Source/builtin/encoding_msg.ml" 13 296 321 "Source/builtin/encoding_msg.ml" 15 378 460
+)
+"Source/builtin/encoding_msg.ml" 13 296 321 "Source/builtin/encoding_msg.ml" 13 296 325
+type(
+  int
+)
+ident(
+  def bits "Source/builtin/encoding_msg.ml" 13 296 326 "Source/builtin/encoding_msg.ml" 15 378 460
+)
+"Source/builtin/encoding_msg.ml" 13 296 326 "Source/builtin/encoding_msg.ml" 13 296 329
+type(
+  int
+)
+ident(
+  def len "Source/builtin/encoding_msg.ml" 13 296 332 "Source/builtin/encoding_msg.ml" 15 378 460
+)
+"Source/builtin/encoding_msg.ml" 13 296 338 "Source/builtin/encoding_msg.ml" 13 296 341
+type(
+  int
+)
+ident(
+  int_ref len "Source/builtin/encoding_msg.ml" 13 296 326 "Source/builtin/encoding_msg.ml" 13 296 329
+)
+"Source/builtin/encoding_msg.ml" 14 347 352 "Source/builtin/encoding_msg.ml" 14 347 353
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 14 347 357 "Source/builtin/encoding_msg.ml" 14 347 368
+type(
+  char -> int
+)
+ident(
+  int_ref Stdlib.int_of_char "stdlib.mli" 586 22320 22320 "stdlib.mli" 586 22320 22368
+)
+"Source/builtin/encoding_msg.ml" 14 347 369 "Source/builtin/encoding_msg.ml" 14 347 372
+type(
+  string
+)
+ident(
+  int_ref str "Source/builtin/encoding_msg.ml" 13 296 317 "Source/builtin/encoding_msg.ml" 13 296 320
+)
+"Source/builtin/encoding_msg.ml" 14 347 374 "Source/builtin/encoding_msg.ml" 14 347 375
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 14 347 368 "Source/builtin/encoding_msg.ml" 14 347 377
+type(
+  char
+)
+"Source/builtin/encoding_msg.ml" 14 347 357 "Source/builtin/encoding_msg.ml" 14 347 377
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 383 "Source/builtin/encoding_msg.ml" 15 378 384
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 388 "Source/builtin/encoding_msg.ml" 15 378 399
+type(
+  char -> int
+)
+ident(
+  int_ref Stdlib.int_of_char "stdlib.mli" 586 22320 22320 "stdlib.mli" 586 22320 22368
+)
+"Source/builtin/encoding_msg.ml" 15 378 400 "Source/builtin/encoding_msg.ml" 15 378 403
+type(
+  string
+)
+ident(
+  int_ref str "Source/builtin/encoding_msg.ml" 13 296 317 "Source/builtin/encoding_msg.ml" 13 296 320
+)
+"Source/builtin/encoding_msg.ml" 15 378 405 "Source/builtin/encoding_msg.ml" 15 378 408
+type(
+  int
+)
+ident(
+  int_ref len "Source/builtin/encoding_msg.ml" 13 296 326 "Source/builtin/encoding_msg.ml" 13 296 329
+)
+"Source/builtin/encoding_msg.ml" 15 378 399 "Source/builtin/encoding_msg.ml" 15 378 410
+type(
+  char
+)
+"Source/builtin/encoding_msg.ml" 15 378 388 "Source/builtin/encoding_msg.ml" 15 378 410
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 411 "Source/builtin/encoding_msg.ml" 15 378 412
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( + ) "stdlib.mli" 267 10384 10384 "stdlib.mli" 267 10384 10430
+)
+"Source/builtin/encoding_msg.ml" 15 378 415 "Source/builtin/encoding_msg.ml" 15 378 425
+type(
+  string -> int -> int -> int
+)
+ident(
+  int_ref encode_rec "Source/builtin/encoding_msg.ml" 13 296 306 "Source/builtin/encoding_msg.ml" 13 296 316
+)
+"Source/builtin/encoding_msg.ml" 15 378 426 "Source/builtin/encoding_msg.ml" 15 378 429
+type(
+  string
+)
+ident(
+  int_ref str "Source/builtin/encoding_msg.ml" 13 296 317 "Source/builtin/encoding_msg.ml" 13 296 320
+)
+"Source/builtin/encoding_msg.ml" 15 378 430 "Source/builtin/encoding_msg.ml" 15 378 434
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 13 296 321 "Source/builtin/encoding_msg.ml" 13 296 325
+)
+"Source/builtin/encoding_msg.ml" 15 378 436 "Source/builtin/encoding_msg.ml" 15 378 439
+type(
+  int
+)
+ident(
+  int_ref len "Source/builtin/encoding_msg.ml" 13 296 326 "Source/builtin/encoding_msg.ml" 13 296 329
+)
+"Source/builtin/encoding_msg.ml" 15 378 439 "Source/builtin/encoding_msg.ml" 15 378 440
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/encoding_msg.ml" 15 378 440 "Source/builtin/encoding_msg.ml" 15 378 441
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 435 "Source/builtin/encoding_msg.ml" 15 378 442
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 414 "Source/builtin/encoding_msg.ml" 15 378 443
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 444 "Source/builtin/encoding_msg.ml" 15 378 445
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/encoding_msg.ml" 15 378 446 "Source/builtin/encoding_msg.ml" 15 378 451
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Power.power "Source/builtin/power.mli" 13 288 288 "Source/builtin/power.mli" 13 288 317
+)
+"Source/builtin/encoding_msg.ml" 15 378 452 "Source/builtin/encoding_msg.ml" 15 378 453
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 454 "Source/builtin/encoding_msg.ml" 15 378 458
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 13 296 321 "Source/builtin/encoding_msg.ml" 13 296 325
+)
+"Source/builtin/encoding_msg.ml" 15 378 445 "Source/builtin/encoding_msg.ml" 15 378 459
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 413 "Source/builtin/encoding_msg.ml" 15 378 460
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 15 378 388 "Source/builtin/encoding_msg.ml" 15 378 460
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 13 296 332 "Source/builtin/encoding_msg.ml" 15 378 460
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 16 461 466 "Source/builtin/encoding_msg.ml" 16 461 476
+type(
+  string -> int -> int -> int
+)
+ident(
+  int_ref encode_rec "Source/builtin/encoding_msg.ml" 13 296 306 "Source/builtin/encoding_msg.ml" 13 296 316
+)
+"Source/builtin/encoding_msg.ml" 16 461 477 "Source/builtin/encoding_msg.ml" 16 461 480
+type(
+  string
+)
+ident(
+  int_ref str "Source/builtin/encoding_msg.ml" 12 274 285 "Source/builtin/encoding_msg.ml" 12 274 288
+)
+"Source/builtin/encoding_msg.ml" 16 461 481 "Source/builtin/encoding_msg.ml" 16 461 485
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 12 274 289 "Source/builtin/encoding_msg.ml" 12 274 293
+)
+"Source/builtin/encoding_msg.ml" 16 461 488 "Source/builtin/encoding_msg.ml" 16 461 501
+type(
+  string -> int
+)
+ident(
+  int_ref Stdlib.String.length "string.mli" 51 2660 2660 "string.mli" 51 2660 2710
+)
+"Source/builtin/encoding_msg.ml" 16 461 502 "Source/builtin/encoding_msg.ml" 16 461 505
+type(
+  string
+)
+ident(
+  int_ref str "Source/builtin/encoding_msg.ml" 12 274 285 "Source/builtin/encoding_msg.ml" 12 274 288
+)
+"Source/builtin/encoding_msg.ml" 16 461 487 "Source/builtin/encoding_msg.ml" 16 461 506
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 16 461 507 "Source/builtin/encoding_msg.ml" 16 461 508
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/encoding_msg.ml" 16 461 508 "Source/builtin/encoding_msg.ml" 16 461 509
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 16 461 486 "Source/builtin/encoding_msg.ml" 16 461 510
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 16 461 466 "Source/builtin/encoding_msg.ml" 16 461 510
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 13 296 298 "Source/builtin/encoding_msg.ml" 16 461 510
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 23 728 732 "Source/builtin/encoding_msg.ml" 23 728 738
+type(
+  int -> int -> string
+)
+ident(
+  def decode "Source/builtin/encoding_msg.ml" 34 1093 1119 "Source/builtin/encoding_msg.ml" 1 0 -1
+)
+"Source/builtin/encoding_msg.ml" 23 728 739 "Source/builtin/encoding_msg.ml" 23 728 742
+type(
+  int
+)
+ident(
+  def msg "Source/builtin/encoding_msg.ml" 23 728 743 "Source/builtin/encoding_msg.ml" 34 1093 1119
+)
+"Source/builtin/encoding_msg.ml" 23 728 743 "Source/builtin/encoding_msg.ml" 23 728 747
+type(
+  int
+)
+ident(
+  def bits "Source/builtin/encoding_msg.ml" 24 750 750 "Source/builtin/encoding_msg.ml" 34 1093 1119
+)
+"Source/builtin/encoding_msg.ml" 24 750 758 "Source/builtin/encoding_msg.ml" 24 750 761
+type(
+  int -> int -> int -> int
+)
+ident(
+  def div "Source/builtin/encoding_msg.ml" 24 750 750 "Source/builtin/encoding_msg.ml" 34 1093 1119
+)
+"Source/builtin/encoding_msg.ml" 24 750 762 "Source/builtin/encoding_msg.ml" 24 750 763
+type(
+  int
+)
+ident(
+  def n "Source/builtin/encoding_msg.ml" 24 750 764 "Source/builtin/encoding_msg.ml" 26 816 851
+)
+"Source/builtin/encoding_msg.ml" 24 750 764 "Source/builtin/encoding_msg.ml" 24 750 765
+type(
+  int
+)
+ident(
+  def x "Source/builtin/encoding_msg.ml" 24 750 766 "Source/builtin/encoding_msg.ml" 26 816 851
+)
+"Source/builtin/encoding_msg.ml" 24 750 766 "Source/builtin/encoding_msg.ml" 24 750 767
+type(
+  int
+)
+ident(
+  def i "Source/builtin/encoding_msg.ml" 24 750 770 "Source/builtin/encoding_msg.ml" 26 816 851
+)
+"Source/builtin/encoding_msg.ml" 24 750 776 "Source/builtin/encoding_msg.ml" 24 750 777
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/encoding_msg.ml" 24 750 762 "Source/builtin/encoding_msg.ml" 24 750 763
+)
+"Source/builtin/encoding_msg.ml" 25 783 792 "Source/builtin/encoding_msg.ml" 25 783 793
+type(
+  int
+)
+ident(
+  def n "Source/builtin/encoding_msg.ml" 25 783 799 "Source/builtin/encoding_msg.ml" 25 783 815
+)
+"Source/builtin/encoding_msg.ml" 25 783 799 "Source/builtin/encoding_msg.ml" 25 783 800
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/encoding_msg.ml" 25 783 792 "Source/builtin/encoding_msg.ml" 25 783 793
+)
+"Source/builtin/encoding_msg.ml" 25 783 801 "Source/builtin/encoding_msg.ml" 25 783 804
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( mod ) "stdlib.mli" 288 11226 11226 "stdlib.mli" 288 11226 11274
+)
+"Source/builtin/encoding_msg.ml" 25 783 805 "Source/builtin/encoding_msg.ml" 25 783 806
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/encoding_msg.ml" 24 750 764 "Source/builtin/encoding_msg.ml" 24 750 765
+)
+"Source/builtin/encoding_msg.ml" 25 783 799 "Source/builtin/encoding_msg.ml" 25 783 806
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 25 783 807 "Source/builtin/encoding_msg.ml" 25 783 808
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/encoding_msg.ml" 25 783 809 "Source/builtin/encoding_msg.ml" 25 783 810
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 25 783 799 "Source/builtin/encoding_msg.ml" 25 783 810
+type(
+  bool
+)
+"Source/builtin/encoding_msg.ml" 25 783 814 "Source/builtin/encoding_msg.ml" 25 783 815
+type(
+  int
+)
+ident(
+  int_ref i "Source/builtin/encoding_msg.ml" 24 750 766 "Source/builtin/encoding_msg.ml" 24 750 767
+)
+"Source/builtin/encoding_msg.ml" 26 816 825 "Source/builtin/encoding_msg.ml" 26 816 826
+type(
+  int
+)
+ident(
+  def n "Source/builtin/encoding_msg.ml" 26 816 830 "Source/builtin/encoding_msg.ml" 26 816 851
+)
+"Source/builtin/encoding_msg.ml" 26 816 830 "Source/builtin/encoding_msg.ml" 26 816 833
+type(
+  int -> int -> int -> int
+)
+ident(
+  int_ref div "Source/builtin/encoding_msg.ml" 24 750 758 "Source/builtin/encoding_msg.ml" 24 750 761
+)
+"Source/builtin/encoding_msg.ml" 26 816 835 "Source/builtin/encoding_msg.ml" 26 816 836
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/encoding_msg.ml" 26 816 825 "Source/builtin/encoding_msg.ml" 26 816 826
+)
+"Source/builtin/encoding_msg.ml" 26 816 837 "Source/builtin/encoding_msg.ml" 26 816 838
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/encoding_msg.ml" 26 816 839 "Source/builtin/encoding_msg.ml" 26 816 840
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 26 816 834 "Source/builtin/encoding_msg.ml" 26 816 841
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 26 816 842 "Source/builtin/encoding_msg.ml" 26 816 843
+type(
+  int
+)
+ident(
+  int_ref x "Source/builtin/encoding_msg.ml" 24 750 764 "Source/builtin/encoding_msg.ml" 24 750 765
+)
+"Source/builtin/encoding_msg.ml" 26 816 845 "Source/builtin/encoding_msg.ml" 26 816 846
+type(
+  int
+)
+ident(
+  int_ref i "Source/builtin/encoding_msg.ml" 24 750 766 "Source/builtin/encoding_msg.ml" 24 750 767
+)
+"Source/builtin/encoding_msg.ml" 26 816 847 "Source/builtin/encoding_msg.ml" 26 816 848
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( + ) "stdlib.mli" 267 10384 10384 "stdlib.mli" 267 10384 10430
+)
+"Source/builtin/encoding_msg.ml" 26 816 849 "Source/builtin/encoding_msg.ml" 26 816 850
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 26 816 844 "Source/builtin/encoding_msg.ml" 26 816 851
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 26 816 830 "Source/builtin/encoding_msg.ml" 26 816 851
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 24 750 770 "Source/builtin/encoding_msg.ml" 26 816 851
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 28 859 871 "Source/builtin/encoding_msg.ml" 28 859 881
+type(
+  int -> int -> string
+)
+ident(
+  def decode_rec "Source/builtin/encoding_msg.ml" 28 859 863 "Source/builtin/encoding_msg.ml" 34 1093 1119
+)
+"Source/builtin/encoding_msg.ml" 28 859 882 "Source/builtin/encoding_msg.ml" 28 859 886
+type(
+  int
+)
+ident(
+  def bits "Source/builtin/encoding_msg.ml" 28 859 887 "Source/builtin/encoding_msg.ml" 33 1017 1092
+)
+"Source/builtin/encoding_msg.ml" 28 859 887 "Source/builtin/encoding_msg.ml" 28 859 890
+type(
+  int
+)
+ident(
+  def msg "Source/builtin/encoding_msg.ml" 29 893 897 "Source/builtin/encoding_msg.ml" 33 1017 1092
+)
+"Source/builtin/encoding_msg.ml" 29 893 901 "Source/builtin/encoding_msg.ml" 29 893 902
+type(
+  int
+)
+ident(
+  def i "Source/builtin/encoding_msg.ml" 30 933 937 "Source/builtin/encoding_msg.ml" 33 1017 1092
+)
+"Source/builtin/encoding_msg.ml" 29 893 905 "Source/builtin/encoding_msg.ml" 29 893 908
+type(
+  int -> int -> int -> int
+)
+ident(
+  int_ref div "Source/builtin/encoding_msg.ml" 24 750 758 "Source/builtin/encoding_msg.ml" 24 750 761
+)
+"Source/builtin/encoding_msg.ml" 29 893 909 "Source/builtin/encoding_msg.ml" 29 893 912
+type(
+  int
+)
+ident(
+  int_ref msg "Source/builtin/encoding_msg.ml" 28 859 887 "Source/builtin/encoding_msg.ml" 28 859 890
+)
+"Source/builtin/encoding_msg.ml" 29 893 914 "Source/builtin/encoding_msg.ml" 29 893 919
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Power.power "Source/builtin/power.mli" 13 288 288 "Source/builtin/power.mli" 13 288 317
+)
+"Source/builtin/encoding_msg.ml" 29 893 920 "Source/builtin/encoding_msg.ml" 29 893 921
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 29 893 922 "Source/builtin/encoding_msg.ml" 29 893 926
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 28 859 882 "Source/builtin/encoding_msg.ml" 28 859 886
+)
+"Source/builtin/encoding_msg.ml" 29 893 913 "Source/builtin/encoding_msg.ml" 29 893 927
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 29 893 928 "Source/builtin/encoding_msg.ml" 29 893 929
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 29 893 905 "Source/builtin/encoding_msg.ml" 29 893 929
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 30 933 941 "Source/builtin/encoding_msg.ml" 30 933 948
+type(
+  int
+)
+ident(
+  def msg_rec "Source/builtin/encoding_msg.ml" 31 981 985 "Source/builtin/encoding_msg.ml" 33 1017 1092
+)
+"Source/builtin/encoding_msg.ml" 30 933 952 "Source/builtin/encoding_msg.ml" 30 933 955
+type(
+  int
+)
+ident(
+  int_ref msg "Source/builtin/encoding_msg.ml" 28 859 887 "Source/builtin/encoding_msg.ml" 28 859 890
+)
+"Source/builtin/encoding_msg.ml" 30 933 956 "Source/builtin/encoding_msg.ml" 30 933 957
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/encoding_msg.ml" 30 933 958 "Source/builtin/encoding_msg.ml" 30 933 959
+type(
+  int
+)
+ident(
+  int_ref i "Source/builtin/encoding_msg.ml" 29 893 901 "Source/builtin/encoding_msg.ml" 29 893 902
+)
+"Source/builtin/encoding_msg.ml" 30 933 951 "Source/builtin/encoding_msg.ml" 30 933 960
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 30 933 961 "Source/builtin/encoding_msg.ml" 30 933 962
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( / ) "stdlib.mli" 279 10780 10780 "stdlib.mli" 279 10780 10826
+)
+"Source/builtin/encoding_msg.ml" 30 933 964 "Source/builtin/encoding_msg.ml" 30 933 969
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Power.power "Source/builtin/power.mli" 13 288 288 "Source/builtin/power.mli" 13 288 317
+)
+"Source/builtin/encoding_msg.ml" 30 933 970 "Source/builtin/encoding_msg.ml" 30 933 971
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 30 933 972 "Source/builtin/encoding_msg.ml" 30 933 976
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 28 859 882 "Source/builtin/encoding_msg.ml" 28 859 886
+)
+"Source/builtin/encoding_msg.ml" 30 933 963 "Source/builtin/encoding_msg.ml" 30 933 977
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 30 933 951 "Source/builtin/encoding_msg.ml" 30 933 977
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 31 981 991 "Source/builtin/encoding_msg.ml" 31 981 994
+type(
+  int
+)
+ident(
+  int_ref msg "Source/builtin/encoding_msg.ml" 28 859 887 "Source/builtin/encoding_msg.ml" 28 859 890
+)
+"Source/builtin/encoding_msg.ml" 32 1000 1009 "Source/builtin/encoding_msg.ml" 32 1000 1010
+type(
+  int
+)
+"Source/builtin/encoding_msg.ml" 32 1000 1014 "Source/builtin/encoding_msg.ml" 32 1000 1016
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1026 "Source/builtin/encoding_msg.ml" 33 1017 1029
+type(
+  int
+)
+ident(
+  def msg "Source/builtin/encoding_msg.ml" 33 1017 1033 "Source/builtin/encoding_msg.ml" 33 1017 1092
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1035 "Source/builtin/encoding_msg.ml" 33 1017 1045
+type(
+  int -> int -> string
+)
+ident(
+  int_ref decode_rec "Source/builtin/encoding_msg.ml" 28 859 871 "Source/builtin/encoding_msg.ml" 28 859 881
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1046 "Source/builtin/encoding_msg.ml" 33 1017 1050
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 28 859 882 "Source/builtin/encoding_msg.ml" 28 859 886
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1051 "Source/builtin/encoding_msg.ml" 33 1017 1058
+type(
+  int
+)
+ident(
+  int_ref msg_rec "Source/builtin/encoding_msg.ml" 30 933 941 "Source/builtin/encoding_msg.ml" 30 933 948
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1033 "Source/builtin/encoding_msg.ml" 33 1017 1059
+call(
+  stack
+)
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1060 "Source/builtin/encoding_msg.ml" 33 1017 1061
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 576 22098 22098 "stdlib.mli" 576 22098 22136
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1063 "Source/builtin/encoding_msg.ml" 33 1017 1075
+type(
+  char -> string
+)
+ident(
+  int_ref Stdlib.Char.escaped "char.mli" 26 1363 1363 "char.mli" 26 1363 1391
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1077 "Source/builtin/encoding_msg.ml" 33 1017 1088
+type(
+  int -> char
+)
+ident(
+  int_ref Stdlib.char_of_int "stdlib.mli" 589 22416 22416 "stdlib.mli" 589 22416 22445
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1089 "Source/builtin/encoding_msg.ml" 33 1017 1090
+type(
+  int
+)
+ident(
+  int_ref i "Source/builtin/encoding_msg.ml" 29 893 901 "Source/builtin/encoding_msg.ml" 29 893 902
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1076 "Source/builtin/encoding_msg.ml" 33 1017 1091
+call(
+  stack
+)
+type(
+  char
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1062 "Source/builtin/encoding_msg.ml" 33 1017 1092
+call(
+  stack
+)
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 33 1017 1033 "Source/builtin/encoding_msg.ml" 33 1017 1092
+call(
+  tail
+)
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 31 981 985 "Source/builtin/encoding_msg.ml" 33 1017 1092
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 30 933 937 "Source/builtin/encoding_msg.ml" 33 1017 1092
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 29 893 897 "Source/builtin/encoding_msg.ml" 33 1017 1092
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 34 1093 1100 "Source/builtin/encoding_msg.ml" 34 1093 1110
+type(
+  int -> int -> string
+)
+ident(
+  int_ref decode_rec "Source/builtin/encoding_msg.ml" 28 859 871 "Source/builtin/encoding_msg.ml" 28 859 881
+)
+"Source/builtin/encoding_msg.ml" 34 1093 1111 "Source/builtin/encoding_msg.ml" 34 1093 1115
+type(
+  int
+)
+ident(
+  int_ref bits "Source/builtin/encoding_msg.ml" 23 728 743 "Source/builtin/encoding_msg.ml" 23 728 747
+)
+"Source/builtin/encoding_msg.ml" 34 1093 1116 "Source/builtin/encoding_msg.ml" 34 1093 1119
+type(
+  int
+)
+ident(
+  int_ref msg "Source/builtin/encoding_msg.ml" 23 728 739 "Source/builtin/encoding_msg.ml" 23 728 742
+)
+"Source/builtin/encoding_msg.ml" 34 1093 1100 "Source/builtin/encoding_msg.ml" 34 1093 1119
+call(
+  tail
+)
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 28 859 863 "Source/builtin/encoding_msg.ml" 34 1093 1119
+type(
+  string
+)
+"Source/builtin/encoding_msg.ml" 24 750 750 "Source/builtin/encoding_msg.ml" 34 1093 1119
+type(
+  string
+)

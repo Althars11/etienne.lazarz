@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c3479df3-e2a8-41dd-ab7f-b817a38d4e34" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/TP4/ConsoleMain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TP4/ConsoleMain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP4/Misc.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TP4/Misc.cs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="919735081">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="1050" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="1050" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TP4/ConsoleMain.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+              <folding>
+                <marker date="1574004903866" expanded="true" signature="13:538" ph="{...}" />
+                <marker date="1574004903866" expanded="true" signature="44:536" ph="{...}" />
+                <marker date="1574004903866" expanded="true" signature="97:530" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/Misc.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+              <folding>
+                <marker date="1573999114304" expanded="true" signature="6:50" ph="..." />
+                <marker date="1573999114304" expanded="true" signature="76:1259" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="100:1257" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="158:530" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="305:495" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="352:423" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="585:678" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="722:1175" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="832:1165" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="899:1151" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="958:1133" ph="{...}" />
+                <marker date="1573999114304" expanded="true" signature="1218:1251" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/Test.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+              <folding>
+                <marker date="1573996763237" expanded="true" signature="6:47" ph="..." />
+                <marker date="1573996763237" expanded="true" signature="62:662" ph="{...}" />
+                <marker date="1573996763237" expanded="true" signature="86:660" ph="{...}" />
+                <marker date="1573996763237" expanded="true" signature="156:202" ph="{...}" />
+                <marker date="1573996763237" expanded="true" signature="312:366" ph="{...}" />
+                <marker date="1573996763237" expanded="true" signature="393:654" ph="{...}" />
+                <marker date="1573996763237" expanded="true" signature="518:644" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/Assert.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <folding>
+                <marker date="1573995865947" expanded="false" signature="6:30" ph="..." />
+                <marker date="1573995865947" expanded="true" signature="45:921" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="76:108" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="135:919" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="267:353" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="380:580" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="414:469" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="486:543" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="619:665" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="707:789" ph="{...}" />
+                <marker date="1573995865947" expanded="true" signature="833:913" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/AssertEqual.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1573995865948" expanded="true" signature="28:518" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="83:516" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="158:178" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="218:273" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="318:435" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="466:510" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/AssertNotEqual.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1573995865949" expanded="true" signature="28:520" ph="{...}" />
+                <marker date="1573995865949" expanded="true" signature="85:518" ph="{...}" />
+                <marker date="1573995865949" expanded="true" signature="163:183" ph="{...}" />
+                <marker date="1573995865949" expanded="true" signature="223:279" ph="{...}" />
+                <marker date="1573995865949" expanded="true" signature="324:437" ph="{...}" />
+                <marker date="1573995865949" expanded="true" signature="468:512" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/AssertArrayEqual.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1573995865948" expanded="true" signature="28:592" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="89:590" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="213:259" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="299:354" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="399:509" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="540:584" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TP4/AssertArrayNotEqual.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1573995865948" expanded="true" signature="28:596" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="92:594" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="219:265" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="305:361" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="406:512" ph="{...}" />
+                <marker date="1573995865948" expanded="true" signature="543:587" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TP4/AssertArrayEqual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/Test.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/Misc.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/ConsoleMain.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/AssertNotEqual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/AssertEqual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/AssertArrayNotEqual.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TP4/Assert.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/TP4/AssertArrayNotEqual.cs" />
+        <option value="$PROJECT_DIR$/TP4/Properties/Misc.cs" />
+        <option value="$PROJECT_DIR$/TP4/Assert.cs" />
+        <option value="$PROJECT_DIR$/TP4/AssertEqual.cs" />
+        <option value="$PROJECT_DIR$/TP4/AssertNotEqual.cs" />
+        <option value="$PROJECT_DIR$/TP4/AssertArray.cs" />
+        <option value="$PROJECT_DIR$/TP4/AssertArrayEqual.cs" />
+        <option value="$PROJECT_DIR$/TP4/Program.cs" />
+        <option value="$PROJECT_DIR$/TP4/Test.cs" />
+        <option value="$PROJECT_DIR$/TP4/Misc.cs" />
+        <option value="$PROJECT_DIR$/TP4/ConsoleMain.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.TP4/.idea/projectSettingsUpdater.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="67" />
+    <option name="y" value="77" />
+    <option name="width" value="795" />
+    <option name="height" value="705" />
+  </component>
+  <component name="ProjectId" id="1TW3brycOptLeQ4INXTl68ucJri" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="TP4" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="TP4" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="TP4" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TP4.sln" />
+    <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c3479df3-e2a8-41dd-ab7f-b817a38d4e34" name="Default Changelist" comment="" />
+      <created>1573561264463</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573561264463</updated>
+      <workItem from="1573561267179" duration="242000" />
+      <workItem from="1573562105161" duration="1747000" />
+      <workItem from="1573564244776" duration="831000" />
+      <workItem from="1573995906651" duration="5995000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5995000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12885906" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="735" y="114" key="FileChooserDialogImpl" />
+    <state x="735" y="114" key="FileChooserDialogImpl/1920.1080" />
+    <state x="801" y="169" width="1048" height="702" key="SettingsEditor" />
+    <state x="801" y="169" width="1048" height="702" key="SettingsEditor/1920.1080" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="TP4" type="b2602c69:ProjectViewProjectNode" />
+        <item name="TP4" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/TP4/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/AssertArrayNotEqual.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1573995865948" expanded="true" signature="28:596" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="92:594" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="219:265" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="305:361" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="406:512" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="543:587" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/Test.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+          <folding>
+            <marker date="1573996763237" expanded="true" signature="6:47" ph="..." />
+            <marker date="1573996763237" expanded="true" signature="62:662" ph="{...}" />
+            <marker date="1573996763237" expanded="true" signature="86:660" ph="{...}" />
+            <marker date="1573996763237" expanded="true" signature="156:202" ph="{...}" />
+            <marker date="1573996763237" expanded="true" signature="312:366" ph="{...}" />
+            <marker date="1573996763237" expanded="true" signature="393:654" ph="{...}" />
+            <marker date="1573996763237" expanded="true" signature="518:644" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/Misc.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding>
+            <marker date="1573999114304" expanded="true" signature="6:50" ph="..." />
+            <marker date="1573999114304" expanded="true" signature="76:1259" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="100:1257" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="158:530" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="305:495" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="352:423" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="585:678" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="722:1175" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="832:1165" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="899:1151" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="958:1133" ph="{...}" />
+            <marker date="1573999114304" expanded="true" signature="1218:1251" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/AssertEqual.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1573995865948" expanded="true" signature="28:518" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="83:516" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="158:178" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="218:273" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="318:435" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="466:510" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/Assert.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <folding>
+            <marker date="1573995865947" expanded="false" signature="6:30" ph="..." />
+            <marker date="1573995865947" expanded="true" signature="45:921" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="76:108" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="135:919" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="267:353" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="380:580" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="414:469" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="486:543" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="619:665" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="707:789" ph="{...}" />
+            <marker date="1573995865947" expanded="true" signature="833:913" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/AssertNotEqual.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1573995865949" expanded="true" signature="28:520" ph="{...}" />
+            <marker date="1573995865949" expanded="true" signature="85:518" ph="{...}" />
+            <marker date="1573995865949" expanded="true" signature="163:183" ph="{...}" />
+            <marker date="1573995865949" expanded="true" signature="223:279" ph="{...}" />
+            <marker date="1573995865949" expanded="true" signature="324:437" ph="{...}" />
+            <marker date="1573995865949" expanded="true" signature="468:512" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/AssertArrayEqual.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1573995865948" expanded="true" signature="28:592" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="89:590" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="213:259" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="299:354" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="399:509" ph="{...}" />
+            <marker date="1573995865948" expanded="true" signature="540:584" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TP4/ConsoleMain.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <folding>
+            <marker date="1574004903866" expanded="true" signature="13:538" ph="{...}" />
+            <marker date="1574004903866" expanded="true" signature="44:536" ph="{...}" />
+            <marker date="1574004903866" expanded="true" signature="97:530" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

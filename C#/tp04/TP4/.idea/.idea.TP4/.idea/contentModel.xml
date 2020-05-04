@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\etien\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\etien\.Rider2018.2\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\etien\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\etien\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_TP4.-1428352397.00" t="ExcludeRecursive" />
+    <e p="C:\Users\etien\Desktop\csharp-tp4-etienne.lazarz\TP4" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="TP4" t="IncludeRecursive">
+        <e p="Assert.cs" t="Include" />
+        <e p="AssertArrayEqual.cs" t="Include" />
+        <e p="AssertArrayNotEqual.cs" t="Include" />
+        <e p="AssertEqual.cs" t="Include" />
+        <e p="AssertNotEqual.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="ConsoleMain.cs" t="Include" />
+        <e p="Misc.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Test.cs" t="Include" />
+        <e p="TP4.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="TP4.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

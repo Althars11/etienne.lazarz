@@ -1,0 +1,398 @@
+"Source/builtin/test_primes.ml" 8 114 119 "Source/builtin/test_primes.ml" 8 114 127
+type(
+  int -> bool
+)
+ident(
+  def is_prime "Source/builtin/test_primes.ml" 19 319 319 "Source/builtin/test_primes.ml" 1 0 -1
+)
+"Source/builtin/test_primes.ml" 8 114 128 "Source/builtin/test_primes.ml" 8 114 129
+type(
+  int
+)
+ident(
+  def n "Source/builtin/test_primes.ml" 9 132 134 "Source/builtin/test_primes.ml" 17 294 315
+)
+"Source/builtin/test_primes.ml" 9 132 142 "Source/builtin/test_primes.ml" 9 132 154
+type(
+  int -> int -> bool
+)
+ident(
+  def is_prime_rec "Source/builtin/test_primes.ml" 9 132 134 "Source/builtin/test_primes.ml" 17 294 315
+)
+"Source/builtin/test_primes.ml" 9 132 155 "Source/builtin/test_primes.ml" 9 132 156
+type(
+  int
+)
+ident(
+  def f "Source/builtin/test_primes.ml" 9 132 157 "Source/builtin/test_primes.ml" 16 265 293
+)
+"Source/builtin/test_primes.ml" 9 132 157 "Source/builtin/test_primes.ml" 9 132 158
+type(
+  int
+)
+ident(
+  def n "Source/builtin/test_primes.ml" 10 161 165 "Source/builtin/test_primes.ml" 16 265 293
+)
+"Source/builtin/test_primes.ml" 10 161 169 "Source/builtin/test_primes.ml" 10 161 174
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Power.power "Source/builtin/power.mli" 13 288 288 "Source/builtin/power.mli" 13 288 317
+)
+"Source/builtin/test_primes.ml" 10 161 175 "Source/builtin/test_primes.ml" 10 161 176
+type(
+  int
+)
+ident(
+  int_ref f "Source/builtin/test_primes.ml" 9 132 155 "Source/builtin/test_primes.ml" 9 132 156
+)
+"Source/builtin/test_primes.ml" 10 161 177 "Source/builtin/test_primes.ml" 10 161 178
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 10 161 168 "Source/builtin/test_primes.ml" 10 161 179
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 10 161 180 "Source/builtin/test_primes.ml" 10 161 181
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( > ) "stdlib.mli" 74 2992 2992 "stdlib.mli" 74 2992 3042
+)
+"Source/builtin/test_primes.ml" 10 161 182 "Source/builtin/test_primes.ml" 10 161 183
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/test_primes.ml" 9 132 157 "Source/builtin/test_primes.ml" 9 132 158
+)
+"Source/builtin/test_primes.ml" 10 161 168 "Source/builtin/test_primes.ml" 10 161 183
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 11 189 195 "Source/builtin/test_primes.ml" 11 189 199
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 13 209 218 "Source/builtin/test_primes.ml" 13 209 224
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/test_primes.ml" 13 209 225 "Source/builtin/test_primes.ml" 13 209 226
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/test_primes.ml" 9 132 157 "Source/builtin/test_primes.ml" 9 132 158
+)
+"Source/builtin/test_primes.ml" 13 209 227 "Source/builtin/test_primes.ml" 13 209 228
+type(
+  int
+)
+ident(
+  int_ref f "Source/builtin/test_primes.ml" 9 132 155 "Source/builtin/test_primes.ml" 9 132 156
+)
+"Source/builtin/test_primes.ml" 13 209 217 "Source/builtin/test_primes.ml" 13 209 229
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 13 209 230 "Source/builtin/test_primes.ml" 13 209 232
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( == ) "stdlib.mli" 122 5194 5194 "stdlib.mli" 122 5194 5236
+)
+"Source/builtin/test_primes.ml" 13 209 233 "Source/builtin/test_primes.ml" 13 209 234
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 13 209 217 "Source/builtin/test_primes.ml" 13 209 234
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 14 240 248 "Source/builtin/test_primes.ml" 14 240 253
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 16 265 273 "Source/builtin/test_primes.ml" 16 265 285
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref is_prime_rec "Source/builtin/test_primes.ml" 9 132 142 "Source/builtin/test_primes.ml" 9 132 154
+)
+"Source/builtin/test_primes.ml" 16 265 287 "Source/builtin/test_primes.ml" 16 265 288
+type(
+  int
+)
+ident(
+  int_ref f "Source/builtin/test_primes.ml" 9 132 155 "Source/builtin/test_primes.ml" 9 132 156
+)
+"Source/builtin/test_primes.ml" 16 265 288 "Source/builtin/test_primes.ml" 16 265 289
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( + ) "stdlib.mli" 267 10384 10384 "stdlib.mli" 267 10384 10430
+)
+"Source/builtin/test_primes.ml" 16 265 289 "Source/builtin/test_primes.ml" 16 265 290
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 16 265 286 "Source/builtin/test_primes.ml" 16 265 291
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 16 265 292 "Source/builtin/test_primes.ml" 16 265 293
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/test_primes.ml" 9 132 157 "Source/builtin/test_primes.ml" 9 132 158
+)
+"Source/builtin/test_primes.ml" 16 265 273 "Source/builtin/test_primes.ml" 16 265 293
+call(
+  tail
+)
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 13 209 215 "Source/builtin/test_primes.ml" 16 265 293
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 10 161 165 "Source/builtin/test_primes.ml" 16 265 293
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 17 294 299 "Source/builtin/test_primes.ml" 17 294 311
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref is_prime_rec "Source/builtin/test_primes.ml" 9 132 142 "Source/builtin/test_primes.ml" 9 132 154
+)
+"Source/builtin/test_primes.ml" 17 294 312 "Source/builtin/test_primes.ml" 17 294 313
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 17 294 314 "Source/builtin/test_primes.ml" 17 294 315
+type(
+  int
+)
+ident(
+  int_ref n "Source/builtin/test_primes.ml" 8 114 128 "Source/builtin/test_primes.ml" 8 114 129
+)
+"Source/builtin/test_primes.ml" 17 294 299 "Source/builtin/test_primes.ml" 17 294 315
+call(
+  tail
+)
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 9 132 134 "Source/builtin/test_primes.ml" 17 294 315
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 25 533 541 "Source/builtin/test_primes.ml" 25 533 556
+type(
+  int -> int list -> bool
+)
+ident(
+  def is_pseudo_prime "Source/builtin/test_primes.ml" 25 533 533 "Source/builtin/test_primes.ml" 1 0 -1
+)
+"Source/builtin/test_primes.ml" 25 533 557 "Source/builtin/test_primes.ml" 25 533 558
+type(
+  int
+)
+ident(
+  def p "Source/builtin/test_primes.ml" 25 533 559 "Source/builtin/test_primes.ml" 31 695 710
+)
+"Source/builtin/test_primes.ml" 25 533 559 "Source/builtin/test_primes.ml" 25 533 567
+type(
+  int list
+)
+ident(
+  def test_seq "Source/builtin/test_primes.ml" 26 570 572 "Source/builtin/test_primes.ml" 31 695 710
+)
+"Source/builtin/test_primes.ml" 26 570 575 "Source/builtin/test_primes.ml" 26 570 576
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/test_primes.ml" 25 533 557 "Source/builtin/test_primes.ml" 25 533 558
+)
+"Source/builtin/test_primes.ml" 26 570 576 "Source/builtin/test_primes.ml" 26 570 577
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/test_primes.ml" 26 570 577 "Source/builtin/test_primes.ml" 26 570 578
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 26 570 575 "Source/builtin/test_primes.ml" 26 570 578
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 26 570 584 "Source/builtin/test_primes.ml" 26 570 588
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 28 596 604 "Source/builtin/test_primes.ml" 28 596 612
+type(
+  int list
+)
+ident(
+  int_ref test_seq "Source/builtin/test_primes.ml" 25 533 559 "Source/builtin/test_primes.ml" 25 533 567
+)
+"Source/builtin/test_primes.ml" 29 618 623 "Source/builtin/test_primes.ml" 29 618 625
+type(
+  int list
+)
+"Source/builtin/test_primes.ml" 29 618 628 "Source/builtin/test_primes.ml" 29 618 632
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 30 633 638 "Source/builtin/test_primes.ml" 30 633 639
+type(
+  int
+)
+ident(
+  def e "Source/builtin/test_primes.ml" 30 633 648 "Source/builtin/test_primes.ml" 30 633 694
+)
+"Source/builtin/test_primes.ml" 30 633 641 "Source/builtin/test_primes.ml" 30 633 642
+type(
+  int list
+)
+ident(
+  def l "Source/builtin/test_primes.ml" 30 633 648 "Source/builtin/test_primes.ml" 30 633 694
+)
+"Source/builtin/test_primes.ml" 30 633 638 "Source/builtin/test_primes.ml" 30 633 642
+type(
+  int list
+)
+"Source/builtin/test_primes.ml" 30 633 648 "Source/builtin/test_primes.ml" 30 633 657
+type(
+  int -> int -> int -> int
+)
+ident(
+  int_ref Power.mod_power "Source/builtin/power.mli" 20 455 455 "Source/builtin/power.mli" 20 455 495
+)
+"Source/builtin/test_primes.ml" 30 633 658 "Source/builtin/test_primes.ml" 30 633 659
+type(
+  int
+)
+ident(
+  int_ref e "Source/builtin/test_primes.ml" 30 633 638 "Source/builtin/test_primes.ml" 30 633 639
+)
+"Source/builtin/test_primes.ml" 30 633 661 "Source/builtin/test_primes.ml" 30 633 662
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/test_primes.ml" 25 533 557 "Source/builtin/test_primes.ml" 25 533 558
+)
+"Source/builtin/test_primes.ml" 30 633 662 "Source/builtin/test_primes.ml" 30 633 663
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/test_primes.ml" 30 633 663 "Source/builtin/test_primes.ml" 30 633 664
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 30 633 660 "Source/builtin/test_primes.ml" 30 633 665
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 30 633 666 "Source/builtin/test_primes.ml" 30 633 667
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/test_primes.ml" 25 533 557 "Source/builtin/test_primes.ml" 25 533 558
+)
+"Source/builtin/test_primes.ml" 30 633 648 "Source/builtin/test_primes.ml" 30 633 667
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 30 633 668 "Source/builtin/test_primes.ml" 30 633 669
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/test_primes.ml" 30 633 670 "Source/builtin/test_primes.ml" 30 633 671
+type(
+  int
+)
+"Source/builtin/test_primes.ml" 30 633 648 "Source/builtin/test_primes.ml" 30 633 671
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 30 633 675 "Source/builtin/test_primes.ml" 30 633 690
+type(
+  int -> int list -> bool
+)
+ident(
+  int_ref is_pseudo_prime "Source/builtin/test_primes.ml" 25 533 541 "Source/builtin/test_primes.ml" 25 533 556
+)
+"Source/builtin/test_primes.ml" 30 633 691 "Source/builtin/test_primes.ml" 30 633 692
+type(
+  int
+)
+ident(
+  int_ref p "Source/builtin/test_primes.ml" 25 533 557 "Source/builtin/test_primes.ml" 25 533 558
+)
+"Source/builtin/test_primes.ml" 30 633 693 "Source/builtin/test_primes.ml" 30 633 694
+type(
+  int list
+)
+ident(
+  int_ref l "Source/builtin/test_primes.ml" 30 633 641 "Source/builtin/test_primes.ml" 30 633 642
+)
+"Source/builtin/test_primes.ml" 30 633 675 "Source/builtin/test_primes.ml" 30 633 694
+call(
+  tail
+)
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 31 695 700 "Source/builtin/test_primes.ml" 31 695 701
+type(
+  int list
+)
+"Source/builtin/test_primes.ml" 31 695 705 "Source/builtin/test_primes.ml" 31 695 710
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 28 596 598 "Source/builtin/test_primes.ml" 31 695 710
+type(
+  bool
+)
+"Source/builtin/test_primes.ml" 26 570 572 "Source/builtin/test_primes.ml" 31 695 710
+type(
+  bool
+)

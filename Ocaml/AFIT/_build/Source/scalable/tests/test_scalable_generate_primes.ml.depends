@@ -1,0 +1,1 @@
+Source/scalable/tests/test_scalable_generate_primes.ml: Basic_arithmetics Generate_primes OUnit2 Scalable Test_primes Test_scalable_templates

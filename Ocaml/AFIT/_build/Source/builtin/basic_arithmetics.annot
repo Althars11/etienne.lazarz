@@ -1,0 +1,709 @@
+"Source/builtin/basic_arithmetics.ml" 14 269 277 "Source/builtin/basic_arithmetics.ml" 14 269 280
+type(
+  int -> int -> int
+)
+ident(
+  def gcd "Source/builtin/basic_arithmetics.ml" 14 269 269 "Source/builtin/basic_arithmetics.ml" 1 0 -1
+)
+"Source/builtin/basic_arithmetics.ml" 14 269 281 "Source/builtin/basic_arithmetics.ml" 14 269 282
+type(
+  int
+)
+ident(
+  def a "Source/builtin/basic_arithmetics.ml" 14 269 283 "Source/builtin/basic_arithmetics.ml" 21 408 423
+)
+"Source/builtin/basic_arithmetics.ml" 14 269 283 "Source/builtin/basic_arithmetics.ml" 14 269 284
+type(
+  int
+)
+ident(
+  def b "Source/builtin/basic_arithmetics.ml" 15 287 289 "Source/builtin/basic_arithmetics.ml" 21 408 423
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 292 "Source/builtin/basic_arithmetics.ml" 15 287 293
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 14 269 283 "Source/builtin/basic_arithmetics.ml" 14 269 284
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 293 "Source/builtin/basic_arithmetics.ml" 15 287 294
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 294 "Source/builtin/basic_arithmetics.ml" 15 287 295
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 14 269 281 "Source/builtin/basic_arithmetics.ml" 14 269 282
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 292 "Source/builtin/basic_arithmetics.ml" 15 287 295
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 295 "Source/builtin/basic_arithmetics.ml" 15 287 296
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 296 "Source/builtin/basic_arithmetics.ml" 15 287 297
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 292 "Source/builtin/basic_arithmetics.ml" 15 287 297
+type(
+  bool
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 303 "Source/builtin/basic_arithmetics.ml" 15 287 304
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 14 269 281 "Source/builtin/basic_arithmetics.ml" 14 269 282
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 304 "Source/builtin/basic_arithmetics.ml" 15 287 305
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( + ) "stdlib.mli" 267 10384 10384 "stdlib.mli" 267 10384 10430
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 305 "Source/builtin/basic_arithmetics.ml" 15 287 306
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 14 269 283 "Source/builtin/basic_arithmetics.ml" 14 269 284
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 303 "Source/builtin/basic_arithmetics.ml" 15 287 306
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 17 314 322 "Source/builtin/basic_arithmetics.ml" 17 314 329
+type(
+  int -> int -> int
+)
+ident(
+  def gcd_rec "Source/builtin/basic_arithmetics.ml" 21 408 412 "Source/builtin/basic_arithmetics.ml" 21 408 423
+)
+"Source/builtin/basic_arithmetics.ml" 17 314 330 "Source/builtin/basic_arithmetics.ml" 17 314 331
+type(
+  int
+)
+ident(
+  def a "Source/builtin/basic_arithmetics.ml" 17 314 332 "Source/builtin/basic_arithmetics.ml" 20 367 404
+)
+"Source/builtin/basic_arithmetics.ml" 17 314 332 "Source/builtin/basic_arithmetics.ml" 17 314 333
+type(
+  int
+)
+ident(
+  def b "Source/builtin/basic_arithmetics.ml" 18 336 342 "Source/builtin/basic_arithmetics.ml" 20 367 404
+)
+"Source/builtin/basic_arithmetics.ml" 18 336 345 "Source/builtin/basic_arithmetics.ml" 18 336 346
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 17 314 332 "Source/builtin/basic_arithmetics.ml" 17 314 333
+)
+"Source/builtin/basic_arithmetics.ml" 18 336 346 "Source/builtin/basic_arithmetics.ml" 18 336 347
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/basic_arithmetics.ml" 18 336 347 "Source/builtin/basic_arithmetics.ml" 18 336 348
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 18 336 345 "Source/builtin/basic_arithmetics.ml" 18 336 348
+type(
+  bool
+)
+"Source/builtin/basic_arithmetics.ml" 18 336 354 "Source/builtin/basic_arithmetics.ml" 18 336 355
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 17 314 330 "Source/builtin/basic_arithmetics.ml" 17 314 331
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 375 "Source/builtin/basic_arithmetics.ml" 20 367 378
+type(
+  int -> int -> int
+)
+ident(
+  int_ref gcd "Source/builtin/basic_arithmetics.ml" 14 269 277 "Source/builtin/basic_arithmetics.ml" 14 269 280
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 379 "Source/builtin/basic_arithmetics.ml" 20 367 380
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 17 314 332 "Source/builtin/basic_arithmetics.ml" 17 314 333
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 382 "Source/builtin/basic_arithmetics.ml" 20 367 388
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Builtin.modulo "Source/builtin/builtin.mli" 29 750 750 "Source/builtin/builtin.mli" 29 750 780
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 390 "Source/builtin/basic_arithmetics.ml" 20 367 391
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 17 314 330 "Source/builtin/basic_arithmetics.ml" 17 314 331
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 391 "Source/builtin/basic_arithmetics.ml" 20 367 392
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 393 "Source/builtin/basic_arithmetics.ml" 20 367 397
+type(
+  int -> int
+)
+ident(
+  int_ref Builtin.sign "Source/builtin/builtin.mli" 12 263 263 "Source/builtin/builtin.mli" 12 263 284
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 398 "Source/builtin/basic_arithmetics.ml" 20 367 399
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 17 314 330 "Source/builtin/basic_arithmetics.ml" 17 314 331
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 392 "Source/builtin/basic_arithmetics.ml" 20 367 400
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 389 "Source/builtin/basic_arithmetics.ml" 20 367 401
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 402 "Source/builtin/basic_arithmetics.ml" 20 367 403
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 17 314 332 "Source/builtin/basic_arithmetics.ml" 17 314 333
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 381 "Source/builtin/basic_arithmetics.ml" 20 367 404
+call(
+  stack
+)
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 20 367 375 "Source/builtin/basic_arithmetics.ml" 20 367 404
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 18 336 342 "Source/builtin/basic_arithmetics.ml" 20 367 404
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 21 408 412 "Source/builtin/basic_arithmetics.ml" 21 408 419
+type(
+  int -> int -> int
+)
+ident(
+  int_ref gcd_rec "Source/builtin/basic_arithmetics.ml" 17 314 322 "Source/builtin/basic_arithmetics.ml" 17 314 329
+)
+"Source/builtin/basic_arithmetics.ml" 21 408 420 "Source/builtin/basic_arithmetics.ml" 21 408 421
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 14 269 281 "Source/builtin/basic_arithmetics.ml" 14 269 282
+)
+"Source/builtin/basic_arithmetics.ml" 21 408 422 "Source/builtin/basic_arithmetics.ml" 21 408 423
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 14 269 283 "Source/builtin/basic_arithmetics.ml" 14 269 284
+)
+"Source/builtin/basic_arithmetics.ml" 21 408 412 "Source/builtin/basic_arithmetics.ml" 21 408 423
+call(
+  tail
+)
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 17 314 318 "Source/builtin/basic_arithmetics.ml" 21 408 423
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 15 287 289 "Source/builtin/basic_arithmetics.ml" 21 408 423
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 31 736 740 "Source/builtin/basic_arithmetics.ml" 31 736 746
+type(
+  int -> int -> int * int * int
+)
+ident(
+  def bezout "Source/builtin/basic_arithmetics.ml" 49 1369 1399 "Source/builtin/basic_arithmetics.ml" 1 0 -1
+)
+"Source/builtin/basic_arithmetics.ml" 31 736 747 "Source/builtin/basic_arithmetics.ml" 31 736 748
+type(
+  int
+)
+ident(
+  def a "Source/builtin/basic_arithmetics.ml" 31 736 749 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+)
+"Source/builtin/basic_arithmetics.ml" 31 736 749 "Source/builtin/basic_arithmetics.ml" 31 736 750
+type(
+  int
+)
+ident(
+  def b "Source/builtin/basic_arithmetics.ml" 42 1172 1174 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1177 "Source/builtin/basic_arithmetics.ml" 42 1172 1178
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 31 736 747 "Source/builtin/basic_arithmetics.ml" 31 736 748
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1178 "Source/builtin/basic_arithmetics.ml" 42 1172 1179
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1179 "Source/builtin/basic_arithmetics.ml" 42 1172 1180
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 31 736 749 "Source/builtin/basic_arithmetics.ml" 31 736 750
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1177 "Source/builtin/basic_arithmetics.ml" 42 1172 1180
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1180 "Source/builtin/basic_arithmetics.ml" 42 1172 1181
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1181 "Source/builtin/basic_arithmetics.ml" 42 1172 1182
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1177 "Source/builtin/basic_arithmetics.ml" 42 1172 1182
+type(
+  bool
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1189 "Source/builtin/basic_arithmetics.ml" 42 1172 1190
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1191 "Source/builtin/basic_arithmetics.ml" 42 1172 1192
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1193 "Source/builtin/basic_arithmetics.ml" 42 1172 1194
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 31 736 747 "Source/builtin/basic_arithmetics.ml" 31 736 748
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1194 "Source/builtin/basic_arithmetics.ml" 42 1172 1195
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( + ) "stdlib.mli" 267 10384 10384 "stdlib.mli" 267 10384 10430
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1195 "Source/builtin/basic_arithmetics.ml" 42 1172 1196
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 31 736 749 "Source/builtin/basic_arithmetics.ml" 31 736 750
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1193 "Source/builtin/basic_arithmetics.ml" 42 1172 1196
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1188 "Source/builtin/basic_arithmetics.ml" 42 1172 1197
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1217 "Source/builtin/basic_arithmetics.ml" 44 1205 1227
+type(
+  int -> int -> int * int -> int * int -> int * int * int
+)
+ident(
+  def bezout_rec "Source/builtin/basic_arithmetics.ml" 44 1205 1209 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1228 "Source/builtin/basic_arithmetics.ml" 44 1205 1229
+type(
+  int
+)
+ident(
+  def a "Source/builtin/basic_arithmetics.ml" 44 1205 1230 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1230 "Source/builtin/basic_arithmetics.ml" 44 1205 1231
+type(
+  int
+)
+ident(
+  def b "Source/builtin/basic_arithmetics.ml" 44 1205 1232 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1233 "Source/builtin/basic_arithmetics.ml" 44 1205 1235
+type(
+  int
+)
+ident(
+  def u1 "Source/builtin/basic_arithmetics.ml" 44 1205 1241 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1237 "Source/builtin/basic_arithmetics.ml" 44 1205 1239
+type(
+  int
+)
+ident(
+  def v1 "Source/builtin/basic_arithmetics.ml" 44 1205 1241 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1232 "Source/builtin/basic_arithmetics.ml" 44 1205 1240
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1242 "Source/builtin/basic_arithmetics.ml" 44 1205 1244
+type(
+  int
+)
+ident(
+  def u2 "Source/builtin/basic_arithmetics.ml" 45 1251 1257 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1246 "Source/builtin/basic_arithmetics.ml" 44 1205 1248
+type(
+  int
+)
+ident(
+  def v2 "Source/builtin/basic_arithmetics.ml" 45 1251 1257 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1241 "Source/builtin/basic_arithmetics.ml" 44 1205 1249
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1262 "Source/builtin/basic_arithmetics.ml" 45 1251 1263
+type(
+  int
+)
+ident(
+  def q "Source/builtin/basic_arithmetics.ml" 46 1278 1284 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1264 "Source/builtin/basic_arithmetics.ml" 45 1251 1265
+type(
+  int
+)
+ident(
+  def r "Source/builtin/basic_arithmetics.ml" 46 1278 1284 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1261 "Source/builtin/basic_arithmetics.ml" 45 1251 1266
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1267 "Source/builtin/basic_arithmetics.ml" 45 1251 1270
+type(
+  int -> int -> int * int
+)
+ident(
+  int_ref Builtin.div "Source/builtin/builtin.mli" 38 1100 1100 "Source/builtin/builtin.mli" 38 1100 1133
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1271 "Source/builtin/basic_arithmetics.ml" 45 1251 1272
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 44 1205 1228 "Source/builtin/basic_arithmetics.ml" 44 1205 1229
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1273 "Source/builtin/basic_arithmetics.ml" 45 1251 1274
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 44 1205 1230 "Source/builtin/basic_arithmetics.ml" 44 1205 1231
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1267 "Source/builtin/basic_arithmetics.ml" 45 1251 1274
+call(
+  stack
+)
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1287 "Source/builtin/basic_arithmetics.ml" 46 1278 1288
+type(
+  int
+)
+ident(
+  int_ref r "Source/builtin/basic_arithmetics.ml" 45 1251 1264 "Source/builtin/basic_arithmetics.ml" 45 1251 1265
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1288 "Source/builtin/basic_arithmetics.ml" 46 1278 1289
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 57 2220 2220 "stdlib.mli" 57 2220 2264
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1289 "Source/builtin/basic_arithmetics.ml" 46 1278 1290
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1287 "Source/builtin/basic_arithmetics.ml" 46 1278 1290
+type(
+  bool
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1297 "Source/builtin/basic_arithmetics.ml" 46 1278 1299
+type(
+  int
+)
+ident(
+  int_ref u2 "Source/builtin/basic_arithmetics.ml" 44 1205 1242 "Source/builtin/basic_arithmetics.ml" 44 1205 1244
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1300 "Source/builtin/basic_arithmetics.ml" 46 1278 1302
+type(
+  int
+)
+ident(
+  int_ref v2 "Source/builtin/basic_arithmetics.ml" 44 1205 1246 "Source/builtin/basic_arithmetics.ml" 44 1205 1248
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1303 "Source/builtin/basic_arithmetics.ml" 46 1278 1304
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 44 1205 1230 "Source/builtin/basic_arithmetics.ml" 44 1205 1231
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1296 "Source/builtin/basic_arithmetics.ml" 46 1278 1305
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1325 "Source/builtin/basic_arithmetics.ml" 48 1317 1335
+type(
+  int -> int -> int * int -> int * int -> int * int * int
+)
+ident(
+  int_ref bezout_rec "Source/builtin/basic_arithmetics.ml" 44 1205 1217 "Source/builtin/basic_arithmetics.ml" 44 1205 1227
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1336 "Source/builtin/basic_arithmetics.ml" 48 1317 1337
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 44 1205 1230 "Source/builtin/basic_arithmetics.ml" 44 1205 1231
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1338 "Source/builtin/basic_arithmetics.ml" 48 1317 1339
+type(
+  int
+)
+ident(
+  int_ref r "Source/builtin/basic_arithmetics.ml" 45 1251 1264 "Source/builtin/basic_arithmetics.ml" 45 1251 1265
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1341 "Source/builtin/basic_arithmetics.ml" 48 1317 1343
+type(
+  int
+)
+ident(
+  int_ref u2 "Source/builtin/basic_arithmetics.ml" 44 1205 1242 "Source/builtin/basic_arithmetics.ml" 44 1205 1244
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1344 "Source/builtin/basic_arithmetics.ml" 48 1317 1346
+type(
+  int
+)
+ident(
+  int_ref v2 "Source/builtin/basic_arithmetics.ml" 44 1205 1246 "Source/builtin/basic_arithmetics.ml" 44 1205 1248
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1340 "Source/builtin/basic_arithmetics.ml" 48 1317 1347
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1349 "Source/builtin/basic_arithmetics.ml" 48 1317 1351
+type(
+  int
+)
+ident(
+  int_ref u1 "Source/builtin/basic_arithmetics.ml" 44 1205 1233 "Source/builtin/basic_arithmetics.ml" 44 1205 1235
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1351 "Source/builtin/basic_arithmetics.ml" 48 1317 1352
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1352 "Source/builtin/basic_arithmetics.ml" 48 1317 1353
+type(
+  int
+)
+ident(
+  int_ref q "Source/builtin/basic_arithmetics.ml" 45 1251 1262 "Source/builtin/basic_arithmetics.ml" 45 1251 1263
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1353 "Source/builtin/basic_arithmetics.ml" 48 1317 1354
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1354 "Source/builtin/basic_arithmetics.ml" 48 1317 1356
+type(
+  int
+)
+ident(
+  int_ref u2 "Source/builtin/basic_arithmetics.ml" 44 1205 1242 "Source/builtin/basic_arithmetics.ml" 44 1205 1244
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1352 "Source/builtin/basic_arithmetics.ml" 48 1317 1356
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1349 "Source/builtin/basic_arithmetics.ml" 48 1317 1356
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1357 "Source/builtin/basic_arithmetics.ml" 48 1317 1359
+type(
+  int
+)
+ident(
+  int_ref v1 "Source/builtin/basic_arithmetics.ml" 44 1205 1237 "Source/builtin/basic_arithmetics.ml" 44 1205 1239
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1359 "Source/builtin/basic_arithmetics.ml" 48 1317 1360
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 271 10513 10513 "stdlib.mli" 271 10513 10559
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1360 "Source/builtin/basic_arithmetics.ml" 48 1317 1361
+type(
+  int
+)
+ident(
+  int_ref q "Source/builtin/basic_arithmetics.ml" 45 1251 1262 "Source/builtin/basic_arithmetics.ml" 45 1251 1263
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1361 "Source/builtin/basic_arithmetics.ml" 48 1317 1362
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( * ) "stdlib.mli" 275 10645 10645 "stdlib.mli" 275 10645 10691
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1362 "Source/builtin/basic_arithmetics.ml" 48 1317 1364
+type(
+  int
+)
+ident(
+  int_ref v2 "Source/builtin/basic_arithmetics.ml" 44 1205 1246 "Source/builtin/basic_arithmetics.ml" 44 1205 1248
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1360 "Source/builtin/basic_arithmetics.ml" 48 1317 1364
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1357 "Source/builtin/basic_arithmetics.ml" 48 1317 1364
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1348 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 48 1317 1325 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+call(
+  tail
+)
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 46 1278 1284 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 45 1251 1257 "Source/builtin/basic_arithmetics.ml" 48 1317 1365
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1373 "Source/builtin/basic_arithmetics.ml" 49 1369 1383
+type(
+  int -> int -> int * int -> int * int -> int * int * int
+)
+ident(
+  int_ref bezout_rec "Source/builtin/basic_arithmetics.ml" 44 1205 1217 "Source/builtin/basic_arithmetics.ml" 44 1205 1227
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1384 "Source/builtin/basic_arithmetics.ml" 49 1369 1385
+type(
+  int
+)
+ident(
+  int_ref a "Source/builtin/basic_arithmetics.ml" 31 736 747 "Source/builtin/basic_arithmetics.ml" 31 736 748
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1386 "Source/builtin/basic_arithmetics.ml" 49 1369 1387
+type(
+  int
+)
+ident(
+  int_ref b "Source/builtin/basic_arithmetics.ml" 31 736 749 "Source/builtin/basic_arithmetics.ml" 31 736 750
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1389 "Source/builtin/basic_arithmetics.ml" 49 1369 1390
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1391 "Source/builtin/basic_arithmetics.ml" 49 1369 1392
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1388 "Source/builtin/basic_arithmetics.ml" 49 1369 1393
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1395 "Source/builtin/basic_arithmetics.ml" 49 1369 1396
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1397 "Source/builtin/basic_arithmetics.ml" 49 1369 1398
+type(
+  int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1394 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+type(
+  int * int
+)
+"Source/builtin/basic_arithmetics.ml" 49 1369 1373 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+call(
+  tail
+)
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 44 1205 1209 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+type(
+  int * int * int
+)
+"Source/builtin/basic_arithmetics.ml" 42 1172 1174 "Source/builtin/basic_arithmetics.ml" 49 1369 1399
+type(
+  int * int * int
+)

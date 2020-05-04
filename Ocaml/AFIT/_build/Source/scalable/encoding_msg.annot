@@ -1,0 +1,50 @@
+"Source/scalable/encoding_msg.ml" 12 275 279 "Source/scalable/encoding_msg.ml" 12 275 285
+type(
+  'a -> 'b -> 'c list
+)
+ident(
+  def encode "Source/scalable/encoding_msg.ml" 19 515 515 "Source/scalable/encoding_msg.ml" 1 0 -1
+)
+"Source/scalable/encoding_msg.ml" 12 275 286 "Source/scalable/encoding_msg.ml" 12 275 289
+type(
+  'a
+)
+ident(
+  def str "Source/scalable/encoding_msg.ml" 12 275 290 "Source/scalable/encoding_msg.ml" 12 275 299
+)
+"Source/scalable/encoding_msg.ml" 12 275 290 "Source/scalable/encoding_msg.ml" 12 275 294
+type(
+  'b
+)
+ident(
+  def bits "Source/scalable/encoding_msg.ml" 12 275 297 "Source/scalable/encoding_msg.ml" 12 275 299
+)
+"Source/scalable/encoding_msg.ml" 12 275 297 "Source/scalable/encoding_msg.ml" 12 275 299
+type(
+  'c list
+)
+"Source/scalable/encoding_msg.ml" 19 515 519 "Source/scalable/encoding_msg.ml" 19 515 525
+type(
+  'a -> 'b -> string
+)
+ident(
+  def decode "Source/scalable/encoding_msg.ml" 19 515 539 "Source/scalable/encoding_msg.ml" 1 0 -1
+)
+"Source/scalable/encoding_msg.ml" 19 515 526 "Source/scalable/encoding_msg.ml" 19 515 529
+type(
+  'a
+)
+ident(
+  def msg "Source/scalable/encoding_msg.ml" 19 515 530 "Source/scalable/encoding_msg.ml" 19 515 539
+)
+"Source/scalable/encoding_msg.ml" 19 515 530 "Source/scalable/encoding_msg.ml" 19 515 534
+type(
+  'b
+)
+ident(
+  def bits "Source/scalable/encoding_msg.ml" 19 515 537 "Source/scalable/encoding_msg.ml" 19 515 539
+)
+"Source/scalable/encoding_msg.ml" 19 515 537 "Source/scalable/encoding_msg.ml" 19 515 539
+type(
+  string
+)
